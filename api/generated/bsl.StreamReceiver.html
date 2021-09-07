@@ -1,0 +1,633 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bsl.StreamReceiver &#8212; BSL 0.1.2 documentation</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery-rendered-html.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/bsl-icon.svg"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="bsl.StreamRecorder" href="bsl.StreamRecorder.html" />
+    <link rel="prev" title="Stream classes" href="../stream_classes.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="../../index.html">
+  <img src="../../_static/icon-with-acronym.svg" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../install.html">
+  Install instructions
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../generated_examples/index.html">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="../../api_reference.html">
+  API Reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../command_line.html">
+  Command-Line
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Quick Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/bsl-tools/bsl" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../stream_classes.html">
+   Stream classes
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     bsl.StreamReceiver
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bsl.StreamRecorder.html">
+     bsl.StreamRecorder
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bsl.StreamPlayer.html">
+     bsl.StreamPlayer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bsl.StreamViewer.html">
+     bsl.StreamViewer
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../triggers.html">
+   Triggers
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bsl.triggers.mock.html">
+     bsl.triggers.mock
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bsl.triggers.lpt.html">
+     bsl.triggers.lpt
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bsl.triggers.software.html">
+     bsl.triggers.software
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bsl.triggers.trigger_def.html">
+     bsl.triggers.trigger_def
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../datasets.html">
+   Datasets
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bsl.datasets.sample.html">
+     bsl.datasets.sample
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../utils.html">
+   Utils
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bsl.utils.find_event_channel.html">
+     bsl.utils.find_event_channel
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bsl.utils.layout.html">
+     bsl.utils.layout
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bsl.utils.lsl.html">
+     bsl.utils.lsl
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bsl.utils.timer.html">
+     bsl.utils.timer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bsl.utils.io.read_raw_fif.html">
+     bsl.utils.io.read_raw_fif
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bsl.utils.io.convert2fif.html">
+     bsl.utils.io.convert2fif
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bsl.utils.io.export.html">
+     bsl.utils.io.export
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+
+<nav id="bd-toc-nav">
+    
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="bsl-streamreceiver">
+<h1>bsl.StreamReceiver<a class="headerlink" href="#bsl-streamreceiver" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="bsl.StreamReceiver">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">bsl.</span></span><span class="sig-name descname"><span class="pre">StreamReceiver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bufsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">winsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stream_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.StreamReceiver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class for data acquisition from LSL streams.</p>
+<dl class="simple">
+<dt>It supports the streams of:</dt><dd><ul class="simple">
+<li><p>EEG</p></li>
+<li><p>Markers</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bufsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a>) – Buffer’s size <code class="docutils literal notranslate"><span class="pre">[secs]</span></code>. <code class="docutils literal notranslate"><span class="pre">MAX_BUF_SIZE</span></code> (def: 1-day) is the maximum
+size. Large buffer may lead to a delay if not pulled frequently.</p></li>
+<li><p><strong>winsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a>) – Window’s size <code class="docutils literal notranslate"><span class="pre">[secs]</span></code>. Must be smaller than the buffer’s size.</p></li>
+<li><p><strong>stream_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>) – Servers’ name or list of servers’ name to connect to.
+<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>: no constraint.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="bsl.StreamReceiver.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bufsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">winsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stream_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.StreamReceiver.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bsl.StreamReceiver.__init__" title="bsl.StreamReceiver.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>([bufsize, winsize, stream_name])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bsl.StreamReceiver.acquire" title="bsl.StreamReceiver.acquire"><code class="xref py py-obj docutils literal notranslate"><span class="pre">acquire</span></code></a>()</p></td>
+<td><p>Read data from the streams and fill their buffer using threading.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bsl.StreamReceiver.connect" title="bsl.StreamReceiver.connect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">connect</span></code></a>([timeout, force])</p></td>
+<td><p>Search for the available streams on the LSL network and connect to the appropriate ones.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bsl.StreamReceiver.disconnect" title="bsl.StreamReceiver.disconnect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">disconnect</span></code></a>([stream_name])</p></td>
+<td><p>Disconnects the stream <code class="docutils literal notranslate"><span class="pre">stream_name</span></code> from the <a class="reference internal" href="#bsl.StreamReceiver" title="bsl.StreamReceiver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StreamReceiver</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bsl.StreamReceiver.get_buffer" title="bsl.StreamReceiver.get_buffer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_buffer</span></code></a>([stream_name, return_raw, verbose])</p></td>
+<td><p>Get the entire buffer of a stream.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bsl.StreamReceiver.get_window" title="bsl.StreamReceiver.get_window"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_window</span></code></a>([stream_name, return_raw, verbose])</p></td>
+<td><p>Get the latest window from a stream’s buffer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bsl.StreamReceiver.reset_buffer" title="bsl.StreamReceiver.reset_buffer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_buffer</span></code></a>([stream_name])</p></td>
+<td><p>Clear the stream’s buffer.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bsl.StreamReceiver.show_info" title="bsl.StreamReceiver.show_info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_info</span></code></a>()</p></td>
+<td><p>Display the informations about the connected streams.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bsl.StreamReceiver.bufsize" title="bsl.StreamReceiver.bufsize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bufsize</span></code></a></p></td>
+<td><p>Buffer’s size <code class="docutils literal notranslate"><span class="pre">[sec]</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bsl.StreamReceiver.connected" title="bsl.StreamReceiver.connected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">connected</span></code></a></p></td>
+<td><p>Connected status.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bsl.StreamReceiver.mne_infos" title="bsl.StreamReceiver.mne_infos"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mne_infos</span></code></a></p></td>
+<td><p>Dictionary containing the <a class="reference external" href="https://mne.tools/stable/generated/mne.Info.html#mne.Info" title="(in MNE v0.23)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mne.Info</span></code></a> for the compatible streams.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bsl.StreamReceiver.stream_name" title="bsl.StreamReceiver.stream_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stream_name</span></code></a></p></td>
+<td><p>Connected stream’s name.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bsl.StreamReceiver.streams" title="bsl.StreamReceiver.streams"><code class="xref py py-obj docutils literal notranslate"><span class="pre">streams</span></code></a></p></td>
+<td><p>Connected streams dictionary <code class="docutils literal notranslate"><span class="pre">{stream_name:</span> <span class="pre">_Stream}</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bsl.StreamReceiver.winsize" title="bsl.StreamReceiver.winsize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">winsize</span></code></a></p></td>
+<td><p>Window’s size <code class="docutils literal notranslate"><span class="pre">[sec]</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="bsl.StreamReceiver.acquire">
+<span class="sig-name descname"><span class="pre">acquire</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bsl.StreamReceiver.acquire" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read data from the streams and fill their buffer using threading.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="bsl.StreamReceiver.bufsize">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">bufsize</span></span><a class="headerlink" href="#bsl.StreamReceiver.bufsize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Buffer’s size <code class="docutils literal notranslate"><span class="pre">[sec]</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Setter</dt>
+<dd class="field-odd"><p>Checks that the bufsize is valid.</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bsl.StreamReceiver.connect">
+<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.StreamReceiver.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search for the available streams on the LSL network and connect to the
+appropriate ones. If a LSL stream fullfills the requirements (name…),
+a connection is established.</p>
+<p>This function is called while instanciating a <a class="reference internal" href="#bsl.StreamReceiver" title="bsl.StreamReceiver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StreamReceiver</span></code></a>
+and can be recall to reconnect to the LSL streams.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>timeout</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a>) – Timeout duration in seconds after which the search is abandonned.</p></li>
+<li><p><strong>force</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, force reconnect if the <a class="reference internal" href="#bsl.StreamReceiver" title="bsl.StreamReceiver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StreamReceiver</span></code></a> was
+already connected.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="bsl.StreamReceiver.connected">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">connected</span></span><a class="headerlink" href="#bsl.StreamReceiver.connected" title="Permalink to this definition">¶</a></dt>
+<dd><p>Connected status.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bsl.StreamReceiver.disconnect">
+<span class="sig-name descname"><span class="pre">disconnect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.StreamReceiver.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disconnects the stream <code class="docutils literal notranslate"><span class="pre">stream_name</span></code> from the <a class="reference internal" href="#bsl.StreamReceiver" title="bsl.StreamReceiver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StreamReceiver</span></code></a>.
+If <code class="docutils literal notranslate"><span class="pre">stream_name</span></code> is a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a>, disconnects all streams in the list.
+If <code class="docutils literal notranslate"><span class="pre">stream_name</span></code> is <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, disconnects all streams.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>stream_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>) – Servers’ name or list of servers’ name to disconnect from.
+If <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, disconnect from all streams.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bsl.StreamReceiver.get_buffer">
+<span class="sig-name descname"><span class="pre">get_buffer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_raw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.StreamReceiver.get_buffer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the entire buffer of a stream.
+If several streams are connected, specify the name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stream_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>) – Name of the stream to extract from.
+Can be set to <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> if the <a class="reference internal" href="#bsl.StreamReceiver" title="bsl.StreamReceiver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StreamReceiver</span></code></a> is connected to a single
+stream.</p></li>
+<li><p><strong>return_raw</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>) – By default (<code class="docutils literal notranslate"><span class="pre">False</span></code>), data is returned as a <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.array.html#numpy.array" title="(in NumPy v1.21)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code></a> of shape
+<code class="docutils literal notranslate"><span class="pre">(samples,</span> <span class="pre">channels)`.</span> <span class="pre">If</span> <span class="pre">set</span> <span class="pre">to</span> <span class="pre">``True</span></code>, the <a class="reference internal" href="#bsl.StreamReceiver" title="bsl.StreamReceiver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StreamReceiver</span></code></a> will
+attempt to return MNE <a class="reference external" href="https://mne.tools/stable/generated/mne.io.Raw.html#mne.io.Raw" title="(in MNE v0.23)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Raw</span></code></a> instances.</p></li>
+<li><p><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code> (default), a warning will be issued when the method returns
+empty <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.array.html#numpy.array" title="(in NumPy v1.21)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code></a>. If <code class="docutils literal notranslate"><span class="pre">False</span></code>, this warning will be skipped.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>data</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.array.html#numpy.array" title="(in NumPy v1.21)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code></a>) – Data <code class="docutils literal notranslate"><span class="pre">(samples,</span> <span class="pre">channels)</span></code>.</p></li>
+<li><p><strong>timestamps</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.array.html#numpy.array" title="(in NumPy v1.21)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code></a>) – Data’s timestamps <code class="docutils literal notranslate"><span class="pre">(samples,</span> <span class="pre">)</span></code>.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Returns a raw data array in the unit streamed by the LSL outlet. For
+conversion, the corresponding multiplier must be set for each stream, with e.g.
+for a stream in uV to convert to V:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sr</span><span class="o">.</span><span class="n">streams</span><span class="p">[</span><span class="s1">&#39;stream_to_convert&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">multiplier</span> <span class="o">=</span> <span class="mf">1e-6</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bsl.StreamReceiver.get_window">
+<span class="sig-name descname"><span class="pre">get_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_raw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.StreamReceiver.get_window" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the latest window from a stream’s buffer.
+If several streams are connected, specify the name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stream_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>) – Name of the stream to extract from.
+Can be set to <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> if the <a class="reference internal" href="#bsl.StreamReceiver" title="bsl.StreamReceiver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StreamReceiver</span></code></a> is connected to a single
+stream.</p></li>
+<li><p><strong>return_raw</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>) – By default (<code class="docutils literal notranslate"><span class="pre">False</span></code>), data is returned as a <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.array.html#numpy.array" title="(in NumPy v1.21)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code></a> of shape
+<code class="docutils literal notranslate"><span class="pre">(samples,</span> <span class="pre">channels)`.</span> <span class="pre">If</span> <span class="pre">set</span> <span class="pre">to</span> <span class="pre">``True</span></code>, the <a class="reference internal" href="#bsl.StreamReceiver" title="bsl.StreamReceiver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StreamReceiver</span></code></a> will
+attempt to return MNE <a class="reference external" href="https://mne.tools/stable/generated/mne.io.Raw.html#mne.io.Raw" title="(in MNE v0.23)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Raw</span></code></a> instances.</p></li>
+<li><p><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code> (default), a warning will be issued when the method returns
+empty <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.array.html#numpy.array" title="(in NumPy v1.21)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code></a>. If <code class="docutils literal notranslate"><span class="pre">False</span></code>, this warning will be skipped.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>data</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.array.html#numpy.array" title="(in NumPy v1.21)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code></a>) – Data <code class="docutils literal notranslate"><span class="pre">(samples,</span> <span class="pre">channels)</span></code>.</p></li>
+<li><p><strong>timestamps</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.array.html#numpy.array" title="(in NumPy v1.21)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code></a>) – Data’s timestamps <code class="docutils literal notranslate"><span class="pre">(samples,</span> <span class="pre">)</span></code>.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Returns a raw data array in the unit streamed by the LSL outlet. For
+conversion, the corresponding multiplier must be set for each stream, with e.g.
+for a stream in uV to convert to V:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sr</span><span class="o">.</span><span class="n">streams</span><span class="p">[</span><span class="s1">&#39;stream_to_convert&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">multiplier</span> <span class="o">=</span> <span class="mf">1e-6</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="bsl.StreamReceiver.mne_infos">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">mne_infos</span></span><a class="headerlink" href="#bsl.StreamReceiver.mne_infos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dictionary containing the <a class="reference external" href="https://mne.tools/stable/generated/mne.Info.html#mne.Info" title="(in MNE v0.23)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mne.Info</span></code></a> for the compatible streams.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bsl.StreamReceiver.reset_buffer">
+<span class="sig-name descname"><span class="pre">reset_buffer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.StreamReceiver.reset_buffer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clear the stream’s buffer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>stream_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>) – Name of the stream(s) to reset its buffer.
+If <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, reset all stream’s buffer.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bsl.StreamReceiver.show_info">
+<span class="sig-name descname"><span class="pre">show_info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bsl.StreamReceiver.show_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display the informations about the connected streams.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="bsl.StreamReceiver.stream_name">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">stream_name</span></span><a class="headerlink" href="#bsl.StreamReceiver.stream_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Connected stream’s name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Setter</dt>
+<dd class="field-odd"><p>Try to connect to the new stream(s), revert to old stream(s)
+if failed.</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="bsl.StreamReceiver.streams">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">streams</span></span><a class="headerlink" href="#bsl.StreamReceiver.streams" title="Permalink to this definition">¶</a></dt>
+<dd><p>Connected streams dictionary <code class="docutils literal notranslate"><span class="pre">{stream_name:</span> <span class="pre">_Stream}</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="bsl.StreamReceiver.winsize">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">winsize</span></span><a class="headerlink" href="#bsl.StreamReceiver.winsize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Window’s size <code class="docutils literal notranslate"><span class="pre">[sec]</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Setter</dt>
+<dd class="field-odd"><p>Checks that the winsize is smaller than the bufsize.</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="../stream_classes.html" title="previous page">Stream classes</a>
+    <a class='right-next' id="next-link" href="bsl.StreamRecorder.html" title="next page">bsl.StreamRecorder</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2021, Kyuhwa Lee, Arnaud Desvachez, Mathieu Scheltienne, Last updated on 2021-09-07T19:13:18.774819+00:00.<br/>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.1.2.<br/>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,361 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Triggers &#8212; BSL 0.1.2 documentation</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery-rendered-html.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/bsl-icon.svg"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="bsl.triggers.mock" href="generated/bsl.triggers.mock.html" />
+    <link rel="prev" title="bsl.StreamViewer" href="generated/bsl.StreamViewer.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/icon-with-acronym.svg" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../install.html">
+  Install instructions
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../generated_examples/index.html">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="../api_reference.html">
+  API Reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../command_line.html">
+  Command-Line
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Quick Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/bsl-tools/bsl" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="stream_classes.html">
+   Stream classes
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="generated/bsl.StreamReceiver.html">
+     bsl.StreamReceiver
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="generated/bsl.StreamRecorder.html">
+     bsl.StreamRecorder
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="generated/bsl.StreamPlayer.html">
+     bsl.StreamPlayer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="generated/bsl.StreamViewer.html">
+     bsl.StreamViewer
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
+   Triggers
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="generated/bsl.triggers.mock.html">
+     bsl.triggers.mock
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="generated/bsl.triggers.lpt.html">
+     bsl.triggers.lpt
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="generated/bsl.triggers.software.html">
+     bsl.triggers.software
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="generated/bsl.triggers.trigger_def.html">
+     bsl.triggers.trigger_def
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="datasets.html">
+   Datasets
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="generated/bsl.datasets.sample.html">
+     bsl.datasets.sample
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="utils.html">
+   Utils
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="generated/bsl.utils.find_event_channel.html">
+     bsl.utils.find_event_channel
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="generated/bsl.utils.layout.html">
+     bsl.utils.layout
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="generated/bsl.utils.lsl.html">
+     bsl.utils.lsl
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="generated/bsl.utils.timer.html">
+     bsl.utils.timer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="generated/bsl.utils.io.read_raw_fif.html">
+     bsl.utils.io.read_raw_fif
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="generated/bsl.utils.io.convert2fif.html">
+     bsl.utils.io.convert2fif
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="generated/bsl.utils.io.export.html">
+     bsl.utils.io.export
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+
+<nav id="bd-toc-nav">
+    
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="triggers">
+<h1>Triggers<a class="headerlink" href="#triggers" title="Permalink to this headline">¶</a></h1>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/bsl.triggers.mock.html#module-bsl.triggers.mock" title="bsl.triggers.mock"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mock</span></code></a></p></td>
+<td><p>Mock trigger.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/bsl.triggers.lpt.html#module-bsl.triggers.lpt" title="bsl.triggers.lpt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lpt</span></code></a></p></td>
+<td><p>Trigger using an LPT port.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/bsl.triggers.software.html#module-bsl.triggers.software" title="bsl.triggers.software"><code class="xref py py-obj docutils literal notranslate"><span class="pre">software</span></code></a></p></td>
+<td><p>Trigger using software and a .txt file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/bsl.triggers.trigger_def.html#module-bsl.triggers.trigger_def" title="bsl.triggers.trigger_def"><code class="xref py py-obj docutils literal notranslate"><span class="pre">trigger_def</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="generated/bsl.StreamViewer.html" title="previous page">bsl.StreamViewer</a>
+    <a class='right-next' id="next-link" href="generated/bsl.triggers.mock.html" title="next page">bsl.triggers.mock</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2021, Kyuhwa Lee, Arnaud Desvachez, Mathieu Scheltienne, Last updated on 2021-09-07T19:13:18.774819+00:00.<br/>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.1.2.<br/>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>
