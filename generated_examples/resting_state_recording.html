@@ -202,14 +202,14 @@ activity of a subject is measured in the absence of any stimulus or task.</p>
 <span class="c1"># License: LGPL-2.1</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">datetime</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <a href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class"><span class="n">Path</span></a>
 
 <span class="kn">from</span> <span class="nn">bsl</span> <span class="kn">import</span> <a href="../api/generated/bsl.StreamRecorder.html#bsl.StreamRecorder" title="bsl.StreamRecorder" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-class"><span class="n">StreamRecorder</span></a><span class="p">,</span> <a href="../api/generated/bsl.StreamPlayer.html#bsl.StreamPlayer" title="bsl.StreamPlayer" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-class"><span class="n">StreamPlayer</span></a><span class="p">,</span> <span class="n">datasets</span>
 <span class="kn">from</span> <span class="nn">bsl.triggers.software</span> <span class="kn">import</span> <a href="../api/generated/bsl.triggers.software.html#bsl.triggers.software.TriggerSoftware" title="bsl.triggers.software.TriggerSoftware" class="sphx-glr-backref-module-bsl-triggers-software sphx-glr-backref-type-py-class"><span class="n">TriggerSoftware</span></a>
 <span class="kn">from</span> <span class="nn">bsl.utils</span> <span class="kn">import</span> <span class="n">Timer</span>
-<span class="kn">from</span> <span class="nn">bsl.utils.io._file_dir</span> <span class="kn">import</span> <span class="n">make_dirs</span>
 </pre></div>
 </div>
 <p>Start a mock LSL stream with a Stream Player for this example purpose.
@@ -227,7 +227,7 @@ connect to. Without specifying the argument <code class="xref py py-obj docutils
 connect to every LSL stream available and save one .pcl and one .fif file per
 stream.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/3/library/pathlib.html#pathlib.WindowsPath" title="pathlib.WindowsPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">directory</span></a> <span class="o">=</span> <a href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class"><span class="n">Path</span></a><span class="p">(</span><span class="s1">&#39;~/bsl_data/examples&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">expanduser</span><span class="p">()</span>
-<span class="n">make_dirs</span><span class="p">(</span><a href="https://docs.python.org/3/library/pathlib.html#pathlib.WindowsPath" title="pathlib.WindowsPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">directory</span></a><span class="p">)</span>
+<a href="https://docs.python.org/3/library/os.html#os.makedirs" title="os.makedirs" class="sphx-glr-backref-module-os sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">makedirs</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/pathlib.html#pathlib.WindowsPath" title="pathlib.WindowsPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">directory</span></a><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">stream_name</span> <span class="o">=</span> <span class="kc">None</span>
 </pre></div>
 </div>
@@ -291,7 +291,7 @@ See: <a class="reference external" href="https://docs.python.org/2/library/multi
     <a href="../api/generated/bsl.StreamPlayer.html#bsl.StreamPlayer.stop" title="bsl.StreamPlayer.stop" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-method"><span class="n">player</span><span class="o">.</span><span class="n">stop</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  7.686 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  7.436 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-generated-examples-resting-state-recording-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/7e2c0280d1f6b4a9a13422d5fb1da4ce/resting_state_recording.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">resting_state_recording.py</span></code></a></p>
@@ -327,7 +327,7 @@ See: <a class="reference external" href="https://docs.python.org/2/library/multi
     
     <div class="footer-item">
       <p class="copyright">
-    &copy; Copyright 2021, Kyuhwa Lee, Arnaud Desvachez, Mathieu Scheltienne, Last updated on 2021-09-07T19:13:18.774819+00:00.<br/>
+    &copy; Copyright 2021, Kyuhwa Lee, Arnaud Desvachez, Mathieu Scheltienne, Last updated on 2021-09-07T20:53:27.266503+00:00.<br/>
 </p>
     </div>
     

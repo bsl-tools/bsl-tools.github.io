@@ -203,7 +203,8 @@ This example will focus on a simple paradigm to regulate the alpha waves.</p>
 <span class="c1"># License: LGPL-2.1</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <a href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class"><span class="n">Path</span></a>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <a href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class"><span class="n">Path</span></a>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
@@ -211,7 +212,6 @@ This example will focus on a simple paradigm to regulate the alpha waves.</p>
 <span class="kn">from</span> <span class="nn">bsl</span> <span class="kn">import</span> <a href="../api/generated/bsl.StreamRecorder.html#bsl.StreamRecorder" title="bsl.StreamRecorder" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-class"><span class="n">StreamRecorder</span></a><span class="p">,</span> <a href="../api/generated/bsl.StreamReceiver.html#bsl.StreamReceiver" title="bsl.StreamReceiver" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-class"><span class="n">StreamReceiver</span></a><span class="p">,</span> <a href="../api/generated/bsl.StreamPlayer.html#bsl.StreamPlayer" title="bsl.StreamPlayer" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-class"><span class="n">StreamPlayer</span></a><span class="p">,</span> <span class="n">datasets</span>
 <span class="kn">from</span> <span class="nn">bsl.triggers.software</span> <span class="kn">import</span> <a href="../api/generated/bsl.triggers.software.html#bsl.triggers.software.TriggerSoftware" title="bsl.triggers.software.TriggerSoftware" class="sphx-glr-backref-module-bsl-triggers-software sphx-glr-backref-type-py-class"><span class="n">TriggerSoftware</span></a>
 <span class="kn">from</span> <span class="nn">bsl.utils</span> <span class="kn">import</span> <span class="n">Timer</span>
-<span class="kn">from</span> <span class="nn">bsl.utils.io._file_dir</span> <span class="kn">import</span> <span class="n">make_dirs</span>
 </pre></div>
 </div>
 <p>Start a mock LSL stream with a Stream Player for this example purpose.
@@ -231,7 +231,7 @@ Define the directory used by the recorder.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">stream_name</span></a> <span class="o">=</span> <span class="s1">&#39;MyStream&#39;</span>
 <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">window_size</span></a> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># in seconds</span>
 <a href="https://docs.python.org/3/library/pathlib.html#pathlib.WindowsPath" title="pathlib.WindowsPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">directory</span></a> <span class="o">=</span> <a href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class"><span class="n">Path</span></a><span class="p">(</span><span class="s1">&#39;~/bsl_data/examples&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">expanduser</span><span class="p">()</span>
-<span class="n">make_dirs</span><span class="p">(</span><a href="https://docs.python.org/3/library/pathlib.html#pathlib.WindowsPath" title="pathlib.WindowsPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">directory</span></a><span class="p">)</span>
+<a href="https://docs.python.org/3/library/os.html#os.makedirs" title="os.makedirs" class="sphx-glr-backref-module-os sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">makedirs</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/pathlib.html#pathlib.WindowsPath" title="pathlib.WindowsPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">directory</span></a><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Define a stream receiver and retrieves the window size in samples based on
@@ -373,11 +373,11 @@ number of acquired window (points) may vary.</p>
 </div>
 <img alt="real time regulation of alpha waves" class="sphx-glr-single-img" src="../_images/sphx_glr_real-time_regulation_of_alpha_waves_001.png" />
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[67, 65, 64, 65]
-[67, 65, 64, 65]
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[67, 64, 65, 64]
+[67, 64, 65, 64]
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  13.631 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  13.326 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-generated-examples-real-time-regulation-of-alpha-waves-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/d7c13d092861232bf57a960db0d82bae/real-time_regulation_of_alpha_waves.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">real-time_regulation_of_alpha_waves.py</span></code></a></p>
@@ -413,7 +413,7 @@ number of acquired window (points) may vary.</p>
     
     <div class="footer-item">
       <p class="copyright">
-    &copy; Copyright 2021, Kyuhwa Lee, Arnaud Desvachez, Mathieu Scheltienne, Last updated on 2021-09-07T19:13:18.774819+00:00.<br/>
+    &copy; Copyright 2021, Kyuhwa Lee, Arnaud Desvachez, Mathieu Scheltienne, Last updated on 2021-09-07T20:53:27.266503+00:00.<br/>
 </p>
     </div>
     
