@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>bsl.triggers.trigger_def &#8212; BSL 0.1.2 documentation</title>
+    <title>bsl.triggers.lpt.TriggerArduino2LPT &#8212; BSL 0.1.2 documentation</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -38,8 +38,8 @@
     <link rel="shortcut icon" href="../../_static/bsl-icon.svg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="bsl.triggers.mock" href="bsl.triggers.mock.html" />
-    <link rel="prev" title="Triggers" href="../triggers.html" />
+    <link rel="next" title="Datasets" href="../datasets.html" />
+    <link rel="prev" title="bsl.triggers.lpt.TriggerUSB2LPT" href="bsl.triggers.lpt.TriggerUSB2LPT.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -175,8 +175,8 @@
    </i>
   </label>
   <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="bsl.triggers.trigger_def.html">
      bsl.triggers.trigger_def
     </a>
    </li>
@@ -200,8 +200,8 @@
      bsl.triggers.lpt.TriggerUSB2LPT
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="bsl.triggers.lpt.TriggerArduino2LPT.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      bsl.triggers.lpt.TriggerArduino2LPT
     </a>
    </li>
@@ -302,67 +302,103 @@
               
               <div>
                 
-  <div class="section" id="module-bsl.triggers.trigger_def">
-<span id="bsl-triggers-trigger-def"></span><h1>bsl.triggers.trigger_def<a class="headerlink" href="#module-bsl.triggers.trigger_def" title="Permalink to this headline">¶</a></h1>
-<p class="rubric">Classes</p>
+  <div class="section" id="bsl-triggers-lpt-triggerarduino2lpt">
+<h1>bsl.triggers.lpt.TriggerArduino2LPT<a class="headerlink" href="#bsl-triggers-lpt-triggerarduino2lpt" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="bsl.triggers.lpt.TriggerArduino2LPT">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">bsl.triggers.lpt.</span></span><span class="sig-name descname"><span class="pre">TriggerArduino2LPT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delay</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><span class="pre">bool</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.triggers.lpt.TriggerArduino2LPT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Trigger using an ARDUINO to LPT converter. Design of the converter can be
+found here: <a class="reference internal" href="../../arduino2lpt.html#arduino2lpt"><span class="std std-ref">Arduino to LPT converter</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>delay</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>) – Delay in milliseconds until which a new trigger cannot be sent.</p></li>
+<li><p><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, display a <code class="docutils literal notranslate"><span class="pre">logger.info</span></code> message when a trigger is sent.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="bsl.triggers.lpt.TriggerArduino2LPT.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delay</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><span class="pre">bool</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.triggers.lpt.TriggerArduino2LPT.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p class="rubric">Methods</p>
 <table class="longtable table autosummary">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bsl.triggers.trigger_def.TriggerDef" title="bsl.triggers.trigger_def.TriggerDef"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TriggerDef</span></code></a>([trigger_file])</p></td>
-<td><p>Class for reading event’s pairs (string-integer) from <code class="docutils literal notranslate"><span class="pre">.ini</span></code> file.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bsl.triggers.lpt.TriggerArduino2LPT.__init__" title="bsl.triggers.lpt.TriggerArduino2LPT.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>([delay, verbose])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bsl.triggers.lpt.TriggerArduino2LPT.close" title="bsl.triggers.lpt.TriggerArduino2LPT.close"><code class="xref py py-obj docutils literal notranslate"><span class="pre">close</span></code></a>()</p></td>
+<td><p>Disconnects the Arduino and free the COM port.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bsl.triggers.lpt.TriggerArduino2LPT.signal" title="bsl.triggers.lpt.TriggerArduino2LPT.signal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">signal</span></code></a>(value)</p></td>
+<td><p>Send a trigger value.</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="py class">
-<dt class="sig sig-object py" id="bsl.triggers.trigger_def.TriggerDef">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">bsl.triggers.trigger_def.</span></span><span class="sig-name descname"><span class="pre">TriggerDef</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trigger_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.triggers.trigger_def.TriggerDef" title="Permalink to this definition">¶</a></dt>
-<dd><p>Class for reading event’s pairs (string-integer) from <code class="docutils literal notranslate"><span class="pre">.ini</span></code> file.</p>
-<p>The class will also have as attributes <code class="docutils literal notranslate"><span class="pre">self.event_str</span> <span class="pre">=</span> <span class="pre">event_int</span></code> for
-all pairs.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>trigger_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Path</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>) – Path to the <code class="docutils literal notranslate"><span class="pre">.ini</span></code> file containing the table converting event numbers
-into event strings.</p>
-</dd>
-</dl>
+<p class="rubric">Attributes</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">BAUD_RATE</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bsl.triggers.lpt.TriggerArduino2LPT.com_port" title="bsl.triggers.lpt.TriggerArduino2LPT.com_port"><code class="xref py py-obj docutils literal notranslate"><span class="pre">com_port</span></code></a></p></td>
+<td><p>COM port to use.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bsl.triggers.lpt.TriggerArduino2LPT.delay" title="bsl.triggers.lpt.TriggerArduino2LPT.delay"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delay</span></code></a></p></td>
+<td><p>Delay to wait between two <code class="docutils literal notranslate"><span class="pre">.signal()</span></code> call in milliseconds.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">verbose</span></code></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
 <dl class="py method">
-<dt class="sig sig-object py" id="bsl.triggers.trigger_def.TriggerDef.add_event">
-<span class="sig-name descname"><span class="pre">add_event</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.triggers.trigger_def.TriggerDef.add_event" title="Permalink to this definition">¶</a></dt>
-<dd><p>Add an event to the trigger definition instance.</p>
+<dt class="sig sig-object py" id="bsl.triggers.lpt.TriggerArduino2LPT.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bsl.triggers.lpt.TriggerArduino2LPT.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disconnects the Arduino and free the COM port.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="bsl.triggers.lpt.TriggerArduino2LPT.com_port">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">com_port</span></span><a class="headerlink" href="#bsl.triggers.lpt.TriggerArduino2LPT.com_port" title="Permalink to this definition">¶</a></dt>
+<dd><p>COM port to use.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Name of the event</p></li>
-<li><p><strong>value</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>) – Value of the event</p></li>
-<li><p><strong>overwrite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, overwrite previous event with the same name.</p></li>
-</ul>
+<dt class="field-odd">Setter</dt>
+<dd class="field-odd"><p>Change the COM port and connect the trigger.</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="bsl.triggers.trigger_def.TriggerDef.by_name">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">by_name</span></span><a class="headerlink" href="#bsl.triggers.trigger_def.TriggerDef.by_name" title="Permalink to this definition">¶</a></dt>
-<dd><p>A dictionary with string keys and integers value.</p>
+<dt class="sig sig-object py" id="bsl.triggers.lpt.TriggerArduino2LPT.delay">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">delay</span></span><a class="headerlink" href="#bsl.triggers.lpt.TriggerArduino2LPT.delay" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delay to wait between two <code class="docutils literal notranslate"><span class="pre">.signal()</span></code> call in milliseconds.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a></p>
+<dt class="field-odd">Setter</dt>
+<dd class="field-odd"><p>Change the delay if an event has not been sent recently.</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="py property">
-<dt class="sig sig-object py" id="bsl.triggers.trigger_def.TriggerDef.by_value">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">by_value</span></span><a class="headerlink" href="#bsl.triggers.trigger_def.TriggerDef.by_value" title="Permalink to this definition">¶</a></dt>
-<dd><p>A dictionary with integers keys and string values.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a></p>
-</dd>
-</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="bsl.triggers.lpt.TriggerArduino2LPT.signal">
+<span class="sig-name descname"><span class="pre">signal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#bsl.triggers.lpt.TriggerArduino2LPT.signal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send a trigger value.</p>
 </dd></dl>
 
 </dd></dl>
@@ -375,8 +411,8 @@ into event strings.</p>
               
               <div class='prev-next-bottom'>
                 
-    <a class='left-prev' id="prev-link" href="../triggers.html" title="previous page">Triggers</a>
-    <a class='right-next' id="next-link" href="bsl.triggers.mock.html" title="next page">bsl.triggers.mock</a>
+    <a class='left-prev' id="prev-link" href="bsl.triggers.lpt.TriggerUSB2LPT.html" title="previous page">bsl.triggers.lpt.TriggerUSB2LPT</a>
+    <a class='right-next' id="next-link" href="../datasets.html" title="next page">Datasets</a>
 
               </div>
               

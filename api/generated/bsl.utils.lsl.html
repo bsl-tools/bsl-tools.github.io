@@ -176,13 +176,13 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="bsl.triggers.mock.html">
-     bsl.triggers.mock
+    <a class="reference internal" href="bsl.triggers.trigger_def.html">
+     bsl.triggers.trigger_def
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="bsl.triggers.lpt.html">
-     bsl.triggers.lpt
+    <a class="reference internal" href="bsl.triggers.mock.html">
+     bsl.triggers.mock
     </a>
    </li>
    <li class="toctree-l2">
@@ -191,8 +191,18 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="bsl.triggers.trigger_def.html">
-     bsl.triggers.trigger_def
+    <a class="reference internal" href="bsl.triggers.lpt.TriggerLPT.html">
+     bsl.triggers.lpt.TriggerLPT
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bsl.triggers.lpt.TriggerUSB2LPT.html">
+     bsl.triggers.lpt.TriggerUSB2LPT
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bsl.triggers.lpt.TriggerArduino2LPT.html">
+     bsl.triggers.lpt.TriggerArduino2LPT
     </a>
    </li>
   </ul>
@@ -311,12 +321,6 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#bsl.utils.lsl.search_lsl" title="bsl.utils.lsl.search_lsl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">search_lsl</span></code></a>([ignore_markers, timeout])</p></td>
 <td><p>Search and select an available stream on LSL network.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bsl.utils.lsl.start_client" title="bsl.utils.lsl.start_client"><code class="xref py py-obj docutils literal notranslate"><span class="pre">start_client</span></code></a>(stream_name[, timeout])</p></td>
-<td><p>Search for an LSL outlet (server) and open an LSL inlet (client).</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bsl.utils.lsl.start_server" title="bsl.utils.lsl.start_server"><code class="xref py py-obj docutils literal notranslate"><span class="pre">start_server</span></code></a>(server_name[, n_channels, …])</p></td>
-<td><p>Start a new LSL server.</p></td>
-</tr>
 </tbody>
 </table>
 <dl class="py function">
@@ -375,54 +379,6 @@ is interrupted.</p></li>
 </dl>
 </dd></dl>
 
-<dl class="py function">
-<dt class="sig sig-object py" id="bsl.utils.lsl.start_client">
-<span class="sig-prename descclassname"><span class="pre">bsl.utils.lsl.</span></span><span class="sig-name descname"><span class="pre">start_client</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.utils.lsl.start_client" title="Permalink to this definition">¶</a></dt>
-<dd><p>Search for an LSL outlet (server) and open an LSL inlet (client).</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>stream_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Name of the stream to search.</p></li>
-<li><p><strong>timeout</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>) – Timeout duration in seconds after which the search of an LSL outlet
-is interrupted.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>LSL inlet (client).</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>pylsl.StreamInlet</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="bsl.utils.lsl.start_server">
-<span class="sig-prename descclassname"><span class="pre">bsl.utils.lsl.</span></span><span class="sig-name descname"><span class="pre">start_server</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">server_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_channels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'string'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nominal_srate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Markers'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.utils.lsl.start_server" title="Permalink to this definition">¶</a></dt>
-<dd><p>Start a new LSL server.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>server_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Name of the server.</p></li>
-<li><p><strong>n_channels</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>) – Number of channels.</p></li>
-<li><p><strong>channel_format</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Channels’ format, e.g.
-<code class="docutils literal notranslate"><span class="pre">'string',</span> <span class="pre">'float32',</span> <span class="pre">'double64',</span> <span class="pre">'int8',</span> <span class="pre">'int16',</span> <span class="pre">'int32',</span> <span class="pre">'int64'</span></code></p></li>
-<li><p><strong>nominal_srate</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a> | pylsl.IRREGULAR_RATE) – Sampling rate <code class="docutils literal notranslate"><span class="pre">[Hz]</span></code>.</p></li>
-<li><p><strong>stype</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Signal type. Available type can be found here:
-<a class="reference external" href="https://github.com/sccn/xdf/wiki/Meta-Data#stream-content-types">https://github.com/sccn/xdf/wiki/Meta-Data#stream-content-types</a></p></li>
-<li><p><strong>source_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Unique identifier of the device or source of the data, if available
-(such as the serial number). If <code class="docutils literal notranslate"><span class="pre">None</span></code>, set to server name.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>LSL outlet (server).</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>pylsl.StreamOutlet</p>
-</dd>
-</dl>
-</dd></dl>
-
 </div>
 
 
@@ -449,7 +405,7 @@ is interrupted.</p></li>
     
     <div class="footer-item">
       <p class="copyright">
-    &copy; Copyright 2021, Kyuhwa Lee, Arnaud Desvachez, Mathieu Scheltienne, Last updated on 2021-09-07T20:53:27.266503+00:00.<br/>
+    &copy; Copyright 2021, Kyuhwa Lee, Arnaud Desvachez, Mathieu Scheltienne, Last updated on 2021-09-08T17:36:01.258796+00:00.<br/>
 </p>
     </div>
     

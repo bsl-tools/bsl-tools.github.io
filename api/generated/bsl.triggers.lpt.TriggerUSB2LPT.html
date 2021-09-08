@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>bsl.triggers.mock &#8212; BSL 0.1.2 documentation</title>
+    <title>bsl.triggers.lpt.TriggerUSB2LPT &#8212; BSL 0.1.2 documentation</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -38,8 +38,8 @@
     <link rel="shortcut icon" href="../../_static/bsl-icon.svg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="bsl.triggers.software" href="bsl.triggers.software.html" />
-    <link rel="prev" title="bsl.triggers.trigger_def" href="bsl.triggers.trigger_def.html" />
+    <link rel="next" title="bsl.triggers.lpt.TriggerArduino2LPT" href="bsl.triggers.lpt.TriggerArduino2LPT.html" />
+    <link rel="prev" title="bsl.triggers.lpt.TriggerLPT" href="bsl.triggers.lpt.TriggerLPT.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -180,8 +180,8 @@
      bsl.triggers.trigger_def
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="bsl.triggers.mock.html">
      bsl.triggers.mock
     </a>
    </li>
@@ -195,8 +195,8 @@
      bsl.triggers.lpt.TriggerLPT
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="bsl.triggers.lpt.TriggerUSB2LPT.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      bsl.triggers.lpt.TriggerUSB2LPT
     </a>
    </li>
@@ -302,33 +302,73 @@
               
               <div>
                 
-  <div class="section" id="module-bsl.triggers.mock">
-<span id="bsl-triggers-mock"></span><h1>bsl.triggers.mock<a class="headerlink" href="#module-bsl.triggers.mock" title="Permalink to this headline">¶</a></h1>
-<p>Mock trigger.</p>
-<p class="rubric">Classes</p>
+  <div class="section" id="bsl-triggers-lpt-triggerusb2lpt">
+<h1>bsl.triggers.lpt.TriggerUSB2LPT<a class="headerlink" href="#bsl-triggers-lpt-triggerusb2lpt" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="bsl.triggers.lpt.TriggerUSB2LPT">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">bsl.triggers.lpt.</span></span><span class="sig-name descname"><span class="pre">TriggerUSB2LPT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delay</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><span class="pre">bool</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.triggers.lpt.TriggerUSB2LPT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Trigger using a USB to LPT converter. Drivers can be found here:
+<a class="reference external" href="https://www-user.tu-chemnitz.de/~heha/bastelecke/Rund%20um%20den%20PC/USB2LPT/">https://www-user.tu-chemnitz.de/~heha/bastelecke/Rund%20um%20den%20PC/USB2LPT/</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>delay</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>) – Delay in milliseconds until which a new trigger cannot be sent.</p></li>
+<li><p><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, display a <code class="docutils literal notranslate"><span class="pre">logger.info</span></code> message when a trigger is sent.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="bsl.triggers.lpt.TriggerUSB2LPT.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delay</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><span class="pre">bool</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.triggers.lpt.TriggerUSB2LPT.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p class="rubric">Methods</p>
 <table class="longtable table autosummary">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bsl.triggers.mock.TriggerMock" title="bsl.triggers.mock.TriggerMock"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TriggerMock</span></code></a>(verbose)</p></td>
-<td><p>Mock trigger class.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bsl.triggers.lpt.TriggerUSB2LPT.__init__" title="bsl.triggers.lpt.TriggerUSB2LPT.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>([delay, verbose])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bsl.triggers.lpt.TriggerUSB2LPT.signal" title="bsl.triggers.lpt.TriggerUSB2LPT.signal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">signal</span></code></a>(value)</p></td>
+<td><p>Send a trigger value.</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="py class">
-<dt class="sig sig-object py" id="bsl.triggers.mock.TriggerMock">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">bsl.triggers.mock.</span></span><span class="sig-name descname"><span class="pre">TriggerMock</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><span class="pre">bool</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.triggers.mock.TriggerMock" title="Permalink to this definition">¶</a></dt>
-<dd><p>Mock trigger class.</p>
+<p class="rubric">Attributes</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bsl.triggers.lpt.TriggerUSB2LPT.delay" title="bsl.triggers.lpt.TriggerUSB2LPT.delay"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delay</span></code></a></p></td>
+<td><p>Delay to wait between two <code class="docutils literal notranslate"><span class="pre">.signal()</span></code> call in milliseconds.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">verbose</span></code></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="bsl.triggers.lpt.TriggerUSB2LPT.delay">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">delay</span></span><a class="headerlink" href="#bsl.triggers.lpt.TriggerUSB2LPT.delay" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delay to wait between two <code class="docutils literal notranslate"><span class="pre">.signal()</span></code> call in milliseconds.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, display a <code class="docutils literal notranslate"><span class="pre">logger.info</span></code> message when a trigger is sent.</p>
+<dt class="field-odd">Setter</dt>
+<dd class="field-odd"><p>Change the delay if an event has not been sent recently.</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a></p>
 </dd>
 </dl>
+</dd></dl>
+
 <dl class="py method">
-<dt class="sig sig-object py" id="bsl.triggers.mock.TriggerMock.signal">
-<span class="sig-name descname"><span class="pre">signal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#bsl.triggers.mock.TriggerMock.signal" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="bsl.triggers.lpt.TriggerUSB2LPT.signal">
+<span class="sig-name descname"><span class="pre">signal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#bsl.triggers.lpt.TriggerUSB2LPT.signal" title="Permalink to this definition">¶</a></dt>
 <dd><p>Send a trigger value.</p>
 </dd></dl>
 
@@ -342,8 +382,8 @@
               
               <div class='prev-next-bottom'>
                 
-    <a class='left-prev' id="prev-link" href="bsl.triggers.trigger_def.html" title="previous page">bsl.triggers.trigger_def</a>
-    <a class='right-next' id="next-link" href="bsl.triggers.software.html" title="next page">bsl.triggers.software</a>
+    <a class='left-prev' id="prev-link" href="bsl.triggers.lpt.TriggerLPT.html" title="previous page">bsl.triggers.lpt.TriggerLPT</a>
+    <a class='right-next' id="next-link" href="bsl.triggers.lpt.TriggerArduino2LPT.html" title="next page">bsl.triggers.lpt.TriggerArduino2LPT</a>
 
               </div>
               
