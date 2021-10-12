@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>bsl.StreamPlayer &#8212; BSL 0.2.0 documentation</title>
+    <title>bsl.StreamPlayer &#8212; BSL 0.3.0 documentation</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -218,13 +218,23 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="bsl.datasets.sample.html">
-     bsl.datasets.sample
+    <a class="reference internal" href="bsl.datasets.eeg_resting_state.html">
+     bsl.datasets.eeg_resting_state
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="bsl.datasets.event.html">
-     bsl.datasets.event
+    <a class="reference internal" href="bsl.datasets.eeg_resting_state_short.html">
+     bsl.datasets.eeg_resting_state_short
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bsl.datasets.eeg_auditory_stimuli.html">
+     bsl.datasets.eeg_auditory_stimuli
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bsl.datasets.trigger_def.html">
+     bsl.datasets.trigger_def
     </a>
    </li>
   </ul>
@@ -301,22 +311,29 @@
 <h1>bsl.StreamPlayer<a class="headerlink" href="#bsl-streamplayer" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="bsl.StreamPlayer">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">bsl.</span></span><span class="sig-name descname"><span class="pre">StreamPlayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fif_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunk_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trigger_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.StreamPlayer" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">bsl.</span></span><span class="sig-name descname"><span class="pre">StreamPlayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fif_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repeat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">inf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trigger_def</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunk_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">high_resolution</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.StreamPlayer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class for playing a recorded file on LSL network in another process.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>stream_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Stream’s server name, displayed on LSL network.</p></li>
-<li><p><strong>fif_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Path</span></code></a>) – Path to the <code class="docutils literal notranslate"><span class="pre">.fif</span></code> file to play.</p></li>
-<li><p><strong>chunk_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>) – Number of samples to send at once (usually <code class="docutils literal notranslate"><span class="pre">16-32</span></code> is good enough).</p></li>
-<li><p><strong>trigger_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Path</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>) – Path to the <code class="docutils literal notranslate"><span class="pre">.ini</span></code> file containing the table converting event numbers
-into event strings.</p></li>
+<li><p><strong>stream_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Stream’s server name, displayed on LSL network.</p></li>
+<li><p><strong>fif_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Path</span></code></a>) – Path to the compatible raw <code class="docutils literal notranslate"><span class="pre">.fif</span></code> file to play.</p></li>
+<li><p><strong>repeat</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a> | <code class="docutils literal notranslate"><span class="pre">float('inf')</span></code>) – Number of times the stream player will loop on the FIF file before
+interrupting. Default <code class="docutils literal notranslate"><span class="pre">float('inf')</span></code> can be passed to never interrupt
+streaming.</p></li>
+<li><p><strong>trigger_def</strong> (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Path</span></code></a> | <a class="reference internal" href="bsl.triggers.trigger_def.html#bsl.triggers.trigger_def.TriggerDef" title="bsl.triggers.trigger_def.TriggerDef"><code class="xref py py-class docutils literal notranslate"><span class="pre">TriggerDef</span></code></a>) – If not None, a <a class="reference internal" href="bsl.triggers.trigger_def.html#bsl.triggers.trigger_def.TriggerDef" title="bsl.triggers.trigger_def.TriggerDef"><code class="xref py py-class docutils literal notranslate"><span class="pre">TriggerDef</span></code></a> instance is used to log events with
+a descriptive string instead of their ID. If not <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, either a
+<a class="reference internal" href="bsl.triggers.trigger_def.html#bsl.triggers.trigger_def.TriggerDef" title="bsl.triggers.trigger_def.TriggerDef"><code class="xref py py-class docutils literal notranslate"><span class="pre">TriggerDef</span></code></a> instance or the path to a valid path to a <code class="docutils literal notranslate"><span class="pre">.ini</span></code>
+file passed to <a class="reference internal" href="bsl.triggers.trigger_def.html#bsl.triggers.trigger_def.TriggerDef" title="bsl.triggers.trigger_def.TriggerDef"><code class="xref py py-class docutils literal notranslate"><span class="pre">TriggerDef</span></code></a>.</p></li>
+<li><p><strong>chunk_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>) – Number of samples to send at once (usually <code class="docutils literal notranslate"><span class="pre">16-32</span></code> is good enough).</p></li>
+<li><p><strong>high_resolution</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, it uses <a class="reference external" href="https://docs.python.org/3/library/time.html#time.perf_counter" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">perf_counter</span></code></a> instead of <a class="reference external" href="https://docs.python.org/3/library/time.html#time.sleep" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sleep</span></code></a>
+for higher time resolution. However, it uses more CPU.</p></li>
 </ul>
 </dd>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="bsl.StreamPlayer.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fif_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunk_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trigger_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.StreamPlayer.__init__" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fif_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repeat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">inf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trigger_def</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunk_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">high_resolution</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.StreamPlayer.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p class="rubric">Methods</p>
@@ -326,10 +343,10 @@ into event strings.</p></li>
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bsl.StreamPlayer.__init__" title="bsl.StreamPlayer.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(stream_name, fif_file[, …])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bsl.StreamPlayer.__init__" title="bsl.StreamPlayer.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(stream_name, fif_file[, repeat, …])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bsl.StreamPlayer.start" title="bsl.StreamPlayer.start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">start</span></code></a>([repeat, high_resolution])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#bsl.StreamPlayer.start" title="bsl.StreamPlayer.start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">start</span></code></a>([blocking])</p></td>
 <td><p>Start streaming data on LSL network in a new process.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#bsl.StreamPlayer.stop" title="bsl.StreamPlayer.stop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stop</span></code></a>()</p></td>
@@ -345,32 +362,39 @@ into event strings.</p></li>
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#bsl.StreamPlayer.chunk_size" title="bsl.StreamPlayer.chunk_size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">chunk_size</span></code></a></p></td>
-<td><p>Size of a chunk of data <code class="docutils literal notranslate"><span class="pre">[samples]</span></code>.</p></td>
+<td><p>Number of samples to send at once (usually <code class="docutils literal notranslate"><span class="pre">16-32</span></code> is good enough) <code class="docutils literal notranslate"><span class="pre">[samples]</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#bsl.StreamPlayer.fif_file" title="bsl.StreamPlayer.fif_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fif_file</span></code></a></p></td>
-<td><p>Path to the <code class="docutils literal notranslate"><span class="pre">.fif</span></code> file to play.</p></td>
+<td><p>Path to the compatible raw <code class="docutils literal notranslate"><span class="pre">.fif</span></code> file to play.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bsl.StreamPlayer.process" title="bsl.StreamPlayer.process"><code class="xref py py-obj docutils literal notranslate"><span class="pre">process</span></code></a></p></td>
-<td><p>Launched process.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bsl.StreamPlayer.high_resolution" title="bsl.StreamPlayer.high_resolution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">high_resolution</span></code></a></p></td>
+<td><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, it uses <a class="reference external" href="https://docs.python.org/3/library/time.html#time.perf_counter" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">perf_counter</span></code></a> instead of <a class="reference external" href="https://docs.python.org/3/library/time.html#time.sleep" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sleep</span></code></a> for higher time resolution.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bsl.StreamPlayer.stream_name" title="bsl.StreamPlayer.stream_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stream_name</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#bsl.StreamPlayer.process" title="bsl.StreamPlayer.process"><code class="xref py py-obj docutils literal notranslate"><span class="pre">process</span></code></a></p></td>
+<td><p>Launched streaming process.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bsl.StreamPlayer.repeat" title="bsl.StreamPlayer.repeat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">repeat</span></code></a></p></td>
+<td><p>Number of times the stream player will loop on the FIF file before interrupting.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bsl.StreamPlayer.state" title="bsl.StreamPlayer.state"><code class="xref py py-obj docutils literal notranslate"><span class="pre">state</span></code></a></p></td>
+<td><p>Streaming state of the player:</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bsl.StreamPlayer.stream_name" title="bsl.StreamPlayer.stream_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stream_name</span></code></a></p></td>
 <td><p>Stream’s server name, displayed on LSL network.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bsl.StreamPlayer.trigger_file" title="bsl.StreamPlayer.trigger_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">trigger_file</span></code></a></p></td>
-<td><p>Path to the file containing the table converting event numbers into event strings.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#bsl.StreamPlayer.trigger_def" title="bsl.StreamPlayer.trigger_def"><code class="xref py py-obj docutils literal notranslate"><span class="pre">trigger_def</span></code></a></p></td>
+<td><p>Either <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> or <a class="reference internal" href="bsl.triggers.trigger_def.html#bsl.triggers.trigger_def.TriggerDef" title="bsl.triggers.trigger_def.TriggerDef"><code class="xref py py-class docutils literal notranslate"><span class="pre">TriggerDef</span></code></a> instance converting event numbers into event strings.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py property">
 <dt class="sig sig-object py" id="bsl.StreamPlayer.chunk_size">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">chunk_size</span></span><a class="headerlink" href="#bsl.StreamPlayer.chunk_size" title="Permalink to this definition">¶</a></dt>
-<dd><p>Size of a chunk of data <code class="docutils literal notranslate"><span class="pre">[samples]</span></code>.</p>
+<dd><p>Number of samples to send at once (usually <code class="docutils literal notranslate"><span class="pre">16-32</span></code> is good enough)
+<code class="docutils literal notranslate"><span class="pre">[samples]</span></code>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Setter</dt>
-<dd class="field-odd"><p>Change the chunk size if a stream is not on-going.</p>
-</dd>
-<dt class="field-even">Type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a></p>
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -378,13 +402,22 @@ into event strings.</p></li>
 <dl class="py property">
 <dt class="sig sig-object py" id="bsl.StreamPlayer.fif_file">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">fif_file</span></span><a class="headerlink" href="#bsl.StreamPlayer.fif_file" title="Permalink to this definition">¶</a></dt>
-<dd><p>Path to the <code class="docutils literal notranslate"><span class="pre">.fif</span></code> file to play.</p>
+<dd><p>Path to the compatible raw <code class="docutils literal notranslate"><span class="pre">.fif</span></code> file to play.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Setter</dt>
-<dd class="field-odd"><p>Change the file to stream if a stream is not on-going.</p>
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Path</span></code></a></p>
 </dd>
-<dt class="field-even">Type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Path</span></code></a></p>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="bsl.StreamPlayer.high_resolution">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">high_resolution</span></span><a class="headerlink" href="#bsl.StreamPlayer.high_resolution" title="Permalink to this definition">¶</a></dt>
+<dd><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, it uses <a class="reference external" href="https://docs.python.org/3/library/time.html#time.perf_counter" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">perf_counter</span></code></a> instead of <a class="reference external" href="https://docs.python.org/3/library/time.html#time.sleep" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sleep</span></code></a>
+for higher time resolution. However, it uses more CPU.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -392,25 +425,51 @@ into event strings.</p></li>
 <dl class="py property">
 <dt class="sig sig-object py" id="bsl.StreamPlayer.process">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">process</span></span><a class="headerlink" href="#bsl.StreamPlayer.process" title="Permalink to this definition">¶</a></dt>
-<dd><p>Launched process.</p>
+<dd><p>Launched streaming process.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.Process" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">multiprocessing.Process</span></code></a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.Process" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">multiprocessing.Process</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="bsl.StreamPlayer.repeat">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">repeat</span></span><a class="headerlink" href="#bsl.StreamPlayer.repeat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of times the stream player will loop on the FIF file before
+interrupting. Default <code class="docutils literal notranslate"><span class="pre">float('inf')</span></code> can be passed to never interrupt
+streaming.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a> | <code class="docutils literal notranslate"><span class="pre">float('ìnf')</span></code></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bsl.StreamPlayer.start">
-<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repeat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">inf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">high_resolution</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.StreamPlayer.start" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">blocking</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.StreamPlayer.start" title="Permalink to this definition">¶</a></dt>
 <dd><p>Start streaming data on LSL network in a new process.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>repeat</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>) – Number of times to replay the data (<code class="docutils literal notranslate"><span class="pre">default=inf</span></code>).</p></li>
-<li><p><strong>high_resolution</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, it uses <code class="xref py py-obj docutils literal notranslate"><span class="pre">perf_counter()</span></code> instead of <code class="xref py py-obj docutils literal notranslate"><span class="pre">sleep()</span></code> for
-higher time resolution. However, it uses more CPU.</p></li>
+<dd class="field-odd"><p><strong>blocking</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, waits for the child process to start streaming data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="bsl.StreamPlayer.state">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">state</span></span><a class="headerlink" href="#bsl.StreamPlayer.state" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Streaming state of the player:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code>: Not streaming.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">1</span></code>: Streaming.</p></li>
 </ul>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.Value" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">multiprocessing.Value</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -426,26 +485,20 @@ higher time resolution. However, it uses more CPU.</p></li>
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">stream_name</span></span><a class="headerlink" href="#bsl.StreamPlayer.stream_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Stream’s server name, displayed on LSL network.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Setter</dt>
-<dd class="field-odd"><p>Change the server’s name if a stream is not on-going.</p>
-</dd>
-<dt class="field-even">Type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></p>
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="bsl.StreamPlayer.trigger_file">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">trigger_file</span></span><a class="headerlink" href="#bsl.StreamPlayer.trigger_file" title="Permalink to this definition">¶</a></dt>
-<dd><p>Path to the file containing the table converting event numbers into
-event strings.</p>
+<dt class="sig sig-object py" id="bsl.StreamPlayer.trigger_def">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">trigger_def</span></span><a class="headerlink" href="#bsl.StreamPlayer.trigger_def" title="Permalink to this definition">¶</a></dt>
+<dd><p>Either <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> or <a class="reference internal" href="bsl.triggers.trigger_def.html#bsl.triggers.trigger_def.TriggerDef" title="bsl.triggers.trigger_def.TriggerDef"><code class="xref py py-class docutils literal notranslate"><span class="pre">TriggerDef</span></code></a> instance converting event numbers
+into event strings.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Setter</dt>
-<dd class="field-odd"><p>Change the trigger file if a stream is not on-going.</p>
-</dd>
-<dt class="field-even">Type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Path</span></code></a></p>
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="bsl.triggers.trigger_def.html#bsl.triggers.trigger_def.TriggerDef" title="bsl.triggers.trigger_def.TriggerDef"><code class="xref py py-class docutils literal notranslate"><span class="pre">TriggerDef</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -478,7 +531,7 @@ event strings.</p>
     
     <div class="footer-item">
       <p class="copyright">
-    &copy; Copyright 2021, Kyuhwa Lee, Arnaud Desvachez, Mathieu Scheltienne, Last updated on 2021-09-23T16:47:48.713804+00:00.<br/>
+    &copy; Copyright 2021, Kyuhwa Lee, Arnaud Desvachez, Mathieu Scheltienne, Last updated on 2021-10-12T14:10:12.370756+00:00.<br/>
 </p>
     </div>
     

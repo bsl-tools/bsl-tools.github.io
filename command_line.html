@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Command-Line &#8212; BSL 0.2.0 documentation</title>
+    <title>Command-Line &#8212; BSL 0.3.0 documentation</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -209,16 +209,21 @@
 </div>
 <p>With the positional arguments:</p>
 <ul class="simple">
-<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">stream_name</span></code>: str, name of the LSL stream displayed on the network.</p></li>
-<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">fif_file</span></code>: path, recorded fif file by the StreamRecorder.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stream_name</span></code>: str, name of the LSL stream displayed on the network.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fif_file</span></code>: path, recorded fif file by the StreamRecorder.</p></li>
 </ul>
 <p>With the optional arguments:</p>
 <ul class="simple">
-<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">-c</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">--chunk_size</span></code>: int, chunk size pushed on the outlet. Default 16.</p></li>
-<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">-t</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">--trigger_file</span></code>: path, trigger file mapping events id to strings,
+<li><p><code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">--repeat</span></code>: int, number of time the file is repeated.
+Default <code class="docutils literal notranslate"><span class="pre">+inf</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-t</span></code>, <code class="docutils literal notranslate"><span class="pre">--trigger_def</span></code>: path, trigger file mapping events id to strings,
 loaded by <a class="reference internal" href="api/generated/bsl.triggers.trigger_def.html#bsl.triggers.trigger_def.TriggerDef" title="bsl.triggers.trigger_def.TriggerDef"><code class="xref py py-class docutils literal notranslate"><span class="pre">TriggerDef</span></code></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-c</span></code>, <code class="docutils literal notranslate"><span class="pre">--chunk_size</span></code>: int, chunk size pushed on the outlet. Default
+<code class="docutils literal notranslate"><span class="pre">16</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--high_resolution</span></code>: bool flag, uses <a class="reference external" href="https://docs.python.org/3/library/time.html#time.perf_counter" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">time.perf_counter</span></code></a> instead of
+<a class="reference external" href="https://docs.python.org/3/library/time.html#time.sleep" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">time.sleep</span></code></a>.</p></li>
 </ul>
-<img alt="StreamPlayer" class="align-center" src="_images/stream_player.png" />
+<img alt="StreamPlayer" class="align-center" src="_images/stream_player_cli.gif" />
 </div>
 <div class="section" id="streamrecorder">
 <span id="stream-recorder"></span><h1>StreamRecorder<a class="headerlink" href="#streamrecorder" title="Permalink to this headline">¶</a></h1>
@@ -228,20 +233,26 @@ loaded by <a class="reference internal" href="api/generated/bsl.triggers.trigger
 </div>
 <p>With the optional arguments:</p>
 <ul class="simple">
-<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">-d</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">--directory</span></code>: path to the record directory.</p></li>
-<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">-f</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">--fname</span></code>: file name stem.</p></li>
-<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">-s</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">--stream_name</span></code>: stream to record.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-d</span></code>, <code class="docutils literal notranslate"><span class="pre">--directory</span></code>: path to the record directory.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-f</span></code>, <code class="docutils literal notranslate"><span class="pre">--fname</span></code>: file name stem.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-s</span></code>, <code class="docutils literal notranslate"><span class="pre">--stream_name</span></code>: stream to record.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--fif_subdir</span></code>: bool flag, saves in a <code class="docutils literal notranslate"><span class="pre">fif</span></code> subdirectory.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--verbose</span></code>: bool flag, displays a timer every recorded second.</p></li>
 </ul>
-<blockquote>
-<div><div class="line-block">
-<div class="line">If the path to the record directory is not provided, starts in the current
-directory.</div>
-<div class="line">If the file name stem is not provided, a stem is generated based on the
-current datetime.</div>
-<div class="line">If the stream to record is not provided, record all streams.</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">directory</span></code> is not provided, the current working directory is used.</p>
 </div>
-</div></blockquote>
-<img alt="StreamRecorder" class="align-center" src="_images/stream_recorder.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">fname</span></code> is not provided, a stem is generated based on the current
+datetime.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">stream_name</span></code> is not provided, all available streams are recorded.</p>
+</div>
+<img alt="StreamRecorder" class="align-center" src="_images/stream_recorder_cli.gif" />
 </div>
 <div class="section" id="streamviewer">
 <span id="stream-viewer"></span><h1>StreamViewer<a class="headerlink" href="#streamviewer" title="Permalink to this headline">¶</a></h1>
@@ -251,27 +262,26 @@ current datetime.</div>
 </div>
 <p>With the optional arguments:</p>
 <ul class="simple">
-<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">-s</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">--stream_name</span></code>: stream to visualize.</p></li>
-<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">-b</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">--backend</span></code>: visualization backend.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-s</span></code>, <code class="docutils literal notranslate"><span class="pre">--stream_name</span></code>: stream to visualize.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-b</span></code>, <code class="docutils literal notranslate"><span class="pre">--backend</span></code>: visualization backend.</p></li>
 </ul>
-<blockquote>
-<div><div class="line-block">
-<div class="line">If the stream to visualize is not provided, a prompt let the user select one
-of the available streams on the network.</div>
-<div class="line">If the backend is not provided, the default backend <code class="xref py py-obj docutils literal notranslate"><span class="pre">pyqtgraph</span></code> is used.</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">stream_name</span></code> is not provided, a prompt is displayed to select a
+stream among the available ones.</p>
 </div>
-</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">backend</span></code> is not provided, the default backend <code class="xref py py-obj docutils literal notranslate"><span class="pre">pyqtgraph</span></code> is used.</p>
+</div>
 <p>The <a class="reference internal" href="api/generated/bsl.StreamViewer.html#bsl.StreamViewer" title="bsl.StreamViewer"><code class="xref py py-class docutils literal notranslate"><span class="pre">StreamViewer</span></code></a> opens 2 windows:</p>
 <ul class="simple">
 <li><p>A controller to select the channels to plot and set different plotting
 parameters.</p></li>
-</ul>
-<img alt="StreamViewer-Controller" class="align-center" src="_images/stream_viewer_controller.png" />
-<ul class="simple">
 <li><p>A plotting window using the specified backend displaying the signal in
 real-time.</p></li>
 </ul>
-<img alt="StreamViewer-Backend" class="align-center" src="_images/stream_viewer_backend.png" />
+<img alt="StreamViewer" class="align-center" src="_images/stream_viewer.gif" />
 </div>
 
 
@@ -297,7 +307,7 @@ real-time.</p></li>
     
     <div class="footer-item">
       <p class="copyright">
-    &copy; Copyright 2021, Kyuhwa Lee, Arnaud Desvachez, Mathieu Scheltienne, Last updated on 2021-09-23T16:47:48.713804+00:00.<br/>
+    &copy; Copyright 2021, Kyuhwa Lee, Arnaud Desvachez, Mathieu Scheltienne, Last updated on 2021-10-12T14:10:12.370756+00:00.<br/>
 </p>
     </div>
     

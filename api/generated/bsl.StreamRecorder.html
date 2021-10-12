@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>bsl.StreamRecorder &#8212; BSL 0.2.0 documentation</title>
+    <title>bsl.StreamRecorder &#8212; BSL 0.3.0 documentation</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -218,13 +218,23 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="bsl.datasets.sample.html">
-     bsl.datasets.sample
+    <a class="reference internal" href="bsl.datasets.eeg_resting_state.html">
+     bsl.datasets.eeg_resting_state
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="bsl.datasets.event.html">
-     bsl.datasets.event
+    <a class="reference internal" href="bsl.datasets.eeg_resting_state_short.html">
+     bsl.datasets.eeg_resting_state_short
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bsl.datasets.eeg_auditory_stimuli.html">
+     bsl.datasets.eeg_auditory_stimuli
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bsl.datasets.trigger_def.html">
+     bsl.datasets.trigger_def
     </a>
    </li>
   </ul>
@@ -301,27 +311,42 @@
 <h1>bsl.StreamRecorder<a class="headerlink" href="#bsl-streamrecorder" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="bsl.StreamRecorder">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">bsl.</span></span><span class="sig-name descname"><span class="pre">StreamRecorder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">record_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stream_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.StreamRecorder" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">bsl.</span></span><span class="sig-name descname"><span class="pre">StreamRecorder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">record_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stream_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fif_subdir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.StreamRecorder" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class for recording the signals coming from LSL streams.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>record_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Path</span></code></a>) – Directory where the data will be saved.</p></li>
-<li><p><strong>fname</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>) – <dl class="simple">
-<dt>File name stem used to create the files:</dt><dd><p>PCL: <code class="docutils literal notranslate"><span class="pre">'{fname}-[stream]-raw.pcl'</span></code>
-FIF: <code class="docutils literal notranslate"><span class="pre">'{fname}-[stream]-raw.fif'</span></code>
-(optional) SOFTWARE trigger events: <code class="docutils literal notranslate"><span class="pre">'{fname}-eve.txt'</span></code></p>
-</dd>
-</dl>
+<li><p><strong>record_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Path</span></code></a>) – <p>Path to the directory where data will be saved.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the directory does not exist, it is created.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If None, the current working directory is used.</p>
+</div>
 </p></li>
-<li><p><strong>stream_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>) – Servers’ name or list of servers’ name to connect to.
-<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>: no constraint.</p></li>
+<li><p><strong>fname</strong> (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – <p>File name stem used to create the files. The StreamRecorder creates 2 files
+plus an optional third if a software trigger was used, respecting the
+following naming:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">PCL</span><span class="p">:</span> <span class="s1">&#39;</span><span class="si">{fname}</span><span class="s1">-[stream_name]-raw.pcl&#39;</span>
+<span class="n">FIF</span><span class="p">:</span> <span class="s1">&#39;</span><span class="si">{fname}</span><span class="s1">-[stream_name]-raw.fif&#39;</span>
+<span class="p">(</span><span class="n">optional</span><span class="p">)</span> <span class="n">SOFTWARE</span> <span class="n">trigger</span> <span class="n">events</span><span class="p">:</span> <span class="s1">&#39;</span><span class="si">{fname}</span><span class="s1">-eve.txt&#39;</span>
+</pre></div>
+</div>
+</p></li>
+<li><p><strong>stream_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>) – Servers’ name or list of servers’ name to connect to.
+<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>: no constraint.</p></li>
+<li><p><strong>fif_subdir</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, the <code class="docutils literal notranslate"><span class="pre">.pcl</span></code> files are converted to <code class="docutils literal notranslate"><span class="pre">.fif</span></code> in a
+subdirectory <code class="docutils literal notranslate"><span class="pre">'fif':</span> <span class="pre">record_dir/fif/...</span></code> instead of <code class="docutils literal notranslate"><span class="pre">record_dir</span></code>.</p></li>
+<li><p><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, a timer showing since when the recorder started is displayed
+every seconds.</p></li>
 </ul>
 </dd>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="bsl.StreamRecorder.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">record_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stream_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.StreamRecorder.__init__" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">record_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stream_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fif_subdir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.StreamRecorder.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p class="rubric">Methods</p>
@@ -331,10 +356,10 @@ FIF: <code class="docutils literal notranslate"><span class="pre">'{fname}-[stre
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bsl.StreamRecorder.__init__" title="bsl.StreamRecorder.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>([record_dir, fname, stream_name])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bsl.StreamRecorder.__init__" title="bsl.StreamRecorder.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>([record_dir, fname, stream_name, …])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bsl.StreamRecorder.start" title="bsl.StreamRecorder.start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">start</span></code></a>([fif_subdir, blocking, verbose])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#bsl.StreamRecorder.start" title="bsl.StreamRecorder.start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">start</span></code></a>([blocking])</p></td>
 <td><p>Start the recording in a new process.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#bsl.StreamRecorder.stop" title="bsl.StreamRecorder.stop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stop</span></code></a>()</p></td>
@@ -352,20 +377,26 @@ FIF: <code class="docutils literal notranslate"><span class="pre">'{fname}-[stre
 <tr class="row-odd"><td><p><a class="reference internal" href="#bsl.StreamRecorder.eve_file" title="bsl.StreamRecorder.eve_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">eve_file</span></code></a></p></td>
 <td><p>Path to the event file for <a class="reference internal" href="bsl.triggers.software.TriggerSoftware.html#bsl.triggers.software.TriggerSoftware" title="bsl.triggers.software.TriggerSoftware"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TriggerSoftware</span></code></a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bsl.StreamRecorder.fname" title="bsl.StreamRecorder.fname"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fname</span></code></a></p></td>
-<td><p>Set file name stem.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#bsl.StreamRecorder.fif_subdir" title="bsl.StreamRecorder.fif_subdir"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fif_subdir</span></code></a></p></td>
+<td><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, the <code class="docutils literal notranslate"><span class="pre">.pcl</span></code> files are converted to <code class="docutils literal notranslate"><span class="pre">.fif</span></code> in a subdirectory <code class="docutils literal notranslate"><span class="pre">'fif':</span> <span class="pre">record_dir/fif/...</span></code> instead of <code class="docutils literal notranslate"><span class="pre">record_dir</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bsl.StreamRecorder.process" title="bsl.StreamRecorder.process"><code class="xref py py-obj docutils literal notranslate"><span class="pre">process</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bsl.StreamRecorder.fname" title="bsl.StreamRecorder.fname"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fname</span></code></a></p></td>
+<td><p>File name stem used to create the files.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bsl.StreamRecorder.process" title="bsl.StreamRecorder.process"><code class="xref py py-obj docutils literal notranslate"><span class="pre">process</span></code></a></p></td>
 <td><p>Launched process.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bsl.StreamRecorder.record_dir" title="bsl.StreamRecorder.record_dir"><code class="xref py py-obj docutils literal notranslate"><span class="pre">record_dir</span></code></a></p></td>
-<td><p>Path to the directory where the data will be saved.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bsl.StreamRecorder.record_dir" title="bsl.StreamRecorder.record_dir"><code class="xref py py-obj docutils literal notranslate"><span class="pre">record_dir</span></code></a></p></td>
+<td><p>Path to the directory where data will be saved.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bsl.StreamRecorder.state" title="bsl.StreamRecorder.state"><code class="xref py py-obj docutils literal notranslate"><span class="pre">state</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#bsl.StreamRecorder.state" title="bsl.StreamRecorder.state"><code class="xref py py-obj docutils literal notranslate"><span class="pre">state</span></code></a></p></td>
 <td><p>Recording state of the recorder:</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bsl.StreamRecorder.stream_name" title="bsl.StreamRecorder.stream_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stream_name</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bsl.StreamRecorder.stream_name" title="bsl.StreamRecorder.stream_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stream_name</span></code></a></p></td>
 <td><p>Servers’ name or list of servers’ name to connect to.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bsl.StreamRecorder.verbose" title="bsl.StreamRecorder.verbose"><code class="xref py py-obj docutils literal notranslate"><span class="pre">verbose</span></code></a></p></td>
+<td><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, a timer showing since when the recorder started is displayed every seconds.</p></td>
 </tr>
 </tbody>
 </table>
@@ -375,7 +406,19 @@ FIF: <code class="docutils literal notranslate"><span class="pre">'{fname}-[stre
 <dd><p>Path to the event file for <a class="reference internal" href="bsl.triggers.software.TriggerSoftware.html#bsl.triggers.software.TriggerSoftware" title="bsl.triggers.software.TriggerSoftware"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TriggerSoftware</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Path</span></code></a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Path</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="bsl.StreamRecorder.fif_subdir">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">fif_subdir</span></span><a class="headerlink" href="#bsl.StreamRecorder.fif_subdir" title="Permalink to this definition">¶</a></dt>
+<dd><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, the <code class="docutils literal notranslate"><span class="pre">.pcl</span></code> files are converted to <code class="docutils literal notranslate"><span class="pre">.fif</span></code> in a
+subdirectory <code class="docutils literal notranslate"><span class="pre">'fif':</span> <span class="pre">record_dir/fif/...</span></code> instead of <code class="docutils literal notranslate"><span class="pre">record_dir</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -383,13 +426,17 @@ FIF: <code class="docutils literal notranslate"><span class="pre">'{fname}-[stre
 <dl class="py property">
 <dt class="sig sig-object py" id="bsl.StreamRecorder.fname">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">fname</span></span><a class="headerlink" href="#bsl.StreamRecorder.fname" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set file name stem.</p>
+<dd><p>File name stem used to create the files. The StreamRecorder creates 2
+files plus an optional third if a software trigger was used, respecting
+the following naming:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">PCL</span><span class="p">:</span> <span class="s1">&#39;</span><span class="si">{fname}</span><span class="s1">-[stream_name]-raw.pcl&#39;</span>
+<span class="n">FIF</span><span class="p">:</span> <span class="s1">&#39;</span><span class="si">{fname}</span><span class="s1">-[stream_name]-raw.fif&#39;</span>
+<span class="p">(</span><span class="n">optional</span><span class="p">)</span> <span class="n">SOFTWARE</span> <span class="n">trigger</span> <span class="n">events</span><span class="p">:</span> <span class="s1">&#39;</span><span class="si">{fname}</span><span class="s1">-eve.txt&#39;</span>
+</pre></div>
+</div>
 <dl class="field-list simple">
-<dt class="field-odd">Setter</dt>
-<dd class="field-odd"><p>Change the file name stem if a recording is not on-going.</p>
-</dd>
-<dt class="field-even">Type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></p>
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -400,7 +447,7 @@ FIF: <code class="docutils literal notranslate"><span class="pre">'{fname}-[stre
 <dd><p>Launched process.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.Process" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">multiprocessing.Process</span></code></a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.Process" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">multiprocessing.Process</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -408,30 +455,21 @@ FIF: <code class="docutils literal notranslate"><span class="pre">'{fname}-[stre
 <dl class="py property">
 <dt class="sig sig-object py" id="bsl.StreamRecorder.record_dir">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">record_dir</span></span><a class="headerlink" href="#bsl.StreamRecorder.record_dir" title="Permalink to this definition">¶</a></dt>
-<dd><p>Path to the directory where the data will be saved.</p>
+<dd><p>Path to the directory where data will be saved.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Setter</dt>
-<dd class="field-odd"><p>Change the path if a recording is not on-going.</p>
-</dd>
-<dt class="field-even">Type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Path</span></code></a></p>
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Path</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bsl.StreamRecorder.start">
-<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fif_subdir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blocking</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.StreamRecorder.start" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">blocking</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.StreamRecorder.start" title="Permalink to this definition">¶</a></dt>
 <dd><p>Start the recording in a new process.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>fif_subdir</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, the <code class="docutils literal notranslate"><span class="pre">.pcl</span></code> files are converted to <code class="docutils literal notranslate"><span class="pre">.fif</span></code> in a
-subdirectory <code class="docutils literal notranslate"><span class="pre">'fif':</span> <span class="pre">record_dir/fif/...</span></code> instead of <code class="docutils literal notranslate"><span class="pre">record_dir</span></code>.</p></li>
-<li><p><strong>blocking</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, waits for the child process to start recording data.</p></li>
-<li><p><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, a timer showing since when the recorder started is displayed
-every seconds.</p></li>
-</ul>
+<dd class="field-odd"><p><strong>blocking</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, waits for the child process to start recording data.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -448,7 +486,7 @@ every seconds.</p></li>
 </dl>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.Value" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">multiprocessing.Value</span></code></a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.Value" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">multiprocessing.Value</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -464,11 +502,20 @@ every seconds.</p></li>
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">stream_name</span></span><a class="headerlink" href="#bsl.StreamRecorder.stream_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Servers’ name or list of servers’ name to connect to.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Setter</dt>
-<dd class="field-odd"><p>Change the stream to record if a recording is not on-going.</p>
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a></p>
 </dd>
-<dt class="field-even">Type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a></p>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="bsl.StreamRecorder.verbose">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">verbose</span></span><a class="headerlink" href="#bsl.StreamRecorder.verbose" title="Permalink to this definition">¶</a></dt>
+<dd><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, a timer showing since when the recorder started is
+displayed every seconds.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -501,7 +548,7 @@ every seconds.</p></li>
     
     <div class="footer-item">
       <p class="copyright">
-    &copy; Copyright 2021, Kyuhwa Lee, Arnaud Desvachez, Mathieu Scheltienne, Last updated on 2021-09-23T16:47:48.713804+00:00.<br/>
+    &copy; Copyright 2021, Kyuhwa Lee, Arnaud Desvachez, Mathieu Scheltienne, Last updated on 2021-10-12T14:10:12.370756+00:00.<br/>
 </p>
     </div>
     

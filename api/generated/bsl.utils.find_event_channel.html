@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>bsl.utils.find_event_channel &#8212; BSL 0.2.0 documentation</title>
+    <title>bsl.utils.find_event_channel &#8212; BSL 0.3.0 documentation</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -218,13 +218,23 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="bsl.datasets.sample.html">
-     bsl.datasets.sample
+    <a class="reference internal" href="bsl.datasets.eeg_resting_state.html">
+     bsl.datasets.eeg_resting_state
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="bsl.datasets.event.html">
-     bsl.datasets.event
+    <a class="reference internal" href="bsl.datasets.eeg_resting_state_short.html">
+     bsl.datasets.eeg_resting_state_short
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bsl.datasets.eeg_auditory_stimuli.html">
+     bsl.datasets.eeg_auditory_stimuli
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bsl.datasets.trigger_def.html">
+     bsl.datasets.trigger_def
     </a>
    </li>
   </ul>
@@ -304,19 +314,19 @@
 <span class="sig-prename descclassname"><span class="pre">bsl.utils.</span></span><span class="sig-name descname"><span class="pre">find_event_channel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inst</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ch_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.utils.find_event_channel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find the event channel using heuristics.</p>
 <p>Disclaimer: Not 100% guaranteed to find it.
-If <code class="docutils literal notranslate"><span class="pre">raw</span></code> is <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, <code class="docutils literal notranslate"><span class="pre">ch_names</span></code> must be given.</p>
+If <code class="docutils literal notranslate"><span class="pre">raw</span></code> is <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, <code class="docutils literal notranslate"><span class="pre">ch_names</span></code> must be given.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>inst</strong> (<a class="reference external" href="https://mne.tools/stable/generated/mne.io.Raw.html#mne.io.Raw" title="(in MNE v0.23)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Raw</span></code></a> | <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.array.html#numpy.array" title="(in NumPy v1.21)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code></a> <code class="docutils literal notranslate"><span class="pre">(n_channels,</span> <span class="pre">n_samples)</span></code>) – Data instance.</p></li>
-<li><p><strong>ch_names</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a>) – Channels name list.</p></li>
+<li><p><strong>ch_names</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a>) – Channels name list.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Event channel index or <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> if not found.</p>
+<dd class="field-even"><p>Event channel index or <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> if not found.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -347,7 +357,7 @@ If <code class="docutils literal notranslate"><span class="pre">raw</span></code
     
     <div class="footer-item">
       <p class="copyright">
-    &copy; Copyright 2021, Kyuhwa Lee, Arnaud Desvachez, Mathieu Scheltienne, Last updated on 2021-09-23T16:47:48.713804+00:00.<br/>
+    &copy; Copyright 2021, Kyuhwa Lee, Arnaud Desvachez, Mathieu Scheltienne, Last updated on 2021-10-12T14:10:12.370756+00:00.<br/>
 </p>
     </div>
     

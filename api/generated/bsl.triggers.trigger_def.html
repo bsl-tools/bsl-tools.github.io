@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>bsl.triggers.trigger_def &#8212; BSL 0.2.0 documentation</title>
+    <title>bsl.triggers.trigger_def &#8212; BSL 0.3.0 documentation</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -218,13 +218,23 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="bsl.datasets.sample.html">
-     bsl.datasets.sample
+    <a class="reference internal" href="bsl.datasets.eeg_resting_state.html">
+     bsl.datasets.eeg_resting_state
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="bsl.datasets.event.html">
-     bsl.datasets.event
+    <a class="reference internal" href="bsl.datasets.eeg_resting_state_short.html">
+     bsl.datasets.eeg_resting_state_short
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bsl.datasets.eeg_auditory_stimuli.html">
+     bsl.datasets.eeg_auditory_stimuli
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bsl.datasets.trigger_def.html">
+     bsl.datasets.trigger_def
     </a>
    </li>
   </ul>
@@ -307,23 +317,40 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#bsl.triggers.trigger_def.TriggerDef" title="bsl.triggers.trigger_def.TriggerDef"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TriggerDef</span></code></a>([trigger_file])</p></td>
-<td><p>Class used to store pairs (str: int) of events name and events value.</p></td>
+<td><p>Class used to store pairs {<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>: <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>} of events name and events value.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py class">
 <dt class="sig sig-object py" id="bsl.triggers.trigger_def.TriggerDef">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">bsl.triggers.trigger_def.</span></span><span class="sig-name descname"><span class="pre">TriggerDef</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trigger_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.triggers.trigger_def.TriggerDef" title="Permalink to this definition">¶</a></dt>
-<dd><p>Class used to store pairs (str: int) of events name and events value. Each
-name and each value is unique. The pairs can be read from a <code class="docutils literal notranslate"><span class="pre">.ini</span></code> file
-or edited manually with <code class="xref py py-obj docutils literal notranslate"><span class="pre">add_event</span></code> and
-<code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_event</span></code>.</p>
+<dd><p>Class used to store pairs {<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>: <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>} of events name and events value.
+Each name and each value is unique. The pairs can be read from a <code class="docutils literal notranslate"><span class="pre">.ini</span></code>
+file or edited manually with <a class="reference internal" href="#bsl.triggers.trigger_def.TriggerDef.add_event" title="bsl.triggers.trigger_def.TriggerDef.add_event"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TriggerDef.add_event</span></code></a> and
+<a class="reference internal" href="#bsl.triggers.trigger_def.TriggerDef.remove_event" title="bsl.triggers.trigger_def.TriggerDef.remove_event"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TriggerDef.remove_event</span></code></a>.</p>
 <p>The class will expose the name as attributes <code class="docutils literal notranslate"><span class="pre">self.event_str</span> <span class="pre">=</span> <span class="pre">event_int</span></code>
 for all pairs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>trigger_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Path</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>) – Path to the <code class="docutils literal notranslate"><span class="pre">.ini</span></code> file containing the table converting event numbers
+<dd class="field-odd"><p><strong>trigger_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Path</span></code></a>) – <p>Path to the <code class="docutils literal notranslate"><span class="pre">.ini</span></code> file containing the table converting event numbers
 into event strings.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">.ini</span></code> file is read with <a class="reference external" href="https://docs.python.org/3/library/configparser.html#module-configparser" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">configparser</span></code></a> and has to be
+structured as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">events</span><span class="p">]</span>
+<span class="n">event_str_1</span> <span class="o">=</span> <span class="n">event_id_1</span>   <span class="c1"># comment</span>
+<span class="n">event_str_2</span> <span class="o">=</span> <span class="n">event_id_2</span>   <span class="c1"># comment</span>
+</pre></div>
+</div>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">events</span><span class="p">]</span>
+<span class="n">rest</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">stim</span> <span class="o">=</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</p>
 </dd>
 </dl>
 <dl class="py method">
@@ -333,9 +360,9 @@ into event strings.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Name of the event</p></li>
-<li><p><strong>value</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>) – Value of the event</p></li>
-<li><p><strong>overwrite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, overwrite previous event with the same name or value.</p></li>
+<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Name of the event</p></li>
+<li><p><strong>value</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>) – Value of the event</p></li>
+<li><p><strong>overwrite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, overwrite previous event with the same name or value.</p></li>
 </ul>
 </dd>
 </dl>
@@ -347,7 +374,7 @@ into event strings.</p>
 <dd><p>A dictionary with string keys and integers value.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -358,7 +385,35 @@ into event strings.</p>
 <dd><p>A dictionary with integers keys and string values.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bsl.triggers.trigger_def.TriggerDef.read_ini">
+<span class="sig-name descname"><span class="pre">read_ini</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trigger_file</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.triggers.trigger_def.TriggerDef.read_ini" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read events from a <code class="docutils literal notranslate"><span class="pre">.ini</span></code> trigger definition file.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">.ini</span></code> file is read with <a class="reference external" href="https://docs.python.org/3/library/configparser.html#module-configparser" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">configparser</span></code></a> and has to be
+structured as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">events</span><span class="p">]</span>
+<span class="n">event_str_1</span> <span class="o">=</span> <span class="n">event_id_1</span>   <span class="c1"># comment</span>
+<span class="n">event_str_2</span> <span class="o">=</span> <span class="n">event_id_2</span>   <span class="c1"># comment</span>
+</pre></div>
+</div>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">events</span><span class="p">]</span>
+<span class="n">rest</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">stim</span> <span class="o">=</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>trigger_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Path</span></code></a>) – Path to the <code class="docutils literal notranslate"><span class="pre">.ini</span></code> file containing the table converting event numbers
+into event strings.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -370,10 +425,26 @@ into event strings.</p>
 The event can be given by name (str) or by value (int).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>event</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>) – If a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> is provided, assumes event is the name.
-If a <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a> is provided, assumes event is the value.</p>
+<dd class="field-odd"><p><strong>event</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>) – If a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> is provided, assumes event is the name.
+If a <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a> is provided, assumes event is the value.</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bsl.triggers.trigger_def.TriggerDef.write_ini">
+<span class="sig-name descname"><span class="pre">write_ini</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trigger_file</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.triggers.trigger_def.TriggerDef.write_ini" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write events to a <code class="docutils literal notranslate"><span class="pre">.ini</span></code> trigger definition file.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">.ini</span></code> file is writen with <code class="docutils literal notranslate"><span class="pre">configparser</span></code> and is
+structured as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">events</span><span class="p">]</span>
+<span class="n">event_str_1</span> <span class="o">=</span> <span class="n">event_id_1</span>
+<span class="n">event_str_2</span> <span class="o">=</span> <span class="n">event_id_2</span>
+</pre></div>
+</div>
+</div>
 </dd></dl>
 
 </dd></dl>
@@ -404,7 +475,7 @@ If a <a class="reference external" href="https://docs.python.org/3/library/funct
     
     <div class="footer-item">
       <p class="copyright">
-    &copy; Copyright 2021, Kyuhwa Lee, Arnaud Desvachez, Mathieu Scheltienne, Last updated on 2021-09-23T16:47:48.713804+00:00.<br/>
+    &copy; Copyright 2021, Kyuhwa Lee, Arnaud Desvachez, Mathieu Scheltienne, Last updated on 2021-10-12T14:10:12.370756+00:00.<br/>
 </p>
     </div>
     

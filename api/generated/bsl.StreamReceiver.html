@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>bsl.StreamReceiver &#8212; BSL 0.2.0 documentation</title>
+    <title>bsl.StreamReceiver &#8212; BSL 0.3.0 documentation</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -218,13 +218,23 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="bsl.datasets.sample.html">
-     bsl.datasets.sample
+    <a class="reference internal" href="bsl.datasets.eeg_resting_state.html">
+     bsl.datasets.eeg_resting_state
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="bsl.datasets.event.html">
-     bsl.datasets.event
+    <a class="reference internal" href="bsl.datasets.eeg_resting_state_short.html">
+     bsl.datasets.eeg_resting_state_short
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bsl.datasets.eeg_auditory_stimuli.html">
+     bsl.datasets.eeg_auditory_stimuli
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bsl.datasets.trigger_def.html">
+     bsl.datasets.trigger_def
     </a>
    </li>
   </ul>
@@ -313,11 +323,11 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>bufsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a>) – Buffer’s size <code class="docutils literal notranslate"><span class="pre">[secs]</span></code>. <code class="docutils literal notranslate"><span class="pre">MAX_BUF_SIZE</span></code> (def: 1-day) is the maximum
+<li><p><strong>bufsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a>) – Buffer’s size <code class="docutils literal notranslate"><span class="pre">[secs]</span></code>. <code class="docutils literal notranslate"><span class="pre">MAX_BUF_SIZE</span></code> (def: 1-day) is the maximum
 size. Large buffer may lead to a delay if not pulled frequently.</p></li>
-<li><p><strong>winsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a>) – Window’s size <code class="docutils literal notranslate"><span class="pre">[secs]</span></code>. Must be smaller than the buffer’s size.</p></li>
-<li><p><strong>stream_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>) – Servers’ name or list of servers’ name to connect to.
-<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>: no constraint.</p></li>
+<li><p><strong>winsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a>) – Window’s size <code class="docutils literal notranslate"><span class="pre">[secs]</span></code>. Must be smaller than the buffer’s size.</p></li>
+<li><p><strong>stream_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>) – Servers’ name or list of servers’ name to connect to.
+<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>: no constraint.</p></li>
 </ul>
 </dd>
 </dl>
@@ -339,7 +349,7 @@ size. Large buffer may lead to a delay if not pulled frequently.</p></li>
 <tr class="row-even"><td><p><a class="reference internal" href="#bsl.StreamReceiver.acquire" title="bsl.StreamReceiver.acquire"><code class="xref py py-obj docutils literal notranslate"><span class="pre">acquire</span></code></a>()</p></td>
 <td><p>Read data from the streams and fill their buffer using threading.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bsl.StreamReceiver.connect" title="bsl.StreamReceiver.connect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">connect</span></code></a>([timeout, force])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bsl.StreamReceiver.connect" title="bsl.StreamReceiver.connect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">connect</span></code></a>([stream_name, timeout, force])</p></td>
 <td><p>Search for the available streams on the LSL network and connect to the appropriate ones.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#bsl.StreamReceiver.disconnect" title="bsl.StreamReceiver.disconnect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">disconnect</span></code></a>([stream_name])</p></td>
@@ -397,18 +407,15 @@ size. Large buffer may lead to a delay if not pulled frequently.</p></li>
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">bufsize</span></span><a class="headerlink" href="#bsl.StreamReceiver.bufsize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Buffer’s size <code class="docutils literal notranslate"><span class="pre">[sec]</span></code>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Setter</dt>
-<dd class="field-odd"><p>Checks that the bufsize is valid.</p>
-</dd>
-<dt class="field-even">Type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a></p>
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bsl.StreamReceiver.connect">
-<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.StreamReceiver.connect" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.StreamReceiver.connect" title="Permalink to this definition">¶</a></dt>
 <dd><p>Search for the available streams on the LSL network and connect to the
 appropriate ones. If a LSL stream fullfills the requirements (name…),
 a connection is established.</p>
@@ -417,8 +424,10 @@ and can be recall to reconnect to the LSL streams.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>timeout</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a>) – Timeout duration in seconds after which the search is abandonned.</p></li>
-<li><p><strong>force</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, force reconnect if the <a class="reference internal" href="#bsl.StreamReceiver" title="bsl.StreamReceiver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StreamReceiver</span></code></a> was
+<li><p><strong>stream_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>) – Servers’ name or list of servers’ name to connect to.
+<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>: no constraint.</p></li>
+<li><p><strong>timeout</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a>) – Timeout duration in seconds after which the search is abandonned.</p></li>
+<li><p><strong>force</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, force reconnect if the <a class="reference internal" href="#bsl.StreamReceiver" title="bsl.StreamReceiver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StreamReceiver</span></code></a> was
 already connected.</p></li>
 </ul>
 </dd>
@@ -431,7 +440,7 @@ already connected.</p></li>
 <dd><p>Connected status.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -440,12 +449,12 @@ already connected.</p></li>
 <dt class="sig sig-object py" id="bsl.StreamReceiver.disconnect">
 <span class="sig-name descname"><span class="pre">disconnect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.StreamReceiver.disconnect" title="Permalink to this definition">¶</a></dt>
 <dd><p>Disconnects the stream <code class="docutils literal notranslate"><span class="pre">stream_name</span></code> from the <a class="reference internal" href="#bsl.StreamReceiver" title="bsl.StreamReceiver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StreamReceiver</span></code></a>.
-If <code class="docutils literal notranslate"><span class="pre">stream_name</span></code> is a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a>, disconnects all streams in the list.
-If <code class="docutils literal notranslate"><span class="pre">stream_name</span></code> is <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, disconnects all streams.</p>
+If <code class="docutils literal notranslate"><span class="pre">stream_name</span></code> is a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a>, disconnects all streams in the list.
+If <code class="docutils literal notranslate"><span class="pre">stream_name</span></code> is <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, disconnects all streams.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>stream_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>) – Servers’ name or list of servers’ name to disconnect from.
-If <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, disconnect from all streams.</p>
+<dd class="field-odd"><p><strong>stream_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>) – Servers’ name or list of servers’ name to disconnect from.
+If <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, disconnect from all streams.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -458,13 +467,13 @@ If several streams are connected, specify the name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>stream_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>) – Name of the stream to extract from.
-Can be set to <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> if the <a class="reference internal" href="#bsl.StreamReceiver" title="bsl.StreamReceiver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StreamReceiver</span></code></a> is connected to a single
-stream.</p></li>
-<li><p><strong>return_raw</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>) – By default (<code class="docutils literal notranslate"><span class="pre">False</span></code>), data is returned as a <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.array.html#numpy.array" title="(in NumPy v1.21)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code></a> of shape
-<code class="docutils literal notranslate"><span class="pre">(samples,</span> <span class="pre">channels)`.</span> <span class="pre">If</span> <span class="pre">set</span> <span class="pre">to</span> <span class="pre">``True</span></code>, the <a class="reference internal" href="#bsl.StreamReceiver" title="bsl.StreamReceiver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StreamReceiver</span></code></a> will
-attempt to return MNE <a class="reference external" href="https://mne.tools/stable/generated/mne.io.Raw.html#mne.io.Raw" title="(in MNE v0.23)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Raw</span></code></a> instances.</p></li>
-<li><p><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code> (default), a warning will be issued when the method returns
+<li><p><strong>stream_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>) – Name of the stream from which data is retrieved.
+Can be set to <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> (default) if the <a class="reference internal" href="#bsl.StreamReceiver" title="bsl.StreamReceiver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StreamReceiver</span></code></a> is connected to
+a single stream.</p></li>
+<li><p><strong>return_raw</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>) – By default (<code class="docutils literal notranslate"><span class="pre">False</span></code>), data is returned as a <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.array.html#numpy.array" title="(in NumPy v1.21)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code></a> of shape
+<code class="docutils literal notranslate"><span class="pre">(samples,</span> <span class="pre">channels)</span></code>. If set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, the <a class="reference internal" href="#bsl.StreamReceiver" title="bsl.StreamReceiver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StreamReceiver</span></code></a> will
+attempt to return data as a MNE <a class="reference external" href="https://mne.tools/stable/generated/mne.io.Raw.html#mne.io.Raw" title="(in MNE v0.23)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Raw</span></code></a> instances.</p></li>
+<li><p><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code> (default), a warning will be issued when the method returns
 empty <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.array.html#numpy.array" title="(in NumPy v1.21)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code></a>. If <code class="docutils literal notranslate"><span class="pre">False</span></code>, this warning will be skipped.</p></li>
 </ul>
 </dd>
@@ -477,10 +486,10 @@ empty <a class="reference external" href="https://numpy.org/doc/stable/reference
 </dd>
 </dl>
 <p class="rubric">Notes</p>
-<p>Returns a raw data array in the unit streamed by the LSL outlet. For
-conversion, the corresponding multiplier must be set for each stream, with e.g.
-for a stream in uV to convert to V:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sr</span><span class="o">.</span><span class="n">streams</span><span class="p">[</span><span class="s1">&#39;stream_to_convert&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">multiplier</span> <span class="o">=</span> <span class="mf">1e-6</span>
+<p>Returns a raw data array in the unit streamed by the LSL outlet. For conversion
+the corresponding scaling factor must be set for each stream, with e.g. for a
+stream in uV to convert to V:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sr</span><span class="o">.</span><span class="n">streams</span><span class="p">[</span><span class="s1">&#39;stream_to_convert&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">scaling_factor</span> <span class="o">=</span> <span class="mf">1e-6</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -493,13 +502,13 @@ If several streams are connected, specify the name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>stream_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>) – Name of the stream to extract from.
-Can be set to <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> if the <a class="reference internal" href="#bsl.StreamReceiver" title="bsl.StreamReceiver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StreamReceiver</span></code></a> is connected to a single
-stream.</p></li>
-<li><p><strong>return_raw</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>) – By default (<code class="docutils literal notranslate"><span class="pre">False</span></code>), data is returned as a <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.array.html#numpy.array" title="(in NumPy v1.21)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code></a> of shape
-<code class="docutils literal notranslate"><span class="pre">(samples,</span> <span class="pre">channels)`.</span> <span class="pre">If</span> <span class="pre">set</span> <span class="pre">to</span> <span class="pre">``True</span></code>, the <a class="reference internal" href="#bsl.StreamReceiver" title="bsl.StreamReceiver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StreamReceiver</span></code></a> will
-attempt to return MNE <a class="reference external" href="https://mne.tools/stable/generated/mne.io.Raw.html#mne.io.Raw" title="(in MNE v0.23)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Raw</span></code></a> instances.</p></li>
-<li><p><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code> (default), a warning will be issued when the method returns
+<li><p><strong>stream_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>) – Name of the stream from which data is retrieved.
+Can be set to <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> (default) if the <a class="reference internal" href="#bsl.StreamReceiver" title="bsl.StreamReceiver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StreamReceiver</span></code></a> is connected to
+a single stream.</p></li>
+<li><p><strong>return_raw</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>) – By default (<code class="docutils literal notranslate"><span class="pre">False</span></code>), data is returned as a <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.array.html#numpy.array" title="(in NumPy v1.21)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code></a> of shape
+<code class="docutils literal notranslate"><span class="pre">(samples,</span> <span class="pre">channels)</span></code>. If set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, the <a class="reference internal" href="#bsl.StreamReceiver" title="bsl.StreamReceiver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StreamReceiver</span></code></a> will
+attempt to return data as a MNE <a class="reference external" href="https://mne.tools/stable/generated/mne.io.Raw.html#mne.io.Raw" title="(in MNE v0.23)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Raw</span></code></a> instances.</p></li>
+<li><p><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code> (default), a warning will be issued when the method returns
 empty <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.array.html#numpy.array" title="(in NumPy v1.21)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code></a>. If <code class="docutils literal notranslate"><span class="pre">False</span></code>, this warning will be skipped.</p></li>
 </ul>
 </dd>
@@ -512,10 +521,10 @@ empty <a class="reference external" href="https://numpy.org/doc/stable/reference
 </dd>
 </dl>
 <p class="rubric">Notes</p>
-<p>Returns a raw data array in the unit streamed by the LSL outlet. For
-conversion, the corresponding multiplier must be set for each stream, with e.g.
-for a stream in uV to convert to V:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sr</span><span class="o">.</span><span class="n">streams</span><span class="p">[</span><span class="s1">&#39;stream_to_convert&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">multiplier</span> <span class="o">=</span> <span class="mf">1e-6</span>
+<p>Returns a raw data array in the unit streamed by the LSL outlet. For conversion
+the corresponding scaling factor must be set for each stream, with e.g. for a
+stream in uV to convert to V:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sr</span><span class="o">.</span><span class="n">streams</span><span class="p">[</span><span class="s1">&#39;stream_to_convert&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">scaling_factor</span> <span class="o">=</span> <span class="mf">1e-6</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -526,7 +535,7 @@ for a stream in uV to convert to V:</p>
 <dd><p>Dictionary containing the <a class="reference external" href="https://mne.tools/stable/generated/mne.Info.html#mne.Info" title="(in MNE v0.23)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mne.Info</span></code></a> for the compatible streams.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -537,8 +546,8 @@ for a stream in uV to convert to V:</p>
 <dd><p>Clear the stream’s buffer.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>stream_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>) – Name of the stream(s) to reset its buffer.
-If <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, reset all stream’s buffer.</p>
+<dd class="field-odd"><p><strong>stream_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>) – Name of the stream(s) to reset its buffer.
+If <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, reset all stream’s buffer.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -554,12 +563,8 @@ If <a class="reference external" href="https://docs.python.org/3/library/constan
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">stream_name</span></span><a class="headerlink" href="#bsl.StreamReceiver.stream_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Connected stream’s name.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Setter</dt>
-<dd class="field-odd"><p>Try to connect to the new stream(s), revert to old stream(s)
-if failed.</p>
-</dd>
-<dt class="field-even">Type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></p>
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -570,7 +575,7 @@ if failed.</p>
 <dd><p>Connected streams dictionary <code class="docutils literal notranslate"><span class="pre">{stream_name:</span> <span class="pre">_Stream}</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -580,11 +585,8 @@ if failed.</p>
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">winsize</span></span><a class="headerlink" href="#bsl.StreamReceiver.winsize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Window’s size <code class="docutils literal notranslate"><span class="pre">[sec]</span></code>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Setter</dt>
-<dd class="field-odd"><p>Checks that the winsize is smaller than the bufsize.</p>
-</dd>
-<dt class="field-even">Type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a></p>
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -617,7 +619,7 @@ if failed.</p>
     
     <div class="footer-item">
       <p class="copyright">
-    &copy; Copyright 2021, Kyuhwa Lee, Arnaud Desvachez, Mathieu Scheltienne, Last updated on 2021-09-23T16:47:48.713804+00:00.<br/>
+    &copy; Copyright 2021, Kyuhwa Lee, Arnaud Desvachez, Mathieu Scheltienne, Last updated on 2021-10-12T14:10:12.370756+00:00.<br/>
 </p>
     </div>
     

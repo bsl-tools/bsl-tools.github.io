@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Resting-State recording &#8212; BSL 0.2.0 documentation</title>
+    <title>StreamRecorder: resting-state recording &#8212; BSL 0.3.0 documentation</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -38,8 +38,8 @@
     <link rel="shortcut icon" href="../_static/bsl-icon.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Real-time regulation of alpha waves" href="real-time_regulation_of_alpha_waves.html" />
-    <link rel="prev" title="Simulate an LSL stream with a Stream Player" href="simulate_an_lsl_stream_with_a_stream_player.html" />
+    <link rel="next" title="StreamPlayer: simulate an LSL stream" href="simulate_an_lsl_stream_with_a_stream_player.html" />
+    <link rel="prev" title="Examples Gallery" href="index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -132,24 +132,24 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
   <div class="bd-toc-item active">
-    <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="simulate_an_lsl_stream_with_a_stream_player.html">
-   Simulate an LSL stream with a Stream Player
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   StreamRecorder: resting-state recording
   </a>
  </li>
 </ul>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Resting-State recording
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="simulate_an_lsl_stream_with_a_stream_player.html">
+   StreamPlayer: simulate an LSL stream
   </a>
  </li>
 </ul>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="real-time_regulation_of_alpha_waves.html">
-   Real-time regulation of alpha waves
+   StreamReceiver: real-time alpha band power
   </a>
  </li>
 </ul>
@@ -193,105 +193,174 @@
 <p>Click <a class="reference internal" href="#sphx-glr-download-generated-examples-resting-state-recording-py"><span class="std std-ref">here</span></a>
 to download the full example code</p>
 </div>
-<div class="sphx-glr-example-title section" id="resting-state-recording">
-<span id="sphx-glr-generated-examples-resting-state-recording-py"></span><h1>Resting-State recording<a class="headerlink" href="#resting-state-recording" title="Permalink to this headline">¶</a></h1>
+<div class="sphx-glr-example-title section" id="streamrecorder-resting-state-recording">
+<span id="sphx-glr-generated-examples-resting-state-recording-py"></span><h1>StreamRecorder: resting-state recording<a class="headerlink" href="#streamrecorder-resting-state-recording" title="Permalink to this headline">¶</a></h1>
 <p>A resting-state recording is a simple offline recording during which the brain
-activity of a subject is measured in the absence of any stimulus or task.</p>
+activity of a subject is measured in the absence of any stimulus or task. A
+resting-state recording can be designed with a <a class="reference internal" href="../api/generated/bsl.StreamRecorder.html#bsl.StreamRecorder" title="bsl.StreamRecorder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StreamRecorder</span></code></a>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Authors: Mathieu Scheltienne &lt;mathieu.scheltienne@gmail.com&gt;</span>
 <span class="c1">#</span>
 <span class="c1"># License: LGPL-2.1</span>
 </pre></div>
 </div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Both <a class="reference internal" href="../api/generated/bsl.StreamPlayer.html#bsl.StreamPlayer" title="bsl.StreamPlayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StreamPlayer</span></code></a> and <a class="reference internal" href="../api/generated/bsl.StreamRecorder.html#bsl.StreamRecorder" title="bsl.StreamRecorder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StreamRecorder</span></code></a> create a new process
+to stream or record data. On Windows, mutliprocessing suffers a couple of
+restrictions. The entry-point of a multiprocessing program should be
+protected with <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">'__main__':</span></code> to ensure it can safely
+import and run the module. More information on the
+<a class="reference external" href="https://docs.python.org/2/library/multiprocessing.html#windows">documentation for multiprocessing on Windows</a>.</p>
+</div>
+<p>This example will use a sample EEG resting-state dataset that can be retrieve
+with <a class="reference internal" href="../api/datasets.html#datasets"><span class="std std-ref">bsl.datasets</span></a>. The dataset is stored in the user home
+directory, in the folder <code class="docutils literal notranslate"><span class="pre">bsl_data</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">datetime</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <a href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class"><span class="n">Path</span></a>
 
-<span class="kn">from</span> <span class="nn">bsl</span> <span class="kn">import</span> <a href="../api/generated/bsl.StreamRecorder.html#bsl.StreamRecorder" title="bsl.StreamRecorder" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-class"><span class="n">StreamRecorder</span></a><span class="p">,</span> <a href="../api/generated/bsl.StreamPlayer.html#bsl.StreamPlayer" title="bsl.StreamPlayer" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-class"><span class="n">StreamPlayer</span></a><span class="p">,</span> <span class="n">datasets</span>
-<span class="kn">from</span> <span class="nn">bsl.triggers.software</span> <span class="kn">import</span> <a href="../api/generated/bsl.triggers.software.html#bsl.triggers.software.TriggerSoftware" title="bsl.triggers.software.TriggerSoftware" class="sphx-glr-backref-module-bsl-triggers-software sphx-glr-backref-type-py-class"><span class="n">TriggerSoftware</span></a>
-<span class="kn">from</span> <span class="nn">bsl.utils</span> <span class="kn">import</span> <span class="n">Timer</span>
+<span class="kn">import</span> <span class="nn">mne</span>
+
+<span class="kn">from</span> <span class="nn">bsl</span> <span class="kn">import</span> <a href="../api/generated/bsl.StreamPlayer.html#bsl.StreamPlayer" title="bsl.StreamPlayer" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-class"><span class="n">StreamPlayer</span></a><span class="p">,</span> <a href="../api/generated/bsl.StreamRecorder.html#bsl.StreamRecorder" title="bsl.StreamRecorder" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-class"><span class="n">StreamRecorder</span></a><span class="p">,</span> <span class="n">datasets</span>
+<span class="kn">from</span> <span class="nn">bsl.triggers.software</span> <span class="kn">import</span> <a href="../api/generated/bsl.triggers.software.TriggerSoftware.html#bsl.triggers.software.TriggerSoftware" title="bsl.triggers.software.TriggerSoftware" class="sphx-glr-backref-module-bsl-triggers-software sphx-glr-backref-type-py-class"><span class="n">TriggerSoftware</span></a>
 </pre></div>
 </div>
-<p>Start a mock LSL stream with a Stream Player for this example purpose.
-Call in <a class="reference external" href="https://docs.python.org/3/library/__main__.html#module-__main__" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__main__</span></code></a> because the Stream Player starts a new process, which can
-not be done outside <a class="reference external" href="https://docs.python.org/3/library/__main__.html#module-__main__" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__main__</span></code></a> on Windows.
-See: <a class="reference external" href="https://docs.python.org/2/library/multiprocessing.html#windows">https://docs.python.org/2/library/multiprocessing.html#windows</a></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/3/library/pathlib.html#pathlib.WindowsPath" title="pathlib.WindowsPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">sample_data_raw_file</span></a> <span class="o">=</span> <a href="../api/generated/bsl.datasets.sample.html#bsl.datasets.sample.data_path" title="bsl.datasets.sample.data_path" class="sphx-glr-backref-module-bsl-datasets-sample sphx-glr-backref-type-py-function"><span class="n">datasets</span><span class="o">.</span><span class="n">sample</span><span class="o">.</span><span class="n">data_path</span></a><span class="p">()</span>
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <a href="../api/generated/bsl.StreamPlayer.html#bsl.StreamPlayer" title="bsl.StreamPlayer" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">player</span></a> <span class="o">=</span> <a href="../api/generated/bsl.StreamPlayer.html#bsl.StreamPlayer" title="bsl.StreamPlayer" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-class"><span class="n">StreamPlayer</span></a><span class="p">(</span><span class="s1">&#39;StreamPlayer&#39;</span><span class="p">,</span> <a href="https://docs.python.org/3/library/pathlib.html#pathlib.WindowsPath" title="pathlib.WindowsPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">sample_data_raw_file</span></a><span class="p">)</span>
-    <a href="../api/generated/bsl.StreamPlayer.html#bsl.StreamPlayer.start" title="bsl.StreamPlayer.start" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-method"><span class="n">player</span><span class="o">.</span><span class="n">start</span></a><span class="p">()</span>
+<p>To simulate an actual signal coming from an LSL stream, a <a class="reference internal" href="../api/generated/bsl.StreamPlayer.html#bsl.StreamPlayer" title="bsl.StreamPlayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StreamPlayer</span></code></a>
+is used with a 40 second resting-state recording.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">stream_name</span></a> <span class="o">=</span> <span class="s1">&#39;StreamPlayer&#39;</span>
+<a href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="pathlib.PosixPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">fif_file</span></a> <span class="o">=</span> <a href="../api/generated/bsl.datasets.eeg_resting_state.html#bsl.datasets.eeg_resting_state.data_path" title="bsl.datasets.eeg_resting_state.data_path" class="sphx-glr-backref-module-bsl-datasets-eeg_resting_state sphx-glr-backref-type-py-function"><span class="n">datasets</span><span class="o">.</span><span class="n">eeg_resting_state</span><span class="o">.</span><span class="n">data_path</span></a><span class="p">()</span>
+<a href="../api/generated/bsl.StreamPlayer.html#bsl.StreamPlayer" title="bsl.StreamPlayer" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">player</span></a> <span class="o">=</span> <a href="../api/generated/bsl.StreamPlayer.html#bsl.StreamPlayer" title="bsl.StreamPlayer" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-class"><span class="n">StreamPlayer</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">stream_name</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="pathlib.PosixPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">fif_file</span></a><span class="p">)</span>
+<a href="../api/generated/bsl.StreamPlayer.html#bsl.StreamPlayer.start" title="bsl.StreamPlayer.start" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-method"><span class="n">player</span><span class="o">.</span><span class="n">start</span></a><span class="p">()</span>
+<span class="nb">print</span> <span class="p">(</span><a href="../api/generated/bsl.StreamPlayer.html#bsl.StreamPlayer" title="bsl.StreamPlayer" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">player</span></a><span class="p">)</span>
 </pre></div>
 </div>
-<p>Define the directory used by the recorder and the name of the streams to
-connect to. Without specifying the argument <code class="xref py py-obj docutils literal notranslate"><span class="pre">stream_name</span></code>, the recorder will
-connect to every LSL stream available and save one .pcl and one .fif file per
-stream.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/3/library/pathlib.html#pathlib.WindowsPath" title="pathlib.WindowsPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">directory</span></a> <span class="o">=</span> <a href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class"><span class="n">Path</span></a><span class="p">(</span><span class="s1">&#39;~/bsl_data/examples&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">expanduser</span><span class="p">()</span>
-<a href="https://docs.python.org/3/library/os.html#os.makedirs" title="os.makedirs" class="sphx-glr-backref-module-os sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">makedirs</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/pathlib.html#pathlib.WindowsPath" title="pathlib.WindowsPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">directory</span></a><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">stream_name</span> <span class="o">=</span> <span class="kc">None</span>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;Player: StreamPlayer | ON | /Users/scheltie/bsl_data/eeg_sample/resting_state-raw.fif&gt;
 </pre></div>
 </div>
-<p>Define the duration of the resting-state recording in seconds.
-Typical resting-state recordings last several minutes.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">duration</span></a> <span class="o">=</span> <span class="mi">5</span>
+<p>For this example, the folder <code class="docutils literal notranslate"><span class="pre">bsl_data/examples</span></code> located in the user home
+directory will be used to stored recorded files. To ensure its existence,
+<a class="reference external" href="https://docs.python.org/3/library/os.html#os.makedirs" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">os.makedirs</span></code></a> is used.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="pathlib.PosixPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">record_dir</span></a> <span class="o">=</span> <a href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class"><span class="n">Path</span></a><span class="p">(</span><span class="s1">&#39;~/bsl_data/examples&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">expanduser</span><span class="p">()</span>
+<a href="https://docs.python.org/3/library/os.html#os.makedirs" title="os.makedirs" class="sphx-glr-backref-module-os sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">makedirs</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="pathlib.PosixPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">record_dir</span></a><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Define in a function the paradigm.
-- Define a recorder and start it.
-- Define a trigger.
-- Send a signal on the trigger and wait for the duration.
-- Close the trigger and stop the recorder.</p>
-<p>The software trigger used in this example requires an active stream recorder
-to link to. Other types of trigger may be used, may be defined before the
-recorder, and may not need to be closed.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">resting_state</span><span class="p">(</span><a href="https://docs.python.org/3/library/pathlib.html#pathlib.WindowsPath" title="pathlib.WindowsPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">directory</span></a><span class="p">,</span> <span class="n">stream_name</span><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">duration</span></a><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Function called in __main__.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">recorder</span> <span class="o">=</span> <a href="../api/generated/bsl.StreamRecorder.html#bsl.StreamRecorder" title="bsl.StreamRecorder" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-class"><span class="n">StreamRecorder</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/pathlib.html#pathlib.WindowsPath" title="pathlib.WindowsPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">directory</span></a><span class="p">)</span>
-    <span class="n">recorder</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">fif_subdir</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">trigger</span> <span class="o">=</span> <a href="../api/generated/bsl.triggers.software.html#bsl.triggers.software.TriggerSoftware" title="bsl.triggers.software.TriggerSoftware" class="sphx-glr-backref-module-bsl-triggers-software sphx-glr-backref-type-py-class"><span class="n">TriggerSoftware</span></a><span class="p">(</span><span class="n">recorder</span><span class="o">=</span><span class="n">recorder</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">trigger</span><span class="o">.</span><span class="n">signal</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-    <a href="https://docs.python.org/3/library/time.html#time.sleep" title="time.sleep" class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function"><span class="n">time</span><span class="o">.</span><span class="n">sleep</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">duration</span></a><span class="p">)</span>
-    <span class="n">trigger</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-    <span class="n">recorder</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+<p>For this simple offline recording, the goal is to start a
+<a class="reference internal" href="../api/generated/bsl.StreamRecorder.html#bsl.StreamRecorder" title="bsl.StreamRecorder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StreamRecorder</span></code></a>, send an event on a trigger to mark the beginning of
+the resting-state recording, wait for a defined duration, and stop the
+recording.</p>
+<p>By default, a <a class="reference internal" href="../api/generated/bsl.StreamRecorder.html#bsl.StreamRecorder" title="bsl.StreamRecorder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StreamRecorder</span></code></a> does not require any argument. The
+current working directory is used to record data from all available streams
+in files named based on the date/time timestamp at which the recorder is
+started.</p>
+<p>To record only part of the available streams, with a specific file name and
+in a specific directory, the arguments <code class="docutils literal notranslate"><span class="pre">record_dir</span></code>, <code class="docutils literal notranslate"><span class="pre">fname</span></code> and
+<code class="docutils literal notranslate"><span class="pre">stream_name</span></code> must be provided.</p>
+<p>For this example, the directory used to store recordings is
+<code class="docutils literal notranslate"><span class="pre">bsl_data/examples</span></code> and the file name will start with
+<code class="docutils literal notranslate"><span class="pre">example-resting-state</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>By defaul, the <a class="reference internal" href="../api/generated/bsl.StreamRecorder.html#bsl.StreamRecorder.start" title="bsl.StreamRecorder.start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">start</span></code></a> method is blocking and will
+wait for the recording to start. This behavior can be changed with the
+<code class="docutils literal notranslate"><span class="pre">blocking</span></code> argument.</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="../api/generated/bsl.StreamRecorder.html#bsl.StreamRecorder" title="bsl.StreamRecorder" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">recorder</span></a> <span class="o">=</span> <a href="../api/generated/bsl.StreamRecorder.html#bsl.StreamRecorder" title="bsl.StreamRecorder" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-class"><span class="n">StreamRecorder</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="pathlib.PosixPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">record_dir</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="pathlib.PosixPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">fname</span></a><span class="o">=</span><span class="s1">&#39;example-resting-state&#39;</span><span class="p">)</span>
+<a href="../api/generated/bsl.StreamRecorder.html#bsl.StreamRecorder.start" title="bsl.StreamRecorder.start" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-method"><span class="n">recorder</span><span class="o">.</span><span class="n">start</span></a><span class="p">()</span>
+<span class="nb">print</span> <span class="p">(</span><a href="../api/generated/bsl.StreamRecorder.html#bsl.StreamRecorder" title="bsl.StreamRecorder" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">recorder</span></a><span class="p">)</span>
 </pre></div>
 </div>
-<p>Alternative paradigm function which prints every seconds to keep track of the
-progression. The <code class="xref py py-obj docutils literal notranslate"><span class="pre">time.sleep()</span></code> is replaced with a while loop.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">resting_state_with_verbose</span><span class="p">(</span><a href="https://docs.python.org/3/library/pathlib.html#pathlib.WindowsPath" title="pathlib.WindowsPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">directory</span></a><span class="p">,</span> <span class="n">stream_name</span><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">duration</span></a><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Function called in __main__.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">recorder</span> <span class="o">=</span> <a href="../api/generated/bsl.StreamRecorder.html#bsl.StreamRecorder" title="bsl.StreamRecorder" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-class"><span class="n">StreamRecorder</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/pathlib.html#pathlib.WindowsPath" title="pathlib.WindowsPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">directory</span></a><span class="p">)</span>
-    <span class="n">recorder</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">fif_subdir</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">trigger</span> <span class="o">=</span> <a href="../api/generated/bsl.triggers.software.html#bsl.triggers.software.TriggerSoftware" title="bsl.triggers.software.TriggerSoftware" class="sphx-glr-backref-module-bsl-triggers-software sphx-glr-backref-type-py-class"><span class="n">TriggerSoftware</span></a><span class="p">(</span><span class="n">recorder</span><span class="o">=</span><span class="n">recorder</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">timer</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">()</span>
-    <span class="n">previous_time_printed</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="n">trigger</span><span class="o">.</span><span class="n">signal</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">timer</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
-    <span class="k">while</span> <span class="n">timer</span><span class="o">.</span><span class="n">sec</span><span class="p">()</span> <span class="o">&lt;=</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">duration</span></a><span class="p">:</span>
-        <span class="k">if</span> <span class="n">previous_time_printed</span><span class="o">+</span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">timer</span><span class="o">.</span><span class="n">sec</span><span class="p">():</span>
-            <span class="n">previous_time_printed</span> <span class="o">+=</span> <span class="mi">1</span>
-            <span class="nb">print</span> <span class="p">(</span><a href="https://docs.python.org/3/library/datetime.html#datetime.timedelta" title="datetime.timedelta" class="sphx-glr-backref-module-datetime sphx-glr-backref-type-py-class"><span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span></a><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="n">previous_time_printed</span><span class="p">))</span>
-    <span class="n">trigger</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-    <span class="n">recorder</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;Recorder: All streams | ON | /Users/scheltie/bsl_data/examples&gt;
 </pre></div>
 </div>
-<p>Call in <a class="reference external" href="https://docs.python.org/3/library/__main__.html#module-__main__" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__main__</span></code></a> the function. The StreamRecorder starts a new process,
-which can not be done outside <a class="reference external" href="https://docs.python.org/3/library/__main__.html#module-__main__" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__main__</span></code></a> on Windows.
-See: <a class="reference external" href="https://docs.python.org/2/library/multiprocessing.html#windows">https://docs.python.org/2/library/multiprocessing.html#windows</a></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">resting_state</span><span class="p">(</span><a href="https://docs.python.org/3/library/pathlib.html#pathlib.WindowsPath" title="pathlib.WindowsPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">directory</span></a><span class="p">,</span> <span class="n">stream_name</span><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">duration</span></a><span class="p">)</span>
-    <span class="c1"># resting_state_with_verbose(directory, stream_name, duration)</span>
+<p>Now that a <a class="reference internal" href="../api/generated/bsl.StreamRecorder.html#bsl.StreamRecorder" title="bsl.StreamRecorder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StreamRecorder</span></code></a> is started and is acquiring data, a trigger
+to mark the beginning of the segment of interest is created. For this
+example, a <a class="reference internal" href="../api/generated/bsl.triggers.software.TriggerSoftware.html#bsl.triggers.software.TriggerSoftware" title="bsl.triggers.software.TriggerSoftware"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TriggerSoftware</span></code></a> is used, but this example
+would be equally valid with a different type of trigger.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="../api/generated/bsl.triggers.software.TriggerSoftware.html#bsl.triggers.software.TriggerSoftware" title="bsl.triggers.software.TriggerSoftware"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TriggerSoftware</span></code></a> must be created after a
+<a class="reference internal" href="../api/generated/bsl.StreamRecorder.html#bsl.StreamRecorder" title="bsl.StreamRecorder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StreamRecorder</span></code></a> is started and closed/deleted before a
+<a class="reference internal" href="../api/generated/bsl.StreamRecorder.html#bsl.StreamRecorder" title="bsl.StreamRecorder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StreamRecorder</span></code></a> is stopped.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><a href="../api/generated/bsl.StreamRecorder.html#bsl.StreamRecorder" title="bsl.StreamRecorder" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">recorder</span></a> <span class="o">=</span> <a href="../api/generated/bsl.StreamRecorder.html#bsl.StreamRecorder" title="bsl.StreamRecorder" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-class"><span class="n">StreamRecorder</span></a><span class="p">()</span>
+<a href="../api/generated/bsl.StreamRecorder.html#bsl.StreamRecorder.start" title="bsl.StreamRecorder.start" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-method"><span class="n">recorder</span><span class="o">.</span><span class="n">start</span></a><span class="p">()</span>
+<a href="../api/generated/bsl.triggers.software.TriggerSoftware.html#bsl.triggers.software.TriggerSoftware" title="bsl.triggers.software.TriggerSoftware" class="sphx-glr-backref-module-bsl-triggers-software sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">trigger</span></a> <span class="o">=</span> <a href="../api/generated/bsl.triggers.software.TriggerSoftware.html#bsl.triggers.software.TriggerSoftware" title="bsl.triggers.software.TriggerSoftware" class="sphx-glr-backref-module-bsl-triggers-software sphx-glr-backref-type-py-class"><span class="n">TriggerSoftware</span></a><span class="p">(</span><a href="../api/generated/bsl.StreamRecorder.html#bsl.StreamRecorder" title="bsl.StreamRecorder" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">recorder</span></a><span class="p">)</span>
+<span class="c1"># do stuff</span>
+<a href="../api/generated/bsl.triggers.software.TriggerSoftware.html#bsl.triggers.software.TriggerSoftware.close" title="bsl.triggers.software.TriggerSoftware.close" class="sphx-glr-backref-module-bsl-triggers-software sphx-glr-backref-type-py-method"><span class="n">trigger</span><span class="o">.</span><span class="n">close</span></a><span class="p">()</span> <span class="c1"># OR &gt;&gt;&gt; del trigger</span>
+<a href="../api/generated/bsl.StreamRecorder.html#bsl.StreamRecorder.stop" title="bsl.StreamRecorder.stop" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-method"><span class="n">recorder</span><span class="o">.</span><span class="n">stop</span></a><span class="p">()</span>
 </pre></div>
 </div>
+<p>All triggers do not need an active <a class="reference internal" href="../api/generated/bsl.StreamRecorder.html#bsl.StreamRecorder" title="bsl.StreamRecorder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StreamRecorder</span></code></a> to be created.</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="../api/generated/bsl.triggers.software.TriggerSoftware.html#bsl.triggers.software.TriggerSoftware" title="bsl.triggers.software.TriggerSoftware" class="sphx-glr-backref-module-bsl-triggers-software sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">trigger</span></a> <span class="o">=</span> <a href="../api/generated/bsl.triggers.software.TriggerSoftware.html#bsl.triggers.software.TriggerSoftware" title="bsl.triggers.software.TriggerSoftware" class="sphx-glr-backref-module-bsl-triggers-software sphx-glr-backref-type-py-class"><span class="n">TriggerSoftware</span></a><span class="p">(</span><a href="../api/generated/bsl.StreamRecorder.html#bsl.StreamRecorder" title="bsl.StreamRecorder" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">recorder</span></a><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To mark the beginning of the segment of interest in the recording, a signal
+is sent on the trigger. For this example, the event value (1) is used.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="../api/generated/bsl.triggers.software.TriggerSoftware.html#bsl.triggers.software.TriggerSoftware.signal" title="bsl.triggers.software.TriggerSoftware.signal" class="sphx-glr-backref-module-bsl-triggers-software sphx-glr-backref-type-py-method"><span class="n">trigger</span><span class="o">.</span><span class="n">signal</span></a><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+<p>Finally, after the appropriate duration, the recording is interrupted.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="../api/generated/bsl.triggers.software.TriggerSoftware.html#bsl.triggers.software.TriggerSoftware" title="bsl.triggers.software.TriggerSoftware"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TriggerSoftware</span></code></a> must be closed or deleted before
+the recorder is stopped. All triggers do not need to be closed or deleted
+before the recorder is stopped.</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/3/library/time.html#time.sleep" title="time.sleep" class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function"><span class="n">time</span><span class="o">.</span><span class="n">sleep</span></a><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># 2 seconds duration</span>
+<a href="../api/generated/bsl.triggers.software.TriggerSoftware.html#bsl.triggers.software.TriggerSoftware.close" title="bsl.triggers.software.TriggerSoftware.close" class="sphx-glr-backref-module-bsl-triggers-software sphx-glr-backref-type-py-method"><span class="n">trigger</span><span class="o">.</span><span class="n">close</span></a><span class="p">()</span>
+<a href="../api/generated/bsl.StreamRecorder.html#bsl.StreamRecorder.stop" title="bsl.StreamRecorder.stop" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-method"><span class="n">recorder</span><span class="o">.</span><span class="n">stop</span></a><span class="p">()</span>
+<span class="nb">print</span> <span class="p">(</span><a href="../api/generated/bsl.StreamRecorder.html#bsl.StreamRecorder" title="bsl.StreamRecorder" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">recorder</span></a><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;Recorder: All streams | OFF | /Users/scheltie/bsl_data/examples&gt;
+</pre></div>
+</div>
+<p>A <a class="reference internal" href="../api/generated/bsl.StreamRecorder.html#bsl.StreamRecorder" title="bsl.StreamRecorder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StreamRecorder</span></code></a> records data in <code class="docutils literal notranslate"><span class="pre">.pcl</span></code> format. This file can be
+open with <a class="reference external" href="https://docs.python.org/3/library/pickle.html#pickle.load" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pickle.load</span></code></a>, and is automatically converted to a <a class="reference external" href="https://mne.tools/stable/generated/mne.io.Raw.html#mne.io.Raw" title="(in MNE v0.23)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Raw</span></code></a>
+FIF file in a subdirectory <code class="docutils literal notranslate"><span class="pre">fif</span></code>. The recorded files name syntax is:</p>
+<ul class="simple">
+<li><p>If <code class="docutils literal notranslate"><span class="pre">fname</span></code> is not provided: <code class="docutils literal notranslate"><span class="pre">[date/time</span> <span class="pre">timestamp]-[stream]-raw.fif</span></code></p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">fname</span></code> is provided: <code class="docutils literal notranslate"><span class="pre">[fname]-[stream]-raw.fif</span></code></p></li>
+</ul>
+<p>Where <code class="docutils literal notranslate"><span class="pre">stream</span></code> is the name of the recorded LSL stream. Thus, one file is
+created for each stream being recorded.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="pathlib.PosixPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">fname</span></a> <span class="o">=</span> <a href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="pathlib.PosixPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">record_dir</span></a> <span class="o">/</span> <span class="s1">&#39;fif&#39;</span> <span class="o">/</span> <span class="s1">&#39;example-resting-state-StreamPlayer-raw.fif&#39;</span>
+<a href="https://mne.tools/stable/generated/mne.io.Raw.html#mne.io.Raw" title="mne.io.Raw" class="sphx-glr-backref-module-mne-io sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">raw</span></a> <span class="o">=</span> <a href="https://mne.tools/stable/generated/mne.io.read_raw_fif.html#mne.io.read_raw_fif" title="mne.io.read_raw_fif" class="sphx-glr-backref-module-mne-io sphx-glr-backref-type-py-function"><span class="n">mne</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read_raw_fif</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="pathlib.PosixPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">fname</span></a><span class="p">,</span> <span class="n">preload</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><a href="https://mne.tools/stable/generated/mne.io.Raw.html#mne.io.Raw" title="mne.io.Raw" class="sphx-glr-backref-module-mne-io sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">raw</span></a><span class="p">)</span>
+<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">events</span></a> <span class="o">=</span> <a href="https://mne.tools/stable/generated/mne.find_events.html#mne.find_events" title="mne.find_events" class="sphx-glr-backref-module-mne sphx-glr-backref-type-py-function"><span class="n">mne</span><span class="o">.</span><span class="n">find_events</span></a><span class="p">(</span><a href="https://mne.tools/stable/generated/mne.io.Raw.html#mne.io.Raw" title="mne.io.Raw" class="sphx-glr-backref-module-mne-io sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">raw</span></a><span class="p">,</span> <span class="n">stim_channel</span><span class="o">=</span><span class="s1">&#39;TRIGGER&#39;</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">events</span></a><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;Raw | example-resting-state-StreamPlayer-raw.fif, 65 x 1040 (2.0 s), ~597 kB, data loaded&gt;
+[[13  0  1]]
+</pre></div>
+</div>
+<p>As for the <a class="reference internal" href="../api/generated/bsl.StreamPlayer.html#bsl.StreamPlayer" title="bsl.StreamPlayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StreamPlayer</span></code></a>, the <a class="reference internal" href="../api/generated/bsl.StreamRecorder.html#bsl.StreamRecorder" title="bsl.StreamRecorder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StreamRecorder</span></code></a> can be used as a
+context manager. The context manager takes care of starting and stopping the
+recording.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <a href="../api/generated/bsl.StreamRecorder.html#bsl.StreamRecorder" title="bsl.StreamRecorder" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-class"><span class="n">StreamRecorder</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="pathlib.PosixPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">record_dir</span></a><span class="p">):</span>
+    <a href="https://docs.python.org/3/library/time.html#time.sleep" title="time.sleep" class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function"><span class="n">time</span><span class="o">.</span><span class="n">sleep</span></a><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>As for the <a class="reference internal" href="../api/generated/bsl.StreamPlayer.html#bsl.StreamPlayer" title="bsl.StreamPlayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StreamPlayer</span></code></a>, the <a class="reference internal" href="../api/generated/bsl.StreamRecorder.html#bsl.StreamRecorder" title="bsl.StreamRecorder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StreamRecorder</span></code></a> can be started via
+command-line. Example assuming the current working directory is <code class="docutils literal notranslate"><span class="pre">bsl_data</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>bsl_stream_recorder examples
+</pre></div>
+</div>
+<img alt="StreamRecorder" class="align-center" src="../_images/stream_recorder_cli.gif" />
 <p>Stop the mock LSL stream.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <a href="../api/generated/bsl.StreamPlayer.html#bsl.StreamPlayer.stop" title="bsl.StreamPlayer.stop" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-method"><span class="n">player</span><span class="o">.</span><span class="n">stop</span></a><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="../api/generated/bsl.StreamPlayer.html#bsl.StreamPlayer.stop" title="bsl.StreamPlayer.stop" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-method"><span class="n">player</span><span class="o">.</span><span class="n">stop</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  7.416 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  9.703 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-generated-examples-resting-state-recording-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/7e2c0280d1f6b4a9a13422d5fb1da4ce/resting_state_recording.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">resting_state_recording.py</span></code></a></p>
@@ -309,8 +378,8 @@ See: <a class="reference external" href="https://docs.python.org/2/library/multi
               
               <div class='prev-next-bottom'>
                 
-    <a class='left-prev' id="prev-link" href="simulate_an_lsl_stream_with_a_stream_player.html" title="previous page">Simulate an LSL stream with a Stream Player</a>
-    <a class='right-next' id="next-link" href="real-time_regulation_of_alpha_waves.html" title="next page">Real-time regulation of alpha waves</a>
+    <a class='left-prev' id="prev-link" href="index.html" title="previous page">Examples Gallery</a>
+    <a class='right-next' id="next-link" href="simulate_an_lsl_stream_with_a_stream_player.html" title="next page">StreamPlayer: simulate an LSL stream</a>
 
               </div>
               
@@ -327,7 +396,7 @@ See: <a class="reference external" href="https://docs.python.org/2/library/multi
     
     <div class="footer-item">
       <p class="copyright">
-    &copy; Copyright 2021, Kyuhwa Lee, Arnaud Desvachez, Mathieu Scheltienne, Last updated on 2021-09-23T16:47:48.713804+00:00.<br/>
+    &copy; Copyright 2021, Kyuhwa Lee, Arnaud Desvachez, Mathieu Scheltienne, Last updated on 2021-10-12T14:10:12.370756+00:00.<br/>
 </p>
     </div>
     
