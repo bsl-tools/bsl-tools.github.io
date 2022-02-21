@@ -9,7 +9,7 @@ signals to compute a given metric can be designed with a `~bsl.StreamReceiver`.
 
 #%%
 
-# Authors: Mathieu Scheltienne <mathieu.scheltienne@gmail.com>
+# Authors: Mathieu Scheltienne <mathieu.scheltienne@fcbg.ch>
 #
 # License: LGPL-2.1
 
@@ -26,25 +26,25 @@ signals to compute a given metric can be designed with a `~bsl.StreamReceiver`.
 #
 # This example will use a sample EEG resting-state dataset that can be retrieve
 # with :ref:`bsl.datasets<datasets>`. The dataset is stored in the user home
-# directory, in the folder ``bsl_data``.
+# directory in the folder ``bsl_data`` (e.g. ``C:\Users\User\bsl_data``).
 
 #%%
 import os
-import time
 from pathlib import Path
+import time
 
+from matplotlib import pyplot as plt
 import mne
 import numpy as np
-from matplotlib import pyplot as plt
 
 from bsl import StreamRecorder, StreamReceiver, StreamPlayer, datasets
 from bsl.utils import Timer
-from bsl.triggers.software import TriggerSoftware
+from bsl.triggers.software import SoftwareTrigger
 
 #%%
 #
 # To simulate an actual signal coming from an LSL stream, a `~bsl.StreamPlayer`
-# is used with a 40 second resting-state recording.
+# is used with a 40 seconds resting-state recording.
 
 stream_name = 'StreamPlayer'
 fif_file = datasets.eeg_resting_state.data_path()
@@ -155,12 +155,12 @@ phase_duration = 3  # in seconds
 #
 # Acquired data is saved to disk with a `~bsl.StreamRecorder` and the beginning
 # of each phase is marked with a trigger event. For this example, a
-# `~bsl.triggers.software.TriggerSoftware` is used, but this example would be
+# `~bsl.triggers.software.SoftwareTrigger` is used, but this example would be
 # equally valid with a different type of trigger.
 #
 # .. note::
 #
-#     `~bsl.triggers.software.TriggerSoftware` must be created after a
+#     `~bsl.triggers.software.SoftwareTrigger` must be created after a
 #     `~bsl.StreamRecorder` is started and closed/deleted before a
 #     `~bsl.StreamRecorder` is stopped.
 #
@@ -168,7 +168,7 @@ phase_duration = 3  # in seconds
 #
 #         recorder = StreamRecorder()
 #         recorder.start()
-#         trigger = TriggerSoftware(recorder)
+#         trigger = SoftwareTrigger(recorder)
 #         # do stuff
 #         trigger.close() # OR >>> del trigger
 #         recorder.stop()
@@ -180,7 +180,7 @@ os.makedirs(record_dir, exist_ok=True)
 recorder = StreamRecorder(record_dir, fname='example_real_time')
 recorder.start()
 print (recorder)
-trigger = TriggerSoftware(recorder, verbose=True)
+trigger = SoftwareTrigger(recorder, verbose=True)
 
 #%%
 #

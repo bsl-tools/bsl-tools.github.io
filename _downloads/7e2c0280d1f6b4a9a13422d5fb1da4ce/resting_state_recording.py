@@ -10,7 +10,7 @@ resting-state recording can be designed with a `~bsl.StreamRecorder`.
 
 #%%
 
-# Authors: Mathieu Scheltienne <mathieu.scheltienne@gmail.com>
+# Authors: Mathieu Scheltienne <mathieu.scheltienne@fcbg.ch>
 #
 # License: LGPL-2.1
 
@@ -29,23 +29,23 @@ resting-state recording can be designed with a `~bsl.StreamRecorder`.
 #
 # This example will use a sample EEG resting-state dataset that can be retrieve
 # with :ref:`bsl.datasets<datasets>`. The dataset is stored in the user home
-# directory, in the folder ``bsl_data``.
+# directory in the folder ``bsl_data`` (e.g. ``C:\Users\User\bsl_data``).
 
 #%%
 
 import os
-import time
 from pathlib import Path
+import time
 
 import mne
 
 from bsl import StreamPlayer, StreamRecorder, datasets
-from bsl.triggers.software import TriggerSoftware
+from bsl.triggers.software import SoftwareTrigger
 
 #%%
 #
 # To simulate an actual signal coming from an LSL stream, a `~bsl.StreamPlayer`
-# is used with a 40 second resting-state recording.
+# is used with a 40 seconds resting-state recording.
 
 stream_name = 'StreamPlayer'
 fif_file = datasets.eeg_resting_state.data_path()
@@ -61,6 +61,7 @@ print (player)
 
 record_dir = Path('~/bsl_data/examples').expanduser()
 os.makedirs(record_dir, exist_ok=True)
+print (record_dir)
 
 #%%
 #
@@ -74,8 +75,8 @@ os.makedirs(record_dir, exist_ok=True)
 # in files named based on the date/time timestamp at which the recorder is
 # started.
 #
-# To record only part of the available streams, with a specific file name and
-# in a specific directory, the arguments ``record_dir``, ``fname`` and
+# To record only a subset of the available streams with a specific file name
+# and in a specific directory, the arguments ``record_dir``, ``fname`` and
 # ``stream_name`` must be provided.
 #
 # For this example, the directory used to store recordings is
@@ -84,7 +85,7 @@ os.makedirs(record_dir, exist_ok=True)
 #
 # .. note::
 #
-#     By defaul, the `~bsl.StreamRecorder.start` method is blocking and will
+#     By default, the `~bsl.StreamRecorder.start` method is blocking and will
 #     wait for the recording to start. This behavior can be changed with the
 #     ``blocking`` argument.
 
@@ -96,12 +97,12 @@ print (recorder)
 #
 # Now that a `~bsl.StreamRecorder` is started and is acquiring data, a trigger
 # to mark the beginning of the segment of interest is created. For this
-# example, a `~bsl.triggers.software.TriggerSoftware` is used, but this example
+# example, a `~bsl.triggers.software.SoftwareTrigger` is used, but this example
 # would be equally valid with a different type of trigger.
 #
 # .. note::
 #
-#     `~bsl.triggers.software.TriggerSoftware` must be created after a
+#     `~bsl.triggers.software.SoftwareTrigger` must be created after a
 #     `~bsl.StreamRecorder` is started and closed/deleted before a
 #     `~bsl.StreamRecorder` is stopped.
 #
@@ -109,14 +110,14 @@ print (recorder)
 #
 #         recorder = StreamRecorder()
 #         recorder.start()
-#         trigger = TriggerSoftware(recorder)
+#         trigger = SoftwareTrigger(recorder)
 #         # do stuff
 #         trigger.close() # OR >>> del trigger
 #         recorder.stop()
 #
 #     All triggers do not need an active `~bsl.StreamRecorder` to be created.
 
-trigger = TriggerSoftware(recorder, verbose=True)
+trigger = SoftwareTrigger(recorder, verbose=True)
 
 #%%
 #
@@ -131,7 +132,7 @@ trigger.signal(1)
 #
 # .. note::
 #
-#     `~bsl.triggers.software.TriggerSoftware` must be closed or deleted before
+#     `~bsl.triggers.software.SoftwareTrigger` must be closed or deleted before
 #     the recorder is stopped. All triggers do not need to be closed or deleted
 #     before the recorder is stopped.
 
@@ -170,18 +171,24 @@ with StreamRecorder(record_dir):
 #%%
 #
 # As for the `~bsl.StreamPlayer`, the `~bsl.StreamRecorder` can be started via
-# command-line. Example assuming the current working directory is ``bsl_data``:
+# command-line when a LSL stream is accessible on the network.
+#
+# Example assuming:
+#
+# - the current working directory is ``bsl_data`` in the user home directory
+# - the stream to connect to is named ``MyStream``
+# - the recorded file naming scheme is ``test-[stream]-raw.fif``, i.e.
+#   ``test-MyStream-raw.fif``
 #
 # .. code-block:: console
 #
-#     $ bsl_stream_recorder examples
+#     $ bsl_stream_recorder -d examples -f test -s MyStream
 #
 # .. image:: ../_static/stream_recorder/stream_recorder_cli.gif
 #    :alt: StreamRecorder
 #    :align: center
 
 #%%
-#
-# Stop the mock LSL stream.
+# | Stop the mock LSL stream used in this example.
 
 player.stop()

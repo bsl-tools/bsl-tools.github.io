@@ -4,33 +4,34 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>StreamReceiver: real-time alpha band power &#8212; BSL 0.3.1 documentation</title>
-    
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
+    <title>StreamReceiver: real-time alpha band power &#8212; BSL 0.4.0 documentation</title>
     
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
-
+    <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  
+    
+    <link rel="stylesheet"
+      href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+      href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+      href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
     
       
-
+  
     
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/basic.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/gallery.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/gallery-binder.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/gallery-dataframe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/pydata-sphinx-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
-
+    <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
@@ -38,10 +39,13 @@
     <link rel="shortcut icon" href="../_static/bsl-icon.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Python API Reference" href="../api_reference.html" />
+    <link rel="next" title="StreamReceiver: real-time buffer filtered with a causal filter" href="real-time_filtered_buffer.html" />
     <link rel="prev" title="StreamPlayer: simulate an LSL stream" href="simulate_an_lsl_stream_with_a_stream_player.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -108,10 +112,8 @@
       <div class="navbar-end-item">
         <ul id="navbar-icon-links" class="navbar-nav" aria-label="Quick Links">
         <li class="nav-item">
-          <a class="nav-link" href="https://github.com/bsl-tools/bsl" rel="noopener" target="_blank" title="GitHub">
-            <span><i class="fab fa-github-square"></i></span>
-            <label class="sr-only">GitHub</label>
-          </a>
+          <a class="nav-link" href="https://github.com/bsl-tools/bsl" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
         </li>
       </ul>
       </div>
@@ -127,7 +129,8 @@
           
             
             <!-- Only show if we have sidebars configured, else just a small margin  -->
-            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+            <div class="col-12 col-md-3 bd-sidebar">
+              <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
@@ -153,9 +156,19 @@
   </a>
  </li>
 </ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="real-time_filtered_buffer.html">
+   StreamReceiver: real-time buffer filtered with a causal filter
+  </a>
+ </li>
+</ul>
 
   </div>
 </nav>
+              </div>
+              <div class="sidebar-end-items">
+              </div>
             </div>
             
           
@@ -208,11 +221,11 @@
 <p>Click <a class="reference internal" href="#sphx-glr-download-generated-examples-real-time-regulation-of-alpha-waves-py"><span class="std std-ref">here</span></a>
 to download the full example code</p>
 </div>
-<div class="sphx-glr-example-title section" id="streamreceiver-real-time-alpha-band-power">
+<section class="sphx-glr-example-title" id="streamreceiver-real-time-alpha-band-power">
 <span id="sphx-glr-generated-examples-real-time-regulation-of-alpha-waves-py"></span><h1>StreamReceiver: real-time alpha band power<a class="headerlink" href="#streamreceiver-real-time-alpha-band-power" title="Permalink to this headline">¶</a></h1>
 <p>BCI, Neurofeedback, or any online paradigm that needs access to real-time
 signals to compute a given metric can be designed with a <a class="reference internal" href="../api/generated/bsl.StreamReceiver.html#bsl.StreamReceiver" title="bsl.StreamReceiver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StreamReceiver</span></code></a>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Authors: Mathieu Scheltienne &lt;mathieu.scheltienne@gmail.com&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Authors: Mathieu Scheltienne &lt;mathieu.scheltienne@fcbg.ch&gt;</span>
 <span class="c1">#</span>
 <span class="c1"># License: LGPL-2.1</span>
 </pre></div>
@@ -228,22 +241,22 @@ import and run the module. More information on the
 </div>
 <p>This example will use a sample EEG resting-state dataset that can be retrieve
 with <a class="reference internal" href="../api/datasets.html#datasets"><span class="std std-ref">bsl.datasets</span></a>. The dataset is stored in the user home
-directory, in the folder <code class="docutils literal notranslate"><span class="pre">bsl_data</span></code>.</p>
+directory in the folder <code class="docutils literal notranslate"><span class="pre">bsl_data</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">C:\Users\User\bsl_data</span></code>).</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <a href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class"><span class="n">Path</span></a>
+<span class="kn">import</span> <span class="nn">time</span>
 
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 <span class="kn">import</span> <span class="nn">mne</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 
 <span class="kn">from</span> <span class="nn">bsl</span> <span class="kn">import</span> <a href="../api/generated/bsl.StreamRecorder.html#bsl.StreamRecorder" title="bsl.StreamRecorder" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-class"><span class="n">StreamRecorder</span></a><span class="p">,</span> <a href="../api/generated/bsl.StreamReceiver.html#bsl.StreamReceiver" title="bsl.StreamReceiver" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-class"><span class="n">StreamReceiver</span></a><span class="p">,</span> <a href="../api/generated/bsl.StreamPlayer.html#bsl.StreamPlayer" title="bsl.StreamPlayer" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-class"><span class="n">StreamPlayer</span></a><span class="p">,</span> <span class="n">datasets</span>
 <span class="kn">from</span> <span class="nn">bsl.utils</span> <span class="kn">import</span> <span class="n">Timer</span>
-<span class="kn">from</span> <span class="nn">bsl.triggers.software</span> <span class="kn">import</span> <a href="../api/generated/bsl.triggers.software.TriggerSoftware.html#bsl.triggers.software.TriggerSoftware" title="bsl.triggers.software.TriggerSoftware" class="sphx-glr-backref-module-bsl-triggers-software sphx-glr-backref-type-py-class"><span class="n">TriggerSoftware</span></a>
+<span class="kn">from</span> <span class="nn">bsl.triggers.software</span> <span class="kn">import</span> <a href="../api/generated/bsl.triggers.SoftwareTrigger.html#bsl.triggers.SoftwareTrigger" title="bsl.triggers.SoftwareTrigger" class="sphx-glr-backref-module-bsl-triggers sphx-glr-backref-type-py-class"><span class="n">SoftwareTrigger</span></a>
 </pre></div>
 </div>
 <p>To simulate an actual signal coming from an LSL stream, a <a class="reference internal" href="../api/generated/bsl.StreamPlayer.html#bsl.StreamPlayer" title="bsl.StreamPlayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StreamPlayer</span></code></a>
-is used with a 40 second resting-state recording.</p>
+is used with a 40 seconds resting-state recording.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">stream_name</span></a> <span class="o">=</span> <span class="s1">&#39;StreamPlayer&#39;</span>
 <a href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="pathlib.PosixPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">fif_file</span></a> <span class="o">=</span> <a href="../api/generated/bsl.datasets.eeg_resting_state.html#bsl.datasets.eeg_resting_state.data_path" title="bsl.datasets.eeg_resting_state.data_path" class="sphx-glr-backref-module-bsl-datasets-eeg_resting_state sphx-glr-backref-type-py-function"><span class="n">datasets</span><span class="o">.</span><span class="n">eeg_resting_state</span><span class="o">.</span><span class="n">data_path</span></a><span class="p">()</span>
 <a href="../api/generated/bsl.StreamPlayer.html#bsl.StreamPlayer" title="bsl.StreamPlayer" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">player</span></a> <span class="o">=</span> <a href="../api/generated/bsl.StreamPlayer.html#bsl.StreamPlayer" title="bsl.StreamPlayer" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-class"><span class="n">StreamPlayer</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">stream_name</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="pathlib.PosixPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">fif_file</span></a><span class="p">)</span>
@@ -255,7 +268,7 @@ is used with a 40 second resting-state recording.</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;Player: StreamPlayer | ON | /Users/scheltie/bsl_data/eeg_sample/resting_state-raw.fif&gt;
 </pre></div>
 </div>
-<div class="section" id="basics-of-streamreceiver">
+<section id="basics-of-streamreceiver">
 <h2>Basics of StreamReceiver<a class="headerlink" href="#basics-of-streamreceiver" title="Permalink to this headline">¶</a></h2>
 <p>Now that a <a class="reference internal" href="../api/generated/bsl.StreamPlayer.html#bsl.StreamPlayer" title="bsl.StreamPlayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StreamPlayer</span></code></a> is streaming data, a <a class="reference internal" href="../api/generated/bsl.StreamReceiver.html#bsl.StreamReceiver" title="bsl.StreamReceiver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StreamReceiver</span></code></a> is
 defined to access it in real-time.</p>
@@ -307,9 +320,8 @@ second window.</p>
 <a href="https://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.plot.html#matplotlib.axes.Axes.plot" title="matplotlib.axes.Axes.plot" class="sphx-glr-backref-module-matplotlib-axes sphx-glr-backref-type-py-method"><span class="n">ax</span><span class="o">.</span><span class="n">plot</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">timestamps3</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">data3</span></a><span class="p">[:,</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">idx</span></a><span class="p">],</span> <a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">color</span></a><span class="o">=</span><span class="s1">&#39;#2ca02c&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="real time regulation of alpha waves" class="sphx-glr-single-img" src="../_images/sphx_glr_real-time_regulation_of_alpha_waves_001.png" />
-<p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D object at 0x7f93912b1730&gt;]
+<img src="../_images/sphx_glr_real-time_regulation_of_alpha_waves_001.png" srcset="../_images/sphx_glr_real-time_regulation_of_alpha_waves_001.png" alt="real time regulation of alpha waves" class = "sphx-glr-single-img"/><p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D object at 0x13d6da520&gt;]
 </pre></div>
 </div>
 <p>As expected, the second and third window are mostly overlapping and contains
@@ -321,9 +333,8 @@ vertically with a fix offset:</p>
 <a href="https://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.plot.html#matplotlib.axes.Axes.plot" title="matplotlib.axes.Axes.plot" class="sphx-glr-backref-module-matplotlib-axes sphx-glr-backref-type-py-method"><span class="n">ax</span><span class="o">.</span><span class="n">plot</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">timestamps3</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">data3</span></a><span class="p">[:,</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">idx</span></a><span class="p">]</span><span class="o">+</span><span class="mi">4</span><span class="p">,</span> <a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">color</span></a><span class="o">=</span><span class="s1">&#39;#2ca02c&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="real time regulation of alpha waves" class="sphx-glr-single-img" src="../_images/sphx_glr_real-time_regulation_of_alpha_waves_002.png" />
-<p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D object at 0x7f93c13ed670&gt;]
+<img src="../_images/sphx_glr_real-time_regulation_of_alpha_waves_002.png" srcset="../_images/sphx_glr_real-time_regulation_of_alpha_waves_002.png" alt="real time regulation of alpha waves" class = "sphx-glr-single-img"/><p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D object at 0x13d475c40&gt;]
 </pre></div>
 </div>
 <p>Finally, the <a class="reference internal" href="../api/generated/bsl.StreamReceiver.html#bsl.StreamReceiver.get_window" title="bsl.StreamReceiver.get_window"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_window</span></code></a> and
@@ -340,8 +351,8 @@ user.</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True True
 </pre></div>
 </div>
-</div>
-<div class="section" id="online-loop-with-a-streamreceiver">
+</section>
+<section id="online-loop-with-a-streamreceiver">
 <h2>Online loop with a StreamReceiver<a class="headerlink" href="#online-loop-with-a-streamreceiver" title="Permalink to this headline">¶</a></h2>
 <p>The example below is a simple online loop shifting between 2 phases lasting
 each 3 seconds. The loop will stop once each phase has been experienced
@@ -364,18 +375,18 @@ second successive acquisition window.</p>
 </div>
 <p>Acquired data is saved to disk with a <a class="reference internal" href="../api/generated/bsl.StreamRecorder.html#bsl.StreamRecorder" title="bsl.StreamRecorder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StreamRecorder</span></code></a> and the beginning
 of each phase is marked with a trigger event. For this example, a
-<a class="reference internal" href="../api/generated/bsl.triggers.software.TriggerSoftware.html#bsl.triggers.software.TriggerSoftware" title="bsl.triggers.software.TriggerSoftware"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TriggerSoftware</span></code></a> is used, but this example would be
+<a class="reference internal" href="../api/generated/bsl.triggers.SoftwareTrigger.html#bsl.triggers.SoftwareTrigger" title="bsl.triggers.software.SoftwareTrigger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SoftwareTrigger</span></code></a> is used, but this example would be
 equally valid with a different type of trigger.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><a class="reference internal" href="../api/generated/bsl.triggers.software.TriggerSoftware.html#bsl.triggers.software.TriggerSoftware" title="bsl.triggers.software.TriggerSoftware"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TriggerSoftware</span></code></a> must be created after a
+<p><a class="reference internal" href="../api/generated/bsl.triggers.SoftwareTrigger.html#bsl.triggers.SoftwareTrigger" title="bsl.triggers.software.SoftwareTrigger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SoftwareTrigger</span></code></a> must be created after a
 <a class="reference internal" href="../api/generated/bsl.StreamRecorder.html#bsl.StreamRecorder" title="bsl.StreamRecorder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StreamRecorder</span></code></a> is started and closed/deleted before a
 <a class="reference internal" href="../api/generated/bsl.StreamRecorder.html#bsl.StreamRecorder" title="bsl.StreamRecorder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StreamRecorder</span></code></a> is stopped.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><a href="../api/generated/bsl.StreamRecorder.html#bsl.StreamRecorder" title="bsl.StreamRecorder" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">recorder</span></a> <span class="o">=</span> <a href="../api/generated/bsl.StreamRecorder.html#bsl.StreamRecorder" title="bsl.StreamRecorder" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-class"><span class="n">StreamRecorder</span></a><span class="p">()</span>
 <a href="../api/generated/bsl.StreamRecorder.html#bsl.StreamRecorder.start" title="bsl.StreamRecorder.start" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-method"><span class="n">recorder</span><span class="o">.</span><span class="n">start</span></a><span class="p">()</span>
-<a href="../api/generated/bsl.triggers.software.TriggerSoftware.html#bsl.triggers.software.TriggerSoftware" title="bsl.triggers.software.TriggerSoftware" class="sphx-glr-backref-module-bsl-triggers-software sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">trigger</span></a> <span class="o">=</span> <a href="../api/generated/bsl.triggers.software.TriggerSoftware.html#bsl.triggers.software.TriggerSoftware" title="bsl.triggers.software.TriggerSoftware" class="sphx-glr-backref-module-bsl-triggers-software sphx-glr-backref-type-py-class"><span class="n">TriggerSoftware</span></a><span class="p">(</span><a href="../api/generated/bsl.StreamRecorder.html#bsl.StreamRecorder" title="bsl.StreamRecorder" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">recorder</span></a><span class="p">)</span>
+<a href="../api/generated/bsl.triggers.SoftwareTrigger.html#bsl.triggers.SoftwareTrigger" title="bsl.triggers.SoftwareTrigger" class="sphx-glr-backref-module-bsl-triggers sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">trigger</span></a> <span class="o">=</span> <a href="../api/generated/bsl.triggers.SoftwareTrigger.html#bsl.triggers.SoftwareTrigger" title="bsl.triggers.SoftwareTrigger" class="sphx-glr-backref-module-bsl-triggers sphx-glr-backref-type-py-class"><span class="n">SoftwareTrigger</span></a><span class="p">(</span><a href="../api/generated/bsl.StreamRecorder.html#bsl.StreamRecorder" title="bsl.StreamRecorder" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">recorder</span></a><span class="p">)</span>
 <span class="c1"># do stuff</span>
-<a href="../api/generated/bsl.triggers.software.TriggerSoftware.html#bsl.triggers.software.TriggerSoftware.close" title="bsl.triggers.software.TriggerSoftware.close" class="sphx-glr-backref-module-bsl-triggers-software sphx-glr-backref-type-py-method"><span class="n">trigger</span><span class="o">.</span><span class="n">close</span></a><span class="p">()</span> <span class="c1"># OR &gt;&gt;&gt; del trigger</span>
+<a href="../api/generated/bsl.triggers.SoftwareTrigger.html#bsl.triggers.SoftwareTrigger.close" title="bsl.triggers.SoftwareTrigger.close" class="sphx-glr-backref-module-bsl-triggers sphx-glr-backref-type-py-method"><span class="n">trigger</span><span class="o">.</span><span class="n">close</span></a><span class="p">()</span> <span class="c1"># OR &gt;&gt;&gt; del trigger</span>
 <a href="../api/generated/bsl.StreamRecorder.html#bsl.StreamRecorder.stop" title="bsl.StreamRecorder.stop" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-method"><span class="n">recorder</span><span class="o">.</span><span class="n">stop</span></a><span class="p">()</span>
 </pre></div>
 </div>
@@ -386,7 +397,7 @@ equally valid with a different type of trigger.</p>
 <a href="../api/generated/bsl.StreamRecorder.html#bsl.StreamRecorder" title="bsl.StreamRecorder" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">recorder</span></a> <span class="o">=</span> <a href="../api/generated/bsl.StreamRecorder.html#bsl.StreamRecorder" title="bsl.StreamRecorder" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-class"><span class="n">StreamRecorder</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="pathlib.PosixPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">record_dir</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="pathlib.PosixPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">fname</span></a><span class="o">=</span><span class="s1">&#39;example_real_time&#39;</span><span class="p">)</span>
 <a href="../api/generated/bsl.StreamRecorder.html#bsl.StreamRecorder.start" title="bsl.StreamRecorder.start" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-method"><span class="n">recorder</span><span class="o">.</span><span class="n">start</span></a><span class="p">()</span>
 <span class="nb">print</span> <span class="p">(</span><a href="../api/generated/bsl.StreamRecorder.html#bsl.StreamRecorder" title="bsl.StreamRecorder" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">recorder</span></a><span class="p">)</span>
-<a href="../api/generated/bsl.triggers.software.TriggerSoftware.html#bsl.triggers.software.TriggerSoftware" title="bsl.triggers.software.TriggerSoftware" class="sphx-glr-backref-module-bsl-triggers-software sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">trigger</span></a> <span class="o">=</span> <a href="../api/generated/bsl.triggers.software.TriggerSoftware.html#bsl.triggers.software.TriggerSoftware" title="bsl.triggers.software.TriggerSoftware" class="sphx-glr-backref-module-bsl-triggers-software sphx-glr-backref-type-py-class"><span class="n">TriggerSoftware</span></a><span class="p">(</span><a href="../api/generated/bsl.StreamRecorder.html#bsl.StreamRecorder" title="bsl.StreamRecorder" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">recorder</span></a><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a href="../api/generated/bsl.triggers.SoftwareTrigger.html#bsl.triggers.SoftwareTrigger" title="bsl.triggers.SoftwareTrigger" class="sphx-glr-backref-module-bsl-triggers sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">trigger</span></a> <span class="o">=</span> <a href="../api/generated/bsl.triggers.SoftwareTrigger.html#bsl.triggers.SoftwareTrigger" title="bsl.triggers.SoftwareTrigger" class="sphx-glr-backref-module-bsl-triggers sphx-glr-backref-type-py-class"><span class="n">SoftwareTrigger</span></a><span class="p">(</span><a href="../api/generated/bsl.StreamRecorder.html#bsl.StreamRecorder" title="bsl.StreamRecorder" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">recorder</span></a><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
@@ -428,7 +439,7 @@ to acquire data and compute the alpha band power inside a phase.</p>
 
         <span class="c1"># reset timer and send trigger</span>
         <span class="n">phase_timer</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
-        <a href="../api/generated/bsl.triggers.software.TriggerSoftware.html#bsl.triggers.software.TriggerSoftware.signal" title="bsl.triggers.software.TriggerSoftware.signal" class="sphx-glr-backref-module-bsl-triggers-software sphx-glr-backref-type-py-method"><span class="n">trigger</span><span class="o">.</span><span class="n">signal</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">trigger_values</span></a><span class="p">[</span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">event</span></a><span class="p">])</span>
+        <a href="../api/generated/bsl.triggers.SoftwareTrigger.html#bsl.triggers.SoftwareTrigger.signal" title="bsl.triggers.SoftwareTrigger.signal" class="sphx-glr-backref-module-bsl-triggers sphx-glr-backref-type-py-method"><span class="n">trigger</span><span class="o">.</span><span class="n">signal</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">trigger_values</span></a><span class="p">[</span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">event</span></a><span class="p">])</span>
 
         <span class="k">while</span> <span class="n">phase_timer</span><span class="o">.</span><span class="n">sec</span><span class="p">()</span> <span class="o">&lt;=</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">phase_duration</span></a><span class="p">:</span>
             <span class="c1"># acquisition</span>
@@ -456,13 +467,13 @@ to acquire data and compute the alpha band power inside a phase.</p>
         <a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">next_event_timing</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">event</span></a> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">events</span><span class="o">.</span><span class="n">pop</span></a><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="c1"># close the trigger and stop the recorder</span>
-<a href="../api/generated/bsl.triggers.software.TriggerSoftware.html#bsl.triggers.software.TriggerSoftware.close" title="bsl.triggers.software.TriggerSoftware.close" class="sphx-glr-backref-module-bsl-triggers-software sphx-glr-backref-type-py-method"><span class="n">trigger</span><span class="o">.</span><span class="n">close</span></a><span class="p">()</span>
+<a href="../api/generated/bsl.triggers.SoftwareTrigger.html#bsl.triggers.SoftwareTrigger.close" title="bsl.triggers.SoftwareTrigger.close" class="sphx-glr-backref-module-bsl-triggers sphx-glr-backref-type-py-method"><span class="n">trigger</span><span class="o">.</span><span class="n">close</span></a><span class="p">()</span>
 <a href="../api/generated/bsl.StreamRecorder.html#bsl.StreamRecorder.stop" title="bsl.StreamRecorder.stop" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-method"><span class="n">recorder</span><span class="o">.</span><span class="n">stop</span></a><span class="p">()</span>
 </pre></div>
 </div>
 <p>As you may have noticed, <a class="reference internal" href="../api/generated/bsl.StreamReceiver.html#bsl.StreamReceiver.get_window" title="bsl.StreamReceiver.get_window"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_window</span></code></a> or
-<a class="reference internal" href="../api/generated/bsl.StreamReceiver.html#bsl.StreamReceiver.get_buffer" title="bsl.StreamReceiver.get_buffer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_buffer</span></code></a> return by default data as a <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.array.html#numpy.array" title="(in NumPy v1.21)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.array</span></code></a>,
-but it can also be return directly as a <a class="reference external" href="https://mne.tools/stable/generated/mne.io.Raw.html#mne.io.Raw" title="(in MNE v0.23)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Raw</span></code></a> instance if the
+<a class="reference internal" href="../api/generated/bsl.StreamReceiver.html#bsl.StreamReceiver.get_buffer" title="bsl.StreamReceiver.get_buffer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_buffer</span></code></a> return by default data as a <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.array.html#numpy.array" title="(in NumPy v1.22)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.array</span></code></a>,
+but it can also be return directly as a <a class="reference external" href="https://mne.tools/stable/generated/mne.io.Raw.html#mne.io.Raw" title="(in MNE v0.24)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Raw</span></code></a> instance if the
 argument <code class="docutils literal notranslate"><span class="pre">return_raw</span></code> is set to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
 <p>Depending on the CPU, on the current CPU load, and on the processing applied,
 the number of acquired window (points) may vary.</p>
@@ -475,13 +486,12 @@ the number of acquired window (points) may vary.</p>
     <a href="https://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.plot.html#matplotlib.axes.Axes.plot" title="matplotlib.axes.Axes.plot" class="sphx-glr-backref-module-matplotlib-axes sphx-glr-backref-type-py-method"><span class="n">ax</span><span class="o">.</span><span class="n">plot</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">timings</span></a><span class="p">[</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">k</span></a><span class="p">],</span> <a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">alphas</span></a><span class="p">[</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">k</span></a><span class="p">],</span> <a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">color</span></a><span class="o">=</span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">color</span></a><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="real time regulation of alpha waves" class="sphx-glr-single-img" src="../_images/sphx_glr_real-time_regulation_of_alpha_waves_003.png" />
-<p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[137, 135, 132, 116]
-[137, 135, 132, 116]
+<img src="../_images/sphx_glr_real-time_regulation_of_alpha_waves_003.png" srcset="../_images/sphx_glr_real-time_regulation_of_alpha_waves_003.png" alt="real time regulation of alpha waves" class = "sphx-glr-single-img"/><p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[122, 130, 115, 107]
+[122, 130, 115, 107]
 </pre></div>
 </div>
-<p>The saved <a class="reference external" href="https://mne.tools/stable/generated/mne.io.Raw.html#mne.io.Raw" title="(in MNE v0.23)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Raw</span></code></a> instance can then be loaded and analyzed.</p>
+<p>The saved <a class="reference external" href="https://mne.tools/stable/generated/mne.io.Raw.html#mne.io.Raw" title="(in MNE v0.24)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Raw</span></code></a> instance can then be loaded and analyzed.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="pathlib.PosixPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">fname</span></a> <span class="o">=</span> <a href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="pathlib.PosixPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">record_dir</span></a> <span class="o">/</span> <span class="s1">&#39;fif&#39;</span> <span class="o">/</span> <span class="s1">&#39;example_real_time-StreamPlayer-raw.fif&#39;</span>
 <a href="https://mne.tools/stable/generated/mne.io.Raw.html#mne.io.Raw" title="mne.io.Raw" class="sphx-glr-backref-module-mne-io sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">raw</span></a> <span class="o">=</span> <a href="https://mne.tools/stable/generated/mne.io.read_raw_fif.html#mne.io.read_raw_fif" title="mne.io.read_raw_fif" class="sphx-glr-backref-module-mne-io sphx-glr-backref-type-py-function"><span class="n">mne</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read_raw_fif</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="pathlib.PosixPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">fname</span></a><span class="p">,</span> <span class="n">preload</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="nb">print</span> <span class="p">(</span><a href="https://mne.tools/stable/generated/mne.io.Raw.html#mne.io.Raw" title="mne.io.Raw" class="sphx-glr-backref-module-mne-io sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">raw</span></a><span class="p">)</span>
@@ -490,11 +500,11 @@ the number of acquired window (points) may vary.</p>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;Raw | example_real_time-StreamPlayer-raw.fif, 65 x 6320 (12.3 s), ~3.2 MB, data loaded&gt;
-[[ 119    0    1]
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;Raw | example_real_time-StreamPlayer-raw.fif, 65 x 6304 (12.3 s), ~3.2 MB, data loaded&gt;
+[[ 122    0    1]
  [1669    0    2]
  [3219    0    1]
- [4757    0    2]]
+ [4755    0    2]]
 </pre></div>
 </div>
 <p>Stop the mock LSL stream.</p>
@@ -502,7 +512,7 @@ the number of acquired window (points) may vary.</p>
 <a href="../api/generated/bsl.StreamPlayer.html#bsl.StreamPlayer.stop" title="bsl.StreamPlayer.stop" class="sphx-glr-backref-module-bsl sphx-glr-backref-type-py-method"><span class="n">player</span><span class="o">.</span><span class="n">stop</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  21.382 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  21.510 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-generated-examples-real-time-regulation-of-alpha-waves-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/d7c13d092861232bf57a960db0d82bae/real-time_regulation_of_alpha_waves.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">real-time_regulation_of_alpha_waves.py</span></code></a></p>
@@ -512,19 +522,30 @@ the number of acquired window (points) may vary.</p>
 </div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
-</div>
-</div>
+</section>
+</section>
 
 
               </div>
               
               
-              <div class='prev-next-bottom'>
-                
-    <a class='left-prev' id="prev-link" href="simulate_an_lsl_stream_with_a_stream_player.html" title="previous page">StreamPlayer: simulate an LSL stream</a>
-    <a class='right-next' id="next-link" href="../api_reference.html" title="next page">Python API Reference</a>
-
-              </div>
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="simulate_an_lsl_stream_with_a_stream_player.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">StreamPlayer: simulate an LSL stream</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="real-time_filtered_buffer.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">StreamReceiver: real-time buffer filtered with a causal filter</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
               
           </main>
           
@@ -532,20 +553,19 @@ the number of acquired window (points) may vary.</p>
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
-
+    <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
   <footer class="footer mt-5 mt-md-0">
   <div class="container">
     
     <div class="footer-item">
       <p class="copyright">
-    &copy; Copyright 2021, Kyuhwa Lee, Arnaud Desvachez, Mathieu Scheltienne, Last updated on 2021-10-12T14:34:37.929571+00:00.<br/>
+    &copy; Copyright 2022, Kyuhwa Lee, Arnaud Desvachez, Mathieu Scheltienne, Last updated on 2022-02-21T15:37:01.198185+00:00.<br>
 </p>
     </div>
     
     <div class="footer-item">
       <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.1.2.<br/>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.4.0.<br>
 </p>
     </div>
     

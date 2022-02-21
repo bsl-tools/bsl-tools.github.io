@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>bsl.utils.io &#8212; BSL 0.4.0 documentation</title>
+    <title>bsl.triggers.SoftwareTrigger &#8212; BSL 0.4.0 documentation</title>
     
     <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 <link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -39,8 +39,8 @@
     <link rel="shortcut icon" href="../../_static/bsl-icon.svg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="bsl.utils.lsl" href="bsl.utils.lsl.html" />
-    <link rel="prev" title="bsl.utils.find_event_channel" href="bsl.utils.find_event_channel.html" />
+    <link rel="next" title="bsl.triggers.ParallelPortTrigger" href="bsl.triggers.ParallelPortTrigger.html" />
+    <link rel="prev" title="bsl.triggers.MockTrigger" href="bsl.triggers.MockTrigger.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -168,16 +168,16 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="../triggers.html">
    Triggers
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="bsl.triggers.TriggerDef.html">
      bsl.triggers.TriggerDef
@@ -188,8 +188,8 @@
      bsl.triggers.MockTrigger
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="bsl.triggers.SoftwareTrigger.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      bsl.triggers.SoftwareTrigger
     </a>
    </li>
@@ -232,23 +232,23 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../utils.html">
    Utils
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="bsl.utils.find_event_channel.html">
      bsl.utils.find_event_channel
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="bsl.utils.io.html">
      bsl.utils.io
     </a>
    </li>
@@ -298,63 +298,91 @@
               
               <div>
                 
-  <section id="module-bsl.utils.io">
-<span id="bsl-utils-io"></span><h1>bsl.utils.io<a class="headerlink" href="#module-bsl.utils.io" title="Permalink to this headline">¶</a></h1>
-<p>Convert known file format to FIF.</p>
-<p class="rubric">Functions</p>
+  <section id="bsl-triggers-softwaretrigger">
+<h1>bsl.triggers.SoftwareTrigger<a class="headerlink" href="#bsl-triggers-softwaretrigger" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="bsl.triggers.SoftwareTrigger">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bsl.triggers.</span></span><span class="sig-name descname"><span class="pre">SoftwareTrigger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">recorder</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.triggers.SoftwareTrigger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Trigger saving signal value in a <code class="docutils literal notranslate"><span class="pre">.txt</span></code> file.
+Software trigger instance must be created after a StreamRecorder is started
+and close/deleted before a StreamRecorder is stopped.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>recorder</strong> (<a class="reference internal" href="bsl.StreamRecorder.html#bsl.StreamRecorder" title="bsl.StreamRecorder"><em>StreamRecorder</em></a>) – BSL’s recorder used.</p></li>
+<li><p><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, display a <code class="docutils literal notranslate"><span class="pre">logger.info</span></code> message when a trigger is sent.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">recorder</span> <span class="o">=</span> <span class="n">StreamRecorder</span><span class="p">(</span><span class="s1">&#39;path to dir&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">recorder</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">trigger</span> <span class="o">=</span> <span class="n">SoftwareTrigger</span><span class="p">(</span><span class="n">recorder</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">trigger</span><span class="o">.</span><span class="n">signal</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">trigger</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> <span class="c1"># OR &gt;&gt;&gt; del trigger</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">recorder</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><a class="reference internal" href="#bsl.triggers.SoftwareTrigger.eve_file" title="bsl.triggers.SoftwareTrigger.eve_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">eve_file</span></code></a></dt><dd><p>Event <code class="docutils literal notranslate"><span class="pre">.ini</span></code> file.</p>
+</dd>
+<dt><a class="reference internal" href="#bsl.triggers.SoftwareTrigger.recorder" title="bsl.triggers.SoftwareTrigger.recorder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">recorder</span></code></a></dt><dd><p>BSL’s recorder used.</p>
+</dd>
+<dt><strong>verbose</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
 <table class="longtable table autosummary">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bsl.utils.io.any2fif" title="bsl.utils.io.any2fif"><code class="xref py py-obj docutils literal notranslate"><span class="pre">any2fif</span></code></a>(fname[, out_dir, overwrite, precision])</p></td>
-<td><p>Generic file format converter to Raw.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bsl.triggers.SoftwareTrigger.close" title="bsl.triggers.SoftwareTrigger.close"><code class="xref py py-obj docutils literal notranslate"><span class="pre">close</span></code></a>()</p></td>
+<td><p>Close the event file.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bsl.utils.io.pcl2fif" title="bsl.utils.io.pcl2fif"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pcl2fif</span></code></a>(fname[, out_dir, external_event, ...])</p></td>
-<td><p>Convert BSL pickle format to MNE Raw format.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#bsl.triggers.SoftwareTrigger.signal" title="bsl.triggers.SoftwareTrigger.signal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">signal</span></code></a>(value)</p></td>
+<td><p>Send a trigger value.</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="py function">
-<dt class="sig sig-object py" id="bsl.utils.io.any2fif">
-<span class="sig-prename descclassname"><span class="pre">bsl.utils.io.</span></span><span class="sig-name descname"><span class="pre">any2fif</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">precision</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'double'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.utils.io.any2fif" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generic file format converter to Raw.
-Uses <a class="reference external" href="https://mne.tools/stable/generated/mne.io.read_raw.html#mne.io.read_raw" title="(in MNE v0.24)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mne.io.read_raw</span></code></a>.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="bsl.triggers.SoftwareTrigger.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bsl.triggers.SoftwareTrigger.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Close the event file.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="bsl.triggers.SoftwareTrigger.eve_file">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">eve_file</span></span><a class="headerlink" href="#bsl.triggers.SoftwareTrigger.eve_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Event <code class="docutils literal notranslate"><span class="pre">.ini</span></code> file.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>fname</strong> (<em>file-like</em>) – File path to convert to <code class="docutils literal notranslate"><span class="pre">.fif</span></code> format.</p></li>
-<li><p><strong>out_dir</strong> (<em>path-like</em>) – Saving directory. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, it will be the directory
-<code class="docutils literal notranslate"><span class="pre">fname.parent/'fif'.</span></code></p></li>
-<li><p><strong>overwrite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, overwrite previously converted files with the same name.</p></li>
-<li><p><strong>precision</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – Data matrix format. <code class="docutils literal notranslate"><span class="pre">[single|double|int|short]</span></code>, <code class="docutils literal notranslate"><span class="pre">'single'</span></code>
-improves backward compatability.</p></li>
-</ul>
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/io.html#io.TextIOWrapper" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TextIOWrapper</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="py function">
-<dt class="sig sig-object py" id="bsl.utils.io.pcl2fif">
-<span class="sig-prename descclassname"><span class="pre">bsl.utils.io.</span></span><span class="sig-name descname"><span class="pre">pcl2fif</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">external_event</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">precision</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'double'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.utils.io.pcl2fif" title="Permalink to this definition">¶</a></dt>
-<dd><p>Convert BSL pickle format to MNE Raw format.</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="bsl.triggers.SoftwareTrigger.recorder">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">recorder</span></span><a class="headerlink" href="#bsl.triggers.SoftwareTrigger.recorder" title="Permalink to this definition">¶</a></dt>
+<dd><p>BSL’s recorder used.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>fname</strong> (<em>file-like</em>) – Pickle file path to convert to <code class="docutils literal notranslate"><span class="pre">.fif</span></code> format.</p></li>
-<li><p><strong>out_dir</strong> (<em>path-like</em>) – Saving directory. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, it will be the directory
-<code class="docutils literal notranslate"><span class="pre">fname.parent/'fif'</span></code>.</p></li>
-<li><p><strong>external_event</strong> (<em>file-like</em>) – Event file path in text format, following MNE event structure. Each row
-should be: <code class="docutils literal notranslate"><span class="pre">index</span> <span class="pre">0</span> <span class="pre">event</span></code>.</p></li>
-<li><p><strong>precision</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – Data matrix format. <code class="docutils literal notranslate"><span class="pre">[single|double|int|short]</span></code>, <code class="docutils literal notranslate"><span class="pre">'single'</span></code>
-improves backward compatability.</p></li>
-<li><p><strong>replace</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>, previous events will be overwritten by the new ones from
-the external events file.</p></li>
-<li><p><strong>overwrite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, overwrite the previous file.</p></li>
-</ul>
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="bsl.StreamRecorder.html#bsl.StreamRecorder" title="bsl.StreamRecorder">StreamRecorder</a></p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bsl.triggers.SoftwareTrigger.signal">
+<span class="sig-name descname"><span class="pre">signal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#bsl.triggers.SoftwareTrigger.signal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send a trigger value.</p>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -365,17 +393,17 @@ the external events file.</p></li>
               
               <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="bsl.utils.find_event_channel.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="bsl.triggers.MockTrigger.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">bsl.utils.find_event_channel</p>
+            <p class="prev-next-title">bsl.triggers.MockTrigger</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="bsl.utils.lsl.html" title="next page">
+    <a class='right-next' id="next-link" href="bsl.triggers.ParallelPortTrigger.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">bsl.utils.lsl</p>
+        <p class="prev-next-title">bsl.triggers.ParallelPortTrigger</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

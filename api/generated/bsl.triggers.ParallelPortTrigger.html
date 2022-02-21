@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>bsl.StreamViewer &#8212; BSL 0.4.0 documentation</title>
+    <title>bsl.triggers.ParallelPortTrigger &#8212; BSL 0.4.0 documentation</title>
     
     <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 <link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -39,8 +39,8 @@
     <link rel="shortcut icon" href="../../_static/bsl-icon.svg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Triggers" href="../triggers.html" />
-    <link rel="prev" title="bsl.StreamPlayer" href="bsl.StreamPlayer.html" />
+    <link rel="next" title="Datasets" href="../datasets.html" />
+    <link rel="prev" title="bsl.triggers.SoftwareTrigger" href="bsl.triggers.SoftwareTrigger.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -136,16 +136,16 @@
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
   <div class="bd-toc-item active">
     <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../stream_classes.html">
    Stream classes
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="bsl.StreamReceiver.html">
      bsl.StreamReceiver
@@ -161,23 +161,23 @@
      bsl.StreamPlayer
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="bsl.StreamViewer.html">
      bsl.StreamViewer
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="../triggers.html">
    Triggers
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="bsl.triggers.TriggerDef.html">
      bsl.triggers.TriggerDef
@@ -193,8 +193,8 @@
      bsl.triggers.SoftwareTrigger
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="bsl.triggers.ParallelPortTrigger.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      bsl.triggers.ParallelPortTrigger
     </a>
    </li>
@@ -298,25 +298,51 @@
               
               <div>
                 
-  <section id="bsl-streamviewer">
-<h1>bsl.StreamViewer<a class="headerlink" href="#bsl-streamviewer" title="Permalink to this headline">¶</a></h1>
+  <section id="bsl-triggers-parallelporttrigger">
+<h1>bsl.triggers.ParallelPortTrigger<a class="headerlink" href="#bsl-triggers-parallelporttrigger" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
-<dt class="sig sig-object py" id="bsl.StreamViewer">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bsl.</span></span><span class="sig-name descname"><span class="pre">StreamViewer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.StreamViewer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Class for visualizing the signals coming from an LSL stream. The stream
-viewer will connect to only one LSL stream. If <code class="docutils literal notranslate"><span class="pre">stream_name</span></code> is set to
-<code class="docutils literal notranslate"><span class="pre">None</span></code>, an automatic search is performed followed by a prompt if multiple
-non-markers streams are found.</p>
+<dt class="sig sig-object py" id="bsl.triggers.ParallelPortTrigger">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bsl.triggers.</span></span><span class="sig-name descname"><span class="pre">ParallelPortTrigger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delay</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.triggers.ParallelPortTrigger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Trigger using a parallel port (also called LPT port).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>stream_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em> | </em><em>None</em>) – Servers’ name to connect to. <code class="docutils literal notranslate"><span class="pre">None</span></code> will prompt the user.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em> (</em><em>hex</em><em>) </em><em>| </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The address of the parallel port on the system. If <code class="docutils literal notranslate"><span class="pre">'arduino'</span></code>, uses
+an Arduino to LPT converter. Design of the converter can be found here
+<a class="reference internal" href="../../arduino2lpt.html#arduino2lpt"><span class="std std-ref">Arduino to ParallelPort converter</span></a>.</p></li>
+<li><p><strong>delay</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – Delay in milliseconds until which a new trigger cannot be sent. During
+this time, the pins remains in the same state.</p></li>
+<li><p><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, display a <code class="docutils literal notranslate"><span class="pre">logger.info</span></code> message when a trigger is sent.</p></li>
+</ul>
 </dd>
-<dt class="field-even">Attributes</dt>
-<dd class="field-even"><dl class="simple">
-<dt><a class="reference internal" href="#bsl.StreamViewer.sr" title="bsl.StreamViewer.sr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sr</span></code></a></dt><dd><p>Connected StreamReceiver.</p>
+</dl>
+<p class="rubric">Notes</p>
+<p>The address is specific to the system. Typical addresses are:</p>
+<ul>
+<li><p>On Linux:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LPT1</span> <span class="o">=</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">parport0</span>
+<span class="n">LPT2</span> <span class="o">=</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">parport1</span>
+<span class="n">LPT3</span> <span class="o">=</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">parport2</span>
+</pre></div>
+</div>
+</li>
+<li><p>On Windows, commom port addresses:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LPT1</span> <span class="o">=</span> <span class="mh">0x0378</span> <span class="ow">or</span> <span class="mh">0x03BC</span>
+<span class="n">LPT2</span> <span class="o">=</span> <span class="mh">0x0278</span> <span class="ow">or</span> <span class="mh">0x0378</span>
+<span class="n">LPT3</span> <span class="o">=</span> <span class="mh">0x0278</span>
+</pre></div>
+</div>
+</li>
+<li><p>macOS does not have support for parallel ports.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><a class="reference internal" href="#bsl.triggers.ParallelPortTrigger.address" title="bsl.triggers.ParallelPortTrigger.address"><code class="xref py py-obj docutils literal notranslate"><span class="pre">address</span></code></a></dt><dd><p>Port address.</p>
 </dd>
-<dt><a class="reference internal" href="#bsl.StreamViewer.stream_name" title="bsl.StreamViewer.stream_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stream_name</span></code></a></dt><dd><p>Connected stream’s name.</p>
+<dt><a class="reference internal" href="#bsl.triggers.ParallelPortTrigger.delay" title="bsl.triggers.ParallelPortTrigger.delay"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delay</span></code></a></dt><dd><p>Delay to wait between two <a class="reference internal" href="#bsl.triggers.ParallelPortTrigger.signal" title="bsl.triggers.ParallelPortTrigger.signal"><code class="xref py py-meth docutils literal notranslate"><span class="pre">signal()</span></code></a> call in milliseconds.</p>
 </dd>
+<dt><strong>verbose</strong></dt><dd></dd>
 </dl>
 </dd>
 </dl>
@@ -327,46 +353,48 @@ non-markers streams are found.</p>
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bsl.StreamViewer.start" title="bsl.StreamViewer.start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">start</span></code></a>([bufsize])</p></td>
-<td><p>Connect to the selected amplifier and plot the streamed data.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bsl.triggers.ParallelPortTrigger.close" title="bsl.triggers.ParallelPortTrigger.close"><code class="xref py py-obj docutils literal notranslate"><span class="pre">close</span></code></a>()</p></td>
+<td><p>Disconnects the parallel port.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bsl.triggers.ParallelPortTrigger.signal" title="bsl.triggers.ParallelPortTrigger.signal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">signal</span></code></a>(value)</p></td>
+<td><p>Send a trigger value.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py property">
-<dt class="sig sig-object py" id="bsl.StreamViewer.sr">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sr</span></span><a class="headerlink" href="#bsl.StreamViewer.sr" title="Permalink to this definition">¶</a></dt>
-<dd><p>Connected StreamReceiver.</p>
+<dt class="sig sig-object py" id="bsl.triggers.ParallelPortTrigger.address">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">address</span></span><a class="headerlink" href="#bsl.triggers.ParallelPortTrigger.address" title="Permalink to this definition">¶</a></dt>
+<dd><p>Port address.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="bsl.StreamReceiver.html#bsl.StreamReceiver" title="bsl.StreamReceiver">StreamReceiver</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">int</a> | <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="bsl.StreamViewer.start">
-<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bufsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.StreamViewer.start" title="Permalink to this definition">¶</a></dt>
-<dd><p>Connect to the selected amplifier and plot the streamed data.</p>
-<p>If <code class="docutils literal notranslate"><span class="pre">stream_name</span></code> is not provided, look for available streams on the
-network.</p>
+<dt class="sig sig-object py" id="bsl.triggers.ParallelPortTrigger.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bsl.triggers.ParallelPortTrigger.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disconnects the parallel port. This method should free the parallel
+port and let other application or python process use it.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="bsl.triggers.ParallelPortTrigger.delay">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">delay</span></span><a class="headerlink" href="#bsl.triggers.ParallelPortTrigger.delay" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delay to wait between two <a class="reference internal" href="#bsl.triggers.ParallelPortTrigger.signal" title="bsl.triggers.ParallelPortTrigger.signal"><code class="xref py py-meth docutils literal notranslate"><span class="pre">signal()</span></code></a> call in
+milliseconds.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>bufsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – Buffer/window size of the attached StreamReceiver.
-The default <code class="docutils literal notranslate"><span class="pre">0.2</span></code> should work in most cases since data is fetched
-every 20 ms.</p>
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)">float</a></p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="py property">
-<dt class="sig sig-object py" id="bsl.StreamViewer.stream_name">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">stream_name</span></span><a class="headerlink" href="#bsl.StreamViewer.stream_name" title="Permalink to this definition">¶</a></dt>
-<dd><p>Connected stream’s name.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">str</a></p>
-</dd>
-</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="bsl.triggers.ParallelPortTrigger.signal">
+<span class="sig-name descname"><span class="pre">signal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#bsl.triggers.ParallelPortTrigger.signal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send a trigger value.</p>
 </dd></dl>
 
 </dd></dl>
@@ -379,17 +407,17 @@ every 20 ms.</p>
               
               <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="bsl.StreamPlayer.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="bsl.triggers.SoftwareTrigger.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">bsl.StreamPlayer</p>
+            <p class="prev-next-title">bsl.triggers.SoftwareTrigger</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../triggers.html" title="next page">
+    <a class='right-next' id="next-link" href="../datasets.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Triggers</p>
+        <p class="prev-next-title">Datasets</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
