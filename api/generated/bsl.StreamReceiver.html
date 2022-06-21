@@ -6,32 +6,29 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>bsl.StreamReceiver &#8212; BSL 0.4.0 documentation</title>
+    <title>bsl.StreamReceiver &#8212; BSL 0.5.0.dev0 documentation</title>
     
-    <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 <link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-  
+
     
-    <link rel="stylesheet"
-      href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-    <link rel="preload" as="font" type="font/woff2" crossorigin
-      href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-    <link rel="preload" as="font" type="font/woff2" crossorigin
-      href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
-  
-    
-      
-  
-    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/pydata-sphinx-theme.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
     
-    <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
-  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
@@ -48,7 +45,7 @@
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
     
     <div class="container-fluid" id="banner"></div>
 
@@ -189,6 +186,11 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="bsl.triggers.LSLTrigger.html">
+     bsl.triggers.LSLTrigger
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="bsl.triggers.SoftwareTrigger.html">
      bsl.triggers.SoftwareTrigger
     </a>
@@ -299,10 +301,10 @@
               <div>
                 
   <section id="bsl-streamreceiver">
-<h1>bsl.StreamReceiver<a class="headerlink" href="#bsl-streamreceiver" title="Permalink to this headline">¶</a></h1>
+<h1>bsl.StreamReceiver<a class="headerlink" href="#bsl-streamreceiver" title="Permalink to this headline">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="bsl.StreamReceiver">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bsl.</span></span><span class="sig-name descname"><span class="pre">StreamReceiver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bufsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">winsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stream_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.StreamReceiver" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bsl.</span></span><span class="sig-name descname"><span class="pre">StreamReceiver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bufsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">winsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stream_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.StreamReceiver" title="Permalink to this definition">#</a></dt>
 <dd><p>Class for data acquisition from LSL streams.</p>
 <dl class="simple">
 <dt>It supports the streams of:</dt><dd><ul class="simple">
@@ -339,7 +341,7 @@ If <code class="docutils literal notranslate"><span class="pre">None</span></cod
 </dd>
 </dl>
 <p class="rubric">Methods</p>
-<table class="longtable table autosummary">
+<table class="autosummary longtable table autosummary">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
@@ -364,19 +366,19 @@ If <code class="docutils literal notranslate"><span class="pre">None</span></cod
 <td><p>Clear the stream's buffer.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#bsl.StreamReceiver.show_info" title="bsl.StreamReceiver.show_info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_info</span></code></a>()</p></td>
-<td><p>Display the informations about the connected streams.</p></td>
+<td><p>Display the information about the connected streams.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py method">
 <dt class="sig sig-object py" id="bsl.StreamReceiver.acquire">
-<span class="sig-name descname"><span class="pre">acquire</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bsl.StreamReceiver.acquire" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">acquire</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bsl.StreamReceiver.acquire" title="Permalink to this definition">#</a></dt>
 <dd><p>Read data from the streams and fill their buffer using threading.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="bsl.StreamReceiver.bufsize">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bufsize</span></span><a class="headerlink" href="#bsl.StreamReceiver.bufsize" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bufsize</span></span><a class="headerlink" href="#bsl.StreamReceiver.bufsize" title="Permalink to this definition">#</a></dt>
 <dd><p>Buffer’s size <code class="docutils literal notranslate"><span class="pre">[sec]</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -387,18 +389,18 @@ If <code class="docutils literal notranslate"><span class="pre">None</span></cod
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bsl.StreamReceiver.connect">
-<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.StreamReceiver.connect" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.StreamReceiver.connect" title="Permalink to this definition">#</a></dt>
 <dd><p>Search for the available streams on the LSL network and connect to the
-appropriate ones. If a LSL stream fullfills the requirements (name…),
+appropriate ones. If a LSL stream fulfills the requirements (name…),
 a connection is established.</p>
-<p>This function is called while instanciating a StreamReceiver and can be
+<p>This function is called while instantiated a StreamReceiver and can be
 recall to reconnect to the LSL streams.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>stream_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><em>list</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em> | </em><em>None</em>) – Servers’ name or list of servers’ name to connect to.
 If <code class="docutils literal notranslate"><span class="pre">None</span></code>, connects to all the available streams.</p></li>
-<li><p><strong>timeout</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – Timeout duration in seconds after which the search is abandonned.</p></li>
+<li><p><strong>timeout</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – Timeout duration in seconds after which the search is abandoned.</p></li>
 <li><p><strong>force</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, force reconnect if the StreamReceiver was already
 connected.</p></li>
 </ul>
@@ -408,7 +410,7 @@ connected.</p></li>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="bsl.StreamReceiver.connected">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">connected</span></span><a class="headerlink" href="#bsl.StreamReceiver.connected" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">connected</span></span><a class="headerlink" href="#bsl.StreamReceiver.connected" title="Permalink to this definition">#</a></dt>
 <dd><p>Connected status.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -419,9 +421,9 @@ connected.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bsl.StreamReceiver.disconnect">
-<span class="sig-name descname"><span class="pre">disconnect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.StreamReceiver.disconnect" title="Permalink to this definition">¶</a></dt>
-<dd><p>Disconnects the stream <code class="docutils literal notranslate"><span class="pre">stream_name</span></code> from the StreamReceiver.
-If <code class="docutils literal notranslate"><span class="pre">stream_name</span></code> is a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a>, disconnects all streams in the list.
+<span class="sig-name descname"><span class="pre">disconnect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.StreamReceiver.disconnect" title="Permalink to this definition">#</a></dt>
+<dd><p>Disconnects the stream <code class="docutils literal notranslate"><span class="pre">stream_name</span></code> from the StreamReceiver.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">stream_name</span></code> is a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a>, disconnects all streams in the list.
 If <code class="docutils literal notranslate"><span class="pre">stream_name</span></code> is <code class="docutils literal notranslate"><span class="pre">None</span></code>, disconnects all streams.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -433,9 +435,9 @@ If <code class="docutils literal notranslate"><span class="pre">None</span></cod
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bsl.StreamReceiver.get_buffer">
-<span class="sig-name descname"><span class="pre">get_buffer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_raw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.StreamReceiver.get_buffer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get the entire buffer of a stream.
-If several streams are connected, specify the name.</p>
+<span class="sig-name descname"><span class="pre">get_buffer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_raw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.StreamReceiver.get_buffer" title="Permalink to this definition">#</a></dt>
+<dd><p>Get the entire buffer of a stream.</p>
+<p>If several streams are connected, specify the name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -466,9 +468,9 @@ stream in uV to convert to V:</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bsl.StreamReceiver.get_window">
-<span class="sig-name descname"><span class="pre">get_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_raw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.StreamReceiver.get_window" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get the latest window from a stream’s buffer.
-If several streams are connected, specify the name.</p>
+<span class="sig-name descname"><span class="pre">get_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_raw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.StreamReceiver.get_window" title="Permalink to this definition">#</a></dt>
+<dd><p>Get the latest window from a stream’s buffer.</p>
+<p>If several streams are connected, specify the name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -499,7 +501,7 @@ stream in uV to convert to V:</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="bsl.StreamReceiver.mne_infos">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">mne_infos</span></span><a class="headerlink" href="#bsl.StreamReceiver.mne_infos" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">mne_infos</span></span><a class="headerlink" href="#bsl.StreamReceiver.mne_infos" title="Permalink to this definition">#</a></dt>
 <dd><p>Dictionary containing the Info for the compatible streams.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -510,7 +512,7 @@ stream in uV to convert to V:</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bsl.StreamReceiver.reset_buffer">
-<span class="sig-name descname"><span class="pre">reset_buffer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.StreamReceiver.reset_buffer" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">reset_buffer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.StreamReceiver.reset_buffer" title="Permalink to this definition">#</a></dt>
 <dd><p>Clear the stream’s buffer.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -522,13 +524,13 @@ If <code class="docutils literal notranslate"><span class="pre">None</span></cod
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bsl.StreamReceiver.show_info">
-<span class="sig-name descname"><span class="pre">show_info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bsl.StreamReceiver.show_info" title="Permalink to this definition">¶</a></dt>
-<dd><p>Display the informations about the connected streams.</p>
+<span class="sig-name descname"><span class="pre">show_info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bsl.StreamReceiver.show_info" title="Permalink to this definition">#</a></dt>
+<dd><p>Display the information about the connected streams.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="bsl.StreamReceiver.stream_name">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">stream_name</span></span><a class="headerlink" href="#bsl.StreamReceiver.stream_name" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">stream_name</span></span><a class="headerlink" href="#bsl.StreamReceiver.stream_name" title="Permalink to this definition">#</a></dt>
 <dd><p>Connected stream’s name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -539,7 +541,7 @@ If <code class="docutils literal notranslate"><span class="pre">None</span></cod
 
 <dl class="py property">
 <dt class="sig sig-object py" id="bsl.StreamReceiver.streams">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">streams</span></span><a class="headerlink" href="#bsl.StreamReceiver.streams" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">streams</span></span><a class="headerlink" href="#bsl.StreamReceiver.streams" title="Permalink to this definition">#</a></dt>
 <dd><p>Connected streams dictionary <code class="docutils literal notranslate"><span class="pre">{stream_name:</span> <span class="pre">_Stream}</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -550,7 +552,7 @@ If <code class="docutils literal notranslate"><span class="pre">None</span></cod
 
 <dl class="py property">
 <dt class="sig sig-object py" id="bsl.StreamReceiver.winsize">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">winsize</span></span><a class="headerlink" href="#bsl.StreamReceiver.winsize" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">winsize</span></span><a class="headerlink" href="#bsl.StreamReceiver.winsize" title="Permalink to this definition">#</a></dt>
 <dd><p>Window’s size <code class="docutils literal notranslate"><span class="pre">[sec]</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -591,19 +593,20 @@ If <code class="docutils literal notranslate"><span class="pre">None</span></cod
       </div>
     </div>
   
-    <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
-  <footer class="footer mt-5 mt-md-0">
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+<footer class="footer mt-5 mt-md-0">
   <div class="container">
     
     <div class="footer-item">
       <p class="copyright">
-    &copy; Copyright 2022, Kyuhwa Lee, Arnaud Desvachez, Mathieu Scheltienne, Last updated on 2022-02-21T15:37:01.198185+00:00.<br>
+    &copy; Copyright 2022, Kyuhwa Lee, Arnaud Desvachez, Mathieu Scheltienne, Last updated on 2022-06-21T14:14:05.068922+00:00.<br>
 </p>
     </div>
     
     <div class="footer-item">
       <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.4.0.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br>
 </p>
     </div>
     

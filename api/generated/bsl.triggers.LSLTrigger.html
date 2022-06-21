@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>bsl.utils.lsl &#8212; BSL 0.5.0.dev0 documentation</title>
+    <title>bsl.triggers.LSLTrigger &#8212; BSL 0.5.0.dev0 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -36,8 +36,8 @@
     <link rel="shortcut icon" href="../../_static/bsl-icon.svg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Command-Line" href="../../command_line.html" />
-    <link rel="prev" title="bsl.utils.io" href="bsl.utils.io.html" />
+    <link rel="next" title="bsl.triggers.SoftwareTrigger" href="bsl.triggers.SoftwareTrigger.html" />
+    <link rel="prev" title="bsl.triggers.MockTrigger" href="bsl.triggers.MockTrigger.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -165,16 +165,16 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="../triggers.html">
    Triggers
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="bsl.triggers.TriggerDef.html">
      bsl.triggers.TriggerDef
@@ -185,8 +185,8 @@
      bsl.triggers.MockTrigger
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="bsl.triggers.LSLTrigger.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      bsl.triggers.LSLTrigger
     </a>
    </li>
@@ -234,16 +234,16 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../utils.html">
    Utils
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="bsl.utils.find_event_channel.html">
      bsl.utils.find_event_channel
@@ -254,8 +254,8 @@
      bsl.utils.io
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="bsl.utils.lsl.html">
      bsl.utils.lsl
     </a>
    </li>
@@ -300,82 +300,103 @@
               
               <div>
                 
-  <section id="module-bsl.utils.lsl">
-<span id="bsl-utils-lsl"></span><h1>bsl.utils.lsl<a class="headerlink" href="#module-bsl.utils.lsl" title="Permalink to this headline">#</a></h1>
-<p>LSL wrapper functions for creating a server and a client.</p>
-<p class="rubric">Functions</p>
+  <section id="bsl-triggers-lsltrigger">
+<h1>bsl.triggers.LSLTrigger<a class="headerlink" href="#bsl-triggers-lsltrigger" title="Permalink to this headline">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="bsl.triggers.LSLTrigger">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bsl.triggers.</span></span><span class="sig-name descname"><span class="pre">LSLTrigger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.triggers.LSLTrigger" title="Permalink to this definition">#</a></dt>
+<dd><p>Trigger sending values on an LSL outlet.</p>
+<p>Make sure you are recording the stream created by the
+<a class="reference internal" href="#bsl.triggers.LSLTrigger" title="bsl.triggers.LSLTrigger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LSLTrigger</span></code></a> alongside your data. e.g. if you use
+LabRecorder, update the stream list after creating the
+<a class="reference internal" href="#bsl.triggers.LSLTrigger" title="bsl.triggers.LSLTrigger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LSLTrigger</span></code></a>.</p>
+<p>Make sure to close the LSL outlet by calling the
+<a class="reference internal" href="#bsl.triggers.LSLTrigger.close" title="bsl.triggers.LSLTrigger.close"><code class="xref py py-obj docutils literal notranslate"><span class="pre">close</span></code></a> method or by deleting the trigger after
+use.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – Name of the LSL outlet.</p></li>
+<li><p><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, display a <code class="docutils literal notranslate"><span class="pre">logger.info</span></code> message when a trigger is sent.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Attributes</dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="#bsl.triggers.LSLTrigger.name" title="bsl.triggers.LSLTrigger.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></dt><dd><p>LSL outlet name.</p>
+</dd>
+<dt><a class="reference internal" href="#bsl.triggers.LSLTrigger.oulet" title="bsl.triggers.LSLTrigger.oulet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">oulet</span></code></a></dt><dd><p>LSL stream oulet.</p>
+</dd>
+<dt><a class="reference internal" href="#bsl.triggers.LSLTrigger.sinfo" title="bsl.triggers.LSLTrigger.sinfo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sinfo</span></code></a></dt><dd><p>LSL stream info.</p>
+</dd>
+<dt><strong>verbose</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
 <table class="autosummary longtable table autosummary">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bsl.utils.lsl.list_lsl_streams" title="bsl.utils.lsl.list_lsl_streams"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list_lsl_streams</span></code></a>([ignore_markers])</p></td>
-<td><p>List all the available outlets on LSL network.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bsl.triggers.LSLTrigger.close" title="bsl.triggers.LSLTrigger.close"><code class="xref py py-obj docutils literal notranslate"><span class="pre">close</span></code></a>()</p></td>
+<td><p>Close the LSL outlet.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bsl.utils.lsl.lsl_channel_list" title="bsl.utils.lsl.lsl_channel_list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lsl_channel_list</span></code></a>(inlet)</p></td>
-<td><p>Extract the channels name list from the LSL info.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bsl.utils.lsl.search_lsl" title="bsl.utils.lsl.search_lsl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">search_lsl</span></code></a>([ignore_markers, timeout])</p></td>
-<td><p>Search and select an available stream on LSL network.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#bsl.triggers.LSLTrigger.signal" title="bsl.triggers.LSLTrigger.signal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">signal</span></code></a>(value)</p></td>
+<td><p>Send a trigger value.</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="py function">
-<dt class="sig sig-object py" id="bsl.utils.lsl.list_lsl_streams">
-<span class="sig-prename descclassname"><span class="pre">bsl.utils.lsl.</span></span><span class="sig-name descname"><span class="pre">list_lsl_streams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ignore_markers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.utils.lsl.list_lsl_streams" title="Permalink to this definition">#</a></dt>
-<dd><p>List all the available outlets on LSL network.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>ignore_markers</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, ignore streams with Marker type.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p><strong>stream_list</strong> (<em>list</em>) – List of the found stream name.</p></li>
-<li><p><strong>streamInfos</strong> (<em>list</em>) – List of the corresponding <code class="docutils literal notranslate"><span class="pre">pylsl.StreamInfo</span></code>.</p></li>
-</ul>
-</p>
-</dd>
-</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="bsl.triggers.LSLTrigger.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bsl.triggers.LSLTrigger.close" title="Permalink to this definition">#</a></dt>
+<dd><p>Close the LSL outlet.</p>
 </dd></dl>
 
-<dl class="py function">
-<dt class="sig sig-object py" id="bsl.utils.lsl.lsl_channel_list">
-<span class="sig-prename descclassname"><span class="pre">bsl.utils.lsl.</span></span><span class="sig-name descname"><span class="pre">lsl_channel_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inlet</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.utils.lsl.lsl_channel_list" title="Permalink to this definition">#</a></dt>
-<dd><p>Extract the channels name list from the LSL info.</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="bsl.triggers.LSLTrigger.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#bsl.triggers.LSLTrigger.name" title="Permalink to this definition">#</a></dt>
+<dd><p>LSL outlet name.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>inlet</strong> (<em>pylsl.StreamInlet</em>) – Inlet to extract the channels list from.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>ch_list</strong> – List of channels name <code class="docutils literal notranslate"><span class="pre">[name1,</span> <span class="pre">name2,</span> <span class="pre">...</span> <span class="pre">]</span></code>.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)">list</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="bsl.utils.lsl.search_lsl">
-<span class="sig-prename descclassname"><span class="pre">bsl.utils.lsl.</span></span><span class="sig-name descname"><span class="pre">search_lsl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ignore_markers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.utils.lsl.search_lsl" title="Permalink to this definition">#</a></dt>
-<dd><p>Search and select an available stream on LSL network.</p>
-<p>This function does not open an LSL inlet.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>ignore_markers</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, ignore streams with Marker type.</p></li>
-<li><p><strong>timeout</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – Timeout duration in seconds after which the search of an LSL stream
-is interrupted.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>stream_name</strong> – Selected stream name.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Type</dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">str</a></p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="bsl.triggers.LSLTrigger.oulet">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">oulet</span></span><a class="headerlink" href="#bsl.triggers.LSLTrigger.oulet" title="Permalink to this definition">#</a></dt>
+<dd><p>LSL stream oulet.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">pylsl.StreamOutlet</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bsl.triggers.LSLTrigger.signal">
+<span class="sig-name descname"><span class="pre">signal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bsl.triggers.LSLTrigger.signal" title="Permalink to this definition">#</a></dt>
+<dd><p>Send a trigger value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>value</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – Value of the trigger.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="bsl.triggers.LSLTrigger.sinfo">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sinfo</span></span><a class="headerlink" href="#bsl.triggers.LSLTrigger.sinfo" title="Permalink to this definition">#</a></dt>
+<dd><p>LSL stream info.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">pylsl.StreamInfo</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -386,17 +407,17 @@ is interrupted.</p></li>
               
               <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="bsl.utils.io.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="bsl.triggers.MockTrigger.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">bsl.utils.io</p>
+            <p class="prev-next-title">bsl.triggers.MockTrigger</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../../command_line.html" title="next page">
+    <a class='right-next' id="next-link" href="bsl.triggers.SoftwareTrigger.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Command-Line</p>
+        <p class="prev-next-title">bsl.triggers.SoftwareTrigger</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
